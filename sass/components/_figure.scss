@@ -1,0 +1,28 @@
+body.before_1500 {
+    figure {
+        display: flex;
+        flex-direction: row;
+        
+        padding: 1rem;
+        margin-bottom: 2.75vw;
+        border: 1rem solid transparent;
+        border-image-source: url(/img/border-image.svg);
+        border-image-slice: 10;
+        border-image-repeat: repeat;
+
+        & img {
+            align-self: center;
+            width: calc(30.35vw - 2rem); // column-width (30.35vw) - margin (2rem)
+        }
+
+        & figcaption {
+            align-self: center;
+
+            & p {
+                column-count: 1;
+                margin-left: 5.5vw;
+            }
+        }
+    }
+}
+

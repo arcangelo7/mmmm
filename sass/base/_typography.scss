@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'schwabacher';
+    src: url('fonts/alteschwabacher-webfont.woff2') format('woff2'),
+         url('fonts/alteschwabacher-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'camelot';
+    src: url('fonts/camelot-webfont.woff2') format('woff2'),
+         url('fonts/camelot-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body.before_1500 {
+    font-family: "schwabacher";
+    font-size: 3.3rem;
+
+    & h1 {
+        color: $color-red;
+    }
+
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        color: $color-red;
+        margin-top: 2.75vw;
+    }
+
+    & p {
+        text-align: justify;
+    }
+
+    // Drop Caps
+    & > section:not(#references) > p:nth-child(odd)::first-letter,
+    & .biblioItem:nth-child(odd) .biblioMarker {
+        color: $color-red;
+        @include dropcap;
+    }
+
+    & > section:not(#references) > p:nth-child(even)::first-letter,
+    & .biblioItem:nth-child(even) .biblioMarker {
+        color: $color-blue;
+        @include dropcap;
+    }
+
+    & > section:not(#references) > p:first-of-type::first-letter {
+        @include special-dropcap;
+    } 
+}

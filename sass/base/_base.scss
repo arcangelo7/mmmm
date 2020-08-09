@@ -1,0 +1,65 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // This defines what 1rem is
+    font-size: 62.5%; // 1rem = 10px; 10/16 = 62.5%
+
+    @include respond(big-desktop) {
+        font-size: 75%; // 1 rem = 12px, 12/16 = 75%
+    }
+    
+    @include respond(tab-land) { // width < 1200?
+        font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25%
+    }
+
+    @include respond(tab-port) { // width < 900? THE ORDER MATTERS
+        font-size: 50%; // 1 rem = 8px, 8/16 = 50% 
+    }
+}
+
+body {
+    box-sizing: border-box;
+    
+    &.before_1500 {
+
+        // The ratio of the width of the page to the width of the textbox 3/2. 3:100vw = 2:66.6667vw
+        margin-top: calc((100vh - 66.6667vh) / 3); // 11,1111vh
+        margin-bottom: calc((100vh - 66.6667vh) / 3 * 2 - 5.5vw); // 22,2222vh 
+        margin-left: calc((100vw - 66.6667vw) / 3); // 11,1111vw
+        margin-right: calc((100vw - 66.6667vw) / 3 * 2); // 22,2222vw
+
+        background-color: $color-white;
+        background-image: linear-gradient(
+            to right, 
+            rgb(23,13,11),
+            rgba(107,90,72,.4) 0.2%, 
+            rgba(240,232,219,.4) 10%,
+            rgba(240,232,219,.4) 90%,
+            rgba(107,90,72,.4) 99.8%,
+            rgb(23,13,11) 100%);
+
+        & p {
+            column-count: 2;
+            column-gap: 5.5vw;
+
+            @include respond(tab-port) {
+                column-count: 1;
+            }
+        }
+
+        & p:not(:last-child) {
+            margin-bottom: 2.75vw; 
+        }
+
+        ::selection {
+            background-color: $color-blue;
+            color: $color-white;
+        }
+    }
+}
