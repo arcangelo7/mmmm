@@ -110,7 +110,7 @@ body.before_1500 figure {
   padding: 1rem;
   margin-bottom: 2.75vw;
   border: 1rem solid transparent;
-  border-image-source: url(/img/border-image.svg);
+  border-image-source: url(../img/border-image.svg);
   border-image-slice: 10;
   border-image-repeat: repeat; }
   body.before_1500 figure img {
@@ -128,7 +128,7 @@ body.before_1500 #Summary {
   padding: 2.75vw;
   margin-bottom: 5.5vw;
   border: 1rem solid transparent;
-  border-image-source: url(/img/border-image.svg);
+  border-image-source: url(../img/border-image.svg);
   border-image-slice: 10;
   border-image-repeat: repeat; }
   body.before_1500 #Cover p,
