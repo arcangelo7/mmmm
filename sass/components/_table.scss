@@ -1,0 +1,51 @@
+body.before_1500 {
+
+    & table {
+        font-size: inherit;
+        width: 66.6667vw;
+        overflow-x: auto;
+    }
+
+    & table, th, td {
+        border: 1rem solid transparent;
+        border-image-source: url(../img/border-image.svg);
+        border-image-slice: 10;
+        border-image-repeat: repeat;
+
+        text-align: center;
+        padding: 1rem;
+
+        @include respond(tab-port) {
+            border: 1px solid black;
+            border-image-source: none;
+            border-collapse: collapse;
+            padding: 0;
+        }
+    }
+
+    & table tr:hover {
+        background-color: $color-blue;
+        color: $color-white;
+    }
+
+    & table caption {
+        border-top: 15rem solid transparent;
+        border-image-source: url(../img/medieval-frame.svg);
+        border-image-slice: 150;
+        border-image-repeat: repeat;
+
+        margin-top: 2.75vw;
+        padding: 1rem;
+
+        @include respond(tab-port) {
+            border-top: 1rem solid transparent;
+            border-image-source: url(../img/border-image.svg);
+            border-image-slice: 10;
+            border-image-repeat: repeat;
+        }
+    }
+
+    & table caption p {
+        column-count: 1;
+    }
+}

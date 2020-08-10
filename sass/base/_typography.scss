@@ -33,6 +33,21 @@ body.before_1500 {
 
     & p {
         text-align: justify;
+        word-wrap: break-word;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+
+    & a:link, 
+    & a:visited {
+        color: $color-blue;
+    }
+
+    & a:hover, 
+    & a:active {
+        color: $color-red;
     }
 
     // Drop Caps

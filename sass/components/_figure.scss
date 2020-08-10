@@ -2,25 +2,45 @@ body.before_1500 {
     figure {
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        @include respond(tab-land) {
+            flex-direction: column;
+        }
         
         padding: 1rem;
         margin-bottom: 2.75vw;
-        border: 1rem solid transparent;
-        border-image-source: url(/img/border-image.svg);
-        border-image-slice: 10;
-        border-image-repeat: repeat;
+        border: 10rem solid transparent;
+        border-image-source: url(../img/medieval-frame.svg);
+        border-image-slice: 100;
+        border-image-repeat: stretch;
+
+        @include respond(tab-port) {
+            border: 1rem solid transparent;
+            border-image-source: url(../img/border-image.svg);
+            border-image-slice: 10;
+            border-image-repeat: repeat;
+        }
 
         & img {
-            align-self: center;
-            width: calc(30.35vw - 2rem); // column-width (30.35vw) - margin (2rem)
+            width: calc(30.35vw - 11rem); // column-width (30.35vw) - margin (10rem) - padding (1rem)
+
+            @include respond(tab-land) {
+                width: calc(66.6667vw - 22rem); // column-width (66.6667vw) - 2 * margin (20rem) - 2* padding (2rem)
+                margin-bottom: 2.75vw;
+            }
         }
 
         & figcaption {
-            align-self: center;
 
             & p {
                 column-count: 1;
                 margin-left: 5.5vw;
+
+                @include respond(tab-land) {
+                    margin-left: 0;
+                }
             }
         }
     }
