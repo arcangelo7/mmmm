@@ -26,10 +26,17 @@ body.before_1500 {
 
         padding: 2.75vw;
         margin-bottom: 5.5vw;
-        border: 1rem solid transparent;
-        border-image-source: url(../img/border-image.svg);
-        border-image-slice: 10;
+        border: 10rem solid transparent;
+        border-image-source: url(../img/medieval-frame.svg);
+        border-image-slice: 100;
         border-image-repeat: repeat;
+
+        @include respond(tab-port) {
+            border: 1rem solid transparent;
+            border-image-source: url(../img/border-image.svg);
+            border-image-slice: 10;
+            border-image-repeat: repeat;
+        }
 
         & p {
             column-count: 1;

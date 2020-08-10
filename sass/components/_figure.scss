@@ -24,11 +24,18 @@ body.before_1500 {
         }
 
         & img {
+            padding: 1rem;
             width: calc(30.35vw - 11rem); // column-width (30.35vw) - margin (10rem) - padding (1rem)
 
             @include respond(tab-land) {
-                width: calc(66.6667vw - 22rem); // column-width (66.6667vw) - 2 * margin (20rem) - 2* padding (2rem)
-                margin-bottom: 2.75vw;
+                @include respond(tab-land) {
+                    width: calc(66.6667vw - 22rem); // column-width (66.6667vw) - 2 * margin (20rem) - 2* padding (2rem)
+                    margin-bottom: 2.75vw;
+                }
+            }
+
+            @include respond(tab-port) {
+                width: calc(66.6667vw - 4rem); // column-width (66.6667vw) - 2 * margin (2rem) - 2* padding (2rem)
             }
         }
 

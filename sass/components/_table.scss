@@ -2,8 +2,11 @@ body.before_1500 {
 
     & table {
         font-size: inherit;
-        width: 66.6667vw;
-        overflow-x: auto;
+        max-width: 66.6667vw;
+
+        @include respond(phone) {
+            font-size: 50%;
+        }
     }
 
     & table, th, td {
