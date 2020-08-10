@@ -30,7 +30,10 @@ body.before_1500 {
 
     & table caption {
         border-top-style: solid;
-        border-top-width: 15rem;        
+        border-top-width: 15rem;
+        border-bottom: 0;
+        border-left: 0;
+        border-right: 0;        
         border-image-source: url(../img/medieval-frame.svg);
         border-image-slice: 150;
         border-image-repeat: repeat;
@@ -39,7 +42,14 @@ body.before_1500 {
         padding: 1rem;
 
         @include respond(tab-port) {
-            @include border-slim;
+            border-top-style: solid;
+            border-top-width: 1rem;
+            border-bottom: 0;
+            border-left: 0;
+            border-right: 0;
+            border-image-source: url(../img/border-image.svg);
+            border-image-slice: 10;
+            border-image-repeat: repeat;        
         }
     }
 

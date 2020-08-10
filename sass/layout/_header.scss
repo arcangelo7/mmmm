@@ -18,12 +18,13 @@ body.before_1500 {
 
     & #Cover, 
     & #Summary {
-        // grid-column: 1 / 3;
-        // flex: 0 1 66.6667vw;
-
         padding: 2.75vw;
         margin-bottom: 5.5vw;
         @include border-large;
+
+        @include respond(tab-port) {
+            @include border-slim; 
+        }
 
         & p {
             column-count: 1;
