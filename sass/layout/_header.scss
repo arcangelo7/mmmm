@@ -2,10 +2,7 @@ body.before_1500 {
 
     & #Cover {
         & .byline {
-            border: 1rem solid transparent;
-            border-image-source: url(../img/border-image.svg);
-            border-image-slice: 10;
-            border-image-repeat: repeat;
+            @include border-slim;
             margin: 5.5vw 0;
         }
 
@@ -26,17 +23,7 @@ body.before_1500 {
 
         padding: 2.75vw;
         margin-bottom: 5.5vw;
-        border: 10rem solid transparent;
-        border-image-source: url(../img/medieval-frame.svg);
-        border-image-slice: 100;
-        border-image-repeat: repeat;
-
-        @include respond(tab-port) {
-            border: 1rem solid transparent;
-            border-image-source: url(../img/border-image.svg);
-            border-image-slice: 10;
-            border-image-repeat: repeat;
-        }
+        @include border-large;
 
         & p {
             column-count: 1;

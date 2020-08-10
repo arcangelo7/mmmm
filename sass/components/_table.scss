@@ -2,11 +2,8 @@ body.before_1500 {
 
     & table {
         font-size: inherit;
-        max-width: 66.6667vw;
-
-        @include respond(phone) {
-            font-size: 50%;
-        }
+        width: 66.6667vw;
+        overflow-x: auto;
     }
 
     & table, th, td {
@@ -32,7 +29,8 @@ body.before_1500 {
     }
 
     & table caption {
-        border-top: 15rem solid transparent;
+        border-top-style: solid;
+        border-top-width: 15rem;        
         border-image-source: url(../img/medieval-frame.svg);
         border-image-slice: 150;
         border-image-repeat: repeat;
@@ -41,10 +39,7 @@ body.before_1500 {
         padding: 1rem;
 
         @include respond(tab-port) {
-            border-top: 1rem solid transparent;
-            border-image-source: url(../img/border-image.svg);
-            border-image-slice: 10;
-            border-image-repeat: repeat;
+            @include border-slim;
         }
     }
 

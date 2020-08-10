@@ -24,6 +24,22 @@
     float: left;
 }
 
+@mixin border-large {
+    border-style: solid;
+    border-width: 10rem;
+    border-image-source: url(../img/medieval-frame.svg);
+    border-image-slice: 100;
+    border-image-repeat: repeat;
+}
+
+@mixin border-slim {
+    border-style: solid;
+    border-width: 1rem;
+    border-image-source: url(../img/border-image.svg);
+    border-image-slice: 10;
+    border-image-repeat: repeat;
+}
+
 // MEDIA QUERY MANAGER
 /*
 0-600px:     Phone

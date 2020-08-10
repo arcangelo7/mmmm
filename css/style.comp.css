@@ -124,30 +124,27 @@ body.before_1500 figure {
   align-items: center;
   padding: 1rem;
   margin-bottom: 2.75vw;
-  border: 10rem solid transparent;
+  border-style: solid;
+  border-width: 10rem;
   border-image-source: url(../img/medieval-frame.svg);
   border-image-slice: 100;
-  border-image-repeat: stretch; }
+  border-image-repeat: repeat; }
   @media only screen and (max-width: 75em) {
     body.before_1500 figure {
       flex-direction: column; } }
   @media only screen and (max-width: 56.25em) {
     body.before_1500 figure {
-      border: 1rem solid transparent;
+      border-style: solid;
+      border-width: 1rem;
       border-image-source: url(../img/border-image.svg);
       border-image-slice: 10;
       border-image-repeat: repeat; } }
   body.before_1500 figure img {
-    padding: 1rem;
     width: calc(30.35vw - 11rem); }
-
-@media only screen and (max-width: 75em) and (max-width: 75em) {
-  body.before_1500 figure img {
-    width: calc(66.6667vw - 22rem);
-    margin-bottom: 2.75vw; } }
-    @media only screen and (max-width: 56.25em) {
+    @media only screen and (max-width: 75em) {
       body.before_1500 figure img {
-        width: calc(66.6667vw - 4rem); } }
+        width: calc(66.6667vw - 22rem);
+        margin-bottom: 2.75vw; } }
   body.before_1500 figure figcaption p {
     column-count: 1;
     margin-left: 5.5vw; }
@@ -157,10 +154,8 @@ body.before_1500 figure {
 
 body.before_1500 table {
   font-size: inherit;
-  max-width: 66.6667vw; }
-  @media only screen and (max-width: 37.5em) {
-    body.before_1500 table {
-      font-size: 50%; } }
+  width: 66.6667vw;
+  overflow-x: auto; }
 
 body.before_1500 table, body.before_1500 th, body.before_1500 td {
   border: 1rem solid transparent;
@@ -181,7 +176,8 @@ body.before_1500 table tr:hover {
   color: #f0e8db; }
 
 body.before_1500 table caption {
-  border-top: 15rem solid transparent;
+  border-top-style: solid;
+  border-top-width: 15rem;
   border-image-source: url(../img/medieval-frame.svg);
   border-image-slice: 150;
   border-image-repeat: repeat;
@@ -189,7 +185,8 @@ body.before_1500 table caption {
   padding: 1rem; }
   @media only screen and (max-width: 56.25em) {
     body.before_1500 table caption {
-      border-top: 1rem solid transparent;
+      border-style: solid;
+      border-width: 1rem;
       border-image-source: url(../img/border-image.svg);
       border-image-slice: 10;
       border-image-repeat: repeat; } }
@@ -198,7 +195,8 @@ body.before_1500 table caption p {
   column-count: 1; }
 
 body.before_1500 #Cover .byline {
-  border: 1rem solid transparent;
+  border-style: solid;
+  border-width: 1rem;
   border-image-source: url(../img/border-image.svg);
   border-image-slice: 10;
   border-image-repeat: repeat;
@@ -215,17 +213,11 @@ body.before_1500 #Cover,
 body.before_1500 #Summary {
   padding: 2.75vw;
   margin-bottom: 5.5vw;
-  border: 10rem solid transparent;
+  border-style: solid;
+  border-width: 10rem;
   border-image-source: url(../img/medieval-frame.svg);
   border-image-slice: 100;
   border-image-repeat: repeat; }
-  @media only screen and (max-width: 56.25em) {
-    body.before_1500 #Cover,
-    body.before_1500 #Summary {
-      border: 1rem solid transparent;
-      border-image-source: url(../img/border-image.svg);
-      border-image-slice: 10;
-      border-image-repeat: repeat; } }
   body.before_1500 #Cover p,
   body.before_1500 #Summary p {
     column-count: 1; }
