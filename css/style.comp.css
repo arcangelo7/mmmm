@@ -16,6 +16,14 @@ $breakpoint argument choices:
 
 ORDER: Base + typography > general layout + grid > page layout > components
 */
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
 *,
 *::after,
 *::before {
@@ -25,9 +33,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 html {
   font-size: 62.5%; }
-  @media only screen and (min-width: 112.5em) {
-    html {
-      font-size: 75%; } }
   @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
@@ -38,10 +43,10 @@ html {
 body {
   box-sizing: border-box; }
   body.before_1500 {
-    margin-top: calc((100vh - 66.6667vh) / 3);
-    margin-bottom: calc((100vh - 66.6667vh) / 3 * 2 - 5.5vw);
-    margin-left: calc((100vw - 66.6667vw) / 3);
-    margin-right: calc((100vw - 66.6667vw) / 3 * 2);
+    margin-top: 11.1111vh;
+    margin-bottom: 22.2222vh;
+    margin-left: 11.1111vw;
+    margin-right: 22.2222vw;
     background-color: #f0e8db;
     background-image: linear-gradient(to right, #170d0b, rgba(107, 90, 72, 0.4) 0.2%, rgba(240, 232, 219, 0.4) 10%, rgba(240, 232, 219, 0.4) 90%, rgba(107, 90, 72, 0.4) 99.8%, #170d0b 100%); }
     body.before_1500 p {
@@ -62,7 +67,7 @@ body {
       width: 2.5rem; }
     body.before_1500::-webkit-scrollbar-thumb {
       background-image: url(../img/move_type.jpg);
-      background-size: cover;
+      background-size: auto;
       height: 8rem;
       border-top-left-radius: 15%;
       border-top-right-radius: 15%;
@@ -83,7 +88,8 @@ body {
 
 body.before_1500 {
   font-family: "schwabacher";
-  font-size: 3.3rem; }
+  font-size: 3.3rem;
+  color: #3f3529; }
   body.before_1500 h1 {
     color: #a8432f; }
   body.before_1500 h2,
@@ -130,6 +136,60 @@ body.before_1500 {
     margin-left: -.3rem;
     float: left; }
 
+body.before_1500 .play {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem; }
+  body.before_1500 .play__icon {
+    width: 5rem;
+    height: 5rem; }
+
+.btn, .btn:link, .btn:visited {
+  padding: .5rem;
+  border-radius: 50%;
+  transition: all .2s;
+  position: relative;
+  border: none;
+  cursor: pointer; }
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(63, 53, 41, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  outline: none;
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(63, 53, 41, 0.2); }
+
+.btn:focus {
+  outline: none; }
+
+.btn--blue {
+  background-color: #1c4d6d; }
+  .btn--blue::after {
+    background-color: #1c4d6d; }
+  .btn--blue.changed::after {
+    background-color: #a8432f; }
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; }
+
 body.before_1500 figure {
   display: flex;
   flex-direction: row;
@@ -137,6 +197,7 @@ body.before_1500 figure {
   align-items: center;
   padding: 1rem;
   margin-bottom: 2.75vw;
+  margin-top: 2.75vw;
   border-style: solid;
   border-width: 10rem;
   border-image-source: url(../img/medieval-frame.svg);
@@ -152,7 +213,8 @@ body.before_1500 figure {
       border-width: 1rem;
       border-image-source: url(../img/border-image.svg);
       border-image-slice: 10;
-      border-image-repeat: repeat; } }
+      border-image-repeat: repeat;
+      margin-bottom: 5.5vw; } }
   body.before_1500 figure img {
     width: calc(30.35vw - 11rem);
     filter: sepia(50%); }
@@ -172,8 +234,11 @@ body.before_1500 figure {
 
 body.before_1500 table {
   font-size: inherit;
-  width: 66.6667vw;
-  overflow-x: auto; }
+  width: 64.6667vw;
+  margin: 0 auto; }
+  @media only screen and (max-width: 37.5em) {
+    body.before_1500 table {
+      font-size: 35%; } }
 
 body.before_1500 table, body.before_1500 th, body.before_1500 td {
   border: 1rem solid transparent;
@@ -186,8 +251,7 @@ body.before_1500 table, body.before_1500 th, body.before_1500 td {
     body.before_1500 table, body.before_1500 th, body.before_1500 td {
       border: 1px solid black;
       border-image-source: none;
-      border-collapse: collapse;
-      padding: 0; } }
+      border-collapse: collapse; } }
 
 body.before_1500 table tr:hover {
   background-color: #1c4d6d;

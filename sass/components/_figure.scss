@@ -11,10 +11,12 @@ body.before_1500 {
         
         padding: 1rem;
         margin-bottom: 2.75vw;
+        margin-top: 2.75vw;
         @include border-large;
 
         @include respond(tab-port) {
             @include border-slim;
+            margin-bottom: 5.5vw;
         }
 
         & img {

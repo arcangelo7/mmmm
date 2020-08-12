@@ -2,8 +2,12 @@ body.before_1500 {
 
     & table {
         font-size: inherit;
-        width: 66.6667vw;
-        overflow-x: auto;
+        width: 64.6667vw; // 66 - 2rem of margin
+        margin: 0 auto;
+
+        @include respond(phone) {
+            font-size: 35%;
+        }
     }
 
     & table, th, td {
@@ -19,7 +23,6 @@ body.before_1500 {
             border: 1px solid black;
             border-image-source: none;
             border-collapse: collapse;
-            padding: 0;
         }
     }
 

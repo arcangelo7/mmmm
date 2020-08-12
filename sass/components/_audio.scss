@@ -1,0 +1,12 @@
+body.before_1500{
+    .play {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+
+        &__icon {
+            width: 5rem;
+            height: 5rem;
+        }
+    }
+}
