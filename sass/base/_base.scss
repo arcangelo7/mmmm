@@ -81,4 +81,26 @@ body {
             border-bottom-right-radius: 15%;
         }
     }
+
+    &.around_2040 {
+        &:not(nav, footer) {
+            width: 72vw;
+            margin: 24vh auto;
+        }
+
+        ::selection {
+            color: $color-blade-runner-fog;
+            background-color: $color-led-yellow;
+        }
+
+        &::-webkit-scrollbar {
+            width: 1rem;
+            height: 1rem;
+            background-color: $color-blade-runner-fog;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border: 1px solid $color-led-yellow;
+        }
+    }
 }
