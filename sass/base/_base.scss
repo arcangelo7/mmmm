@@ -82,15 +82,19 @@ body {
         }
     }
 
+    
+    //////////////////////////////////////
+    ///////// AROUND 2040
     &.around_2040 {
-        &:not(nav, footer) {
-            width: 72vw;
-            margin: 24vh auto;
-        }
+        background-color: $color-blade-runner-fog;
+        background-image: url(../img/circuit.svg);
+        background-position: center;
+        background-size: 140%;
+        background-repeat: no-repeat;
 
         ::selection {
             color: $color-blade-runner-fog;
-            background-color: $color-led-yellow;
+            background-color: $color-led-azure;
         }
 
         &::-webkit-scrollbar {
@@ -100,7 +104,7 @@ body {
         }
 
         &::-webkit-scrollbar-thumb {
-            border: 1px solid $color-led-yellow;
+            border: 1px solid $color-led-azure;
         }
     }
 }

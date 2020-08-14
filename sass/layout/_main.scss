@@ -1,0 +1,14 @@
+body.around_2040 {
+    height: 100vh;
+    overflow: hidden;
+
+    & main {
+        height: 72vh;
+        width: 72vw;
+        margin: 14vh auto;
+        overflow: auto;
+        border: 1px solid $color-led-azure;
+        background-color: black;
+        opacity: .9;
+    }
+}

@@ -30,6 +30,8 @@
     font-style: normal;
 }
 
+//////////////////////////////////////
+///////// BEFORE 1500
 body {
     &.before_1500 {
         font-family: "schwabacher";
@@ -86,10 +88,12 @@ body {
         } 
     }
 
+
+    //////////////////////////////////////
+    ///////// AROUND 2040
     &.around_2040 {
         font-family: "electrolize", sans-serif;
         font-size: 2.4rem;
-        background-color: $color-blade-runner-fog;
         color: $color-grey-smoke;
 
         & h1, 
@@ -100,6 +104,7 @@ body {
         & h6 {
             font-family: "tron";
             position: relative;
+            text-shadow: 0 0 .5rem $color-led-azure;
 
             &::before,
             &::after {
@@ -116,11 +121,13 @@ body {
                 left: .2rem;
                 // text-shadow: -.1rem 0 $color-led-yellow;
                 animation: glitch-anim-1 2s infinite linear alternate-reverse;
+                background-color: $color-blade-runner-fog;
             }
 
             &:after {
                 left: -.2rem;
                 animation: glitch-anim-2 2s infinite linear alternate-reverse;
+                background-color: $color-blade-runner-fog;
             }
         }
     }
