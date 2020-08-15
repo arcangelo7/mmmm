@@ -3,12 +3,41 @@ body.around_2040 {
     overflow: hidden;
 
     & main {
-        height: 72vh;
-        width: 72vw;
-        margin: 14vh auto;
+        width: 72rem;
         overflow: auto;
-        border: 1px solid $color-led-azure;
-        background-color: black;
-        opacity: .9;
+        // border: 1px solid $color-led-azure;
+        @include black-mirror;
+
+        padding: 2.4rem;
+
+        ::selection {
+            color: $color-blade-runner-fog;
+            background-color: $color-led-azure;
+        }
+
+        &::-webkit-scrollbar {
+            width: 1rem;
+            height: 1rem;
+            background-color: $color-blade-runner-fog;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border: 1px solid $color-led-azure;
+        }
+
+        @include respond(phone) {
+            width: 100vw;
+            border: none;
+
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+                background-color: transparent;
+            }
+    
+            &::-webkit-scrollbar-thumb {
+                border: none;
+            }
+        }
     }
 }

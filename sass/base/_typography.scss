@@ -104,31 +104,8 @@ body {
         & h6 {
             font-family: "tron";
             position: relative;
-            text-shadow: 0 0 .5rem $color-led-azure;
-
-            &::before,
-            &::after {
-                content: attr(data-text);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: $color-blade-runner-fog;
-            }
-
-            &:before{
-                left: .2rem;
-                // text-shadow: -.1rem 0 $color-led-yellow;
-                animation: glitch-anim-1 2s infinite linear alternate-reverse;
-                background-color: $color-blade-runner-fog;
-            }
-
-            &:after {
-                left: -.2rem;
-                animation: glitch-anim-2 2s infinite linear alternate-reverse;
-                background-color: $color-blade-runner-fog;
-            }
+            @include glow;
+            @include glitch;
         }
     }
 }

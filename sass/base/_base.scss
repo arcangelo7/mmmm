@@ -18,9 +18,9 @@ html {
         font-size: 50%; // 1 rem = 8px, 8/16 = 50% 
     }
 
-    // @include respond(phone) { // width < 600?
-    //     font-size: 50%; // 1 rem = 7px, 8/16 = 43.75%
-    // }
+    @include respond(phone) { // width < 600?
+        font-size: 43.75%; // 1 rem = 7px, 8/16 = 43.75%
+    }
 }
 
 body {
@@ -92,19 +92,9 @@ body {
         background-size: 140%;
         background-repeat: no-repeat;
 
-        ::selection {
-            color: $color-blade-runner-fog;
-            background-color: $color-led-azure;
-        }
-
-        &::-webkit-scrollbar {
-            width: 1rem;
-            height: 1rem;
-            background-color: $color-blade-runner-fog;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            border: 1px solid $color-led-azure;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 }

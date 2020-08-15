@@ -1,0 +1,60 @@
+body {
+    &.around_2040 {
+        .nav {
+            font-family: "tron";
+            @include glow;
+            @include black-mirror;
+            // @include black-mirror;
+            width: 100%;
+            padding: 2.4rem;
+            display: flex;
+            justify-content: center;
+            position: relative;
+
+            --margin-hor: calc((100% - 72rem) / 2);
+            clip-path: polygon(0 100%, calc(var(--margin-hor) - 4.8rem) 100%, var(--margin-hor) 80%, calc(var(--margin-hor) + 72rem) 80%, calc(var(--margin-hor) + 72rem + 4.8rem) 100%, 100% 100%, 100% 0, 0 0);   
+
+
+            &__bar {
+                width: 72rem;
+                list-style: none;
+                display: flex;
+
+                @include respond(phone) {
+                    flex-wrap: wrap;
+                }
+            }
+
+            &__item {
+                display: flex;
+
+                a:link, 
+                a:visited {
+                    text-decoration: none;
+                    color: $color-led-azure;
+                }
+
+                a:hover, 
+                a:active {
+                    position: relative;
+                    @include glitch;
+                }
+
+                &:not(:first-child):not(:last-child):after {
+                    content: "|";
+                    margin: 0 2.4rem;
+                    transform: translateY(-10%);
+                }
+
+                &--logo {
+                    flex: 1;
+
+                    @include respond(phone) {
+                        align-self: stretch;
+                        flex: 0 1 100%;
+                    }
+                }
+            }
+        }
+    }
+}

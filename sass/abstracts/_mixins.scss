@@ -79,3 +79,40 @@ ORDER: Base + typography > general layout + grid > page layout > components
         @media only screen and (min-width: 112.5em) { @content }; // 1800px
     }
 }
+
+
+// AROUND 2040
+@mixin glow {
+    text-shadow: 0 0 .5rem $color-led-azure;
+}
+
+@mixin black-mirror {
+    background-color: black;
+    opacity: .9;
+}
+
+@mixin glitch {
+    &::before,
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+    }
+
+    &:before{
+        left: .2rem;
+        // text-shadow: -.1rem 0 $color-led-yellow;
+        animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        background-color: black;
+    }
+
+    &:after {
+        left: -.2rem;
+        animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        background-color: black;
+    }
+}
