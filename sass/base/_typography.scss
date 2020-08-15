@@ -106,6 +106,10 @@ body {
             position: relative;
             @include glow;
             @include glitch;
+
+            -webkit-touch-callout: none; 
+            -webkit-user-select: none; 
+            user-select: none;
         }
     }
 }

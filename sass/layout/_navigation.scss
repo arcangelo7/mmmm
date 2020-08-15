@@ -14,6 +14,25 @@ body {
             --margin-hor: calc((100% - 72rem) / 2);
             clip-path: polygon(0 100%, calc(var(--margin-hor) - 4.8rem) 100%, var(--margin-hor) 80%, calc(var(--margin-hor) + 72rem) 80%, calc(var(--margin-hor) + 72rem + 4.8rem) 100%, 100% 100%, 100% 0, 0 0);   
 
+            &::after {
+                content: "//";
+                color: $color-grey-smoke;
+                @include glow;
+                display: inline-block;
+                position: absolute;
+                bottom: 0;
+                left: calc(var(--margin-hor) - 4.8rem);
+            }
+
+            &::before {
+                content: "\\\\";
+                color: $color-grey-smoke;
+                @include glow;
+                display: inline-block;
+                position: absolute;
+                bottom: 0;
+                left: calc(var(--margin-hor) + 72rem + 2rem);
+            }
 
             &__bar {
                 width: 72rem;
@@ -27,6 +46,9 @@ body {
 
             &__item {
                 display: flex;
+                -webkit-touch-callout: none; 
+                -webkit-user-select: none; 
+                user-select: none;
 
                 a:link, 
                 a:visited {

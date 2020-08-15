@@ -5,7 +5,6 @@ body.around_2040 {
     & main {
         width: 72rem;
         overflow: auto;
-        // border: 1px solid $color-led-azure;
         @include black-mirror;
 
         padding: 2.4rem;

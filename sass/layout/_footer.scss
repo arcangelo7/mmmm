@@ -6,6 +6,7 @@ body {
             padding: 2.4rem;
             display: flex;
             justify-content: center;
+            position: relative;
 
             --margin-hor: calc((100% - 72rem) / 2);
             clip-path: polygon(0% 100%, 100% 100%, 100% 0%, calc(var(--margin-hor) + 72rem + 4.8rem) 0%, calc(var(--margin-hor) + 72rem) 20%, var(--margin-hor) 20%, calc(var(--margin-hor) - 4.8rem) 0%, 0% 0%);          
@@ -17,6 +18,28 @@ body {
             }
 
             @include respond(phone) {
+            }
+
+            &::after {
+                font-family: "tron";
+                content: "\\\\";
+                color: $color-grey-smoke;
+                @include glow;
+                display: inline-block;
+                position: absolute;
+                top: 4.8;
+                left: calc(var(--margin-hor) - 4.8rem);
+            }
+
+            &::before {
+                font-family: "tron";
+                content: "//";
+                color: $color-grey-smoke;
+                @include glow;
+                display: inline-block;
+                position: absolute;
+                top: 4.8;
+                left: calc(var(--margin-hor) + 72rem + 2rem);
             }
         }
     }
