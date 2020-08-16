@@ -83,7 +83,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 // AROUND 2040
 @mixin glow {
-    text-shadow: 0 0 .5rem $color-led-azure;
+    text-shadow: 0 0 .5rem $color-grey-smoke;
 }
 
 @mixin black-mirror {
@@ -115,4 +115,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
         animation: glitch-anim-2 2s infinite linear alternate-reverse;
         background-color: black;
     }
+}
+
+@mixin slash {
+    font-family: "tron";
+    color: $color-led-yellow;
+    letter-spacing: -.5rem;
+    @include glow;
+    display: inline-block;
+    position: absolute;
 }

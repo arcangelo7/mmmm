@@ -96,5 +96,10 @@ body {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+
+        @include respond(phone) {
+            background-repeat: repeat;
+            background-size: 274%;
+        }
     }
 }

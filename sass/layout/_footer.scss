@@ -3,13 +3,15 @@ body {
         .foot {
             @include black-mirror;
             width: 100%;
-            padding: 2.4rem;
+            padding: 2.4rem 0 1.2rem 0;
             display: flex;
             justify-content: center;
             position: relative;
 
+            animation: 1s ease-out 0s 1 moveInBottom;
+
             --margin-hor: calc((100% - 72rem) / 2);
-            clip-path: polygon(0% 100%, 100% 100%, 100% 0%, calc(var(--margin-hor) + 72rem + 4.8rem) 0%, calc(var(--margin-hor) + 72rem) 20%, var(--margin-hor) 20%, calc(var(--margin-hor) - 4.8rem) 0%, 0% 0%);          
+            clip-path: polygon(0% 100%, 100% 100%, 100% 0%, calc(var(--margin-hor) + 72rem + 1rem) 0%, calc(var(--margin-hor) + 72rem) 23%, var(--margin-hor) 23%, calc(var(--margin-hor) - 1rem) 0%, 0% 0%);          
               
             &__content {
                 width: 72rem;
@@ -17,29 +19,40 @@ body {
                 text-align: center;
             }
 
-            @include respond(phone) {
-            }
-
             &::after {
-                font-family: "tron";
                 content: "\\\\";
-                color: $color-grey-smoke;
-                @include glow;
-                display: inline-block;
-                position: absolute;
-                top: 4.8;
-                left: calc(var(--margin-hor) - 4.8rem);
+                @include slash;
+                top: 0;
+                left: calc(var(--margin-hor) - 2.4rem);
             }
 
             &::before {
-                font-family: "tron";
                 content: "//";
-                color: $color-grey-smoke;
-                @include glow;
-                display: inline-block;
-                position: absolute;
-                top: 4.8;
-                left: calc(var(--margin-hor) + 72rem + 2rem);
+                @include slash;
+                top: 0;
+                left: calc(var(--margin-hor) + 72rem + .2rem);
+            }
+
+            @include respond(phone) {
+                clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 97% 0%, 96% 23%, 4% 23%, 3% 0%, 0% 0%);   
+                
+                &::after {
+                    content: "\\\\";
+                    @include slash;
+                    top: 0;
+                    left: 0;
+                }
+    
+                &::before {
+                    content: "//";
+                    @include slash;
+                    top: 0;
+                    left: 96%;
+                }
+
+                &__content {
+                    width: auto;
+                }
             }
         }
     }

@@ -4,48 +4,62 @@ body {
             font-family: "tron";
             @include glow;
             @include black-mirror;
-            // @include black-mirror;
             width: 100%;
-            padding: 2.4rem;
+            padding: 1.2rem 0 2.4rem 0;
             display: flex;
             justify-content: center;
             position: relative;
 
+            animation: 1s ease-out 0s 1 moveInTop;
+
+
             --margin-hor: calc((100% - 72rem) / 2);
-            clip-path: polygon(0 100%, calc(var(--margin-hor) - 4.8rem) 100%, var(--margin-hor) 80%, calc(var(--margin-hor) + 72rem) 80%, calc(var(--margin-hor) + 72rem + 4.8rem) 100%, 100% 100%, 100% 0, 0 0);   
+            clip-path: polygon(0 100%, calc(var(--margin-hor) - 1rem) 100%, var(--margin-hor) 77%, calc(var(--margin-hor) + 72rem) 77%, calc(var(--margin-hor) + 72rem + 1rem) 100%, 100% 100%, 100% 0, 0 0); 
 
             &::after {
                 content: "//";
-                color: $color-grey-smoke;
-                @include glow;
-                display: inline-block;
-                position: absolute;
-                bottom: 0;
-                left: calc(var(--margin-hor) - 4.8rem);
+                @include slash;     
+                bottom: -.6rem;
+                left: calc(var(--margin-hor) - 2.4rem);
             }
 
             &::before {
                 content: "\\\\";
-                color: $color-grey-smoke;
-                @include glow;
-                display: inline-block;
-                position: absolute;
-                bottom: 0;
-                left: calc(var(--margin-hor) + 72rem + 2rem);
+                @include slash; 
+                bottom: -.6rem;
+                left: calc(var(--margin-hor) + 72rem + .2rem);
+            }
+
+            @include respond(phone) {
+                clip-path: polygon(0 100%, 3% 100%, 4% 85%, 96% 85%, 97% 100%, 100% 100%, 100% 0, 0 0); 
+
+                &::after {
+                    content: "//";
+                    @include slash;     
+                    bottom: -.6rem;
+                    left: 0;
+                }
+    
+                &::before {
+                    content: "\\\\";
+                    @include slash; 
+                    bottom: -.6rem;
+                    left: 96%;
+                }
             }
 
             &__bar {
                 width: 72rem;
                 list-style: none;
                 display: flex;
-
+                
                 @include respond(phone) {
                     flex-wrap: wrap;
+                    justify-content: center;
                 }
             }
 
             &__item {
-                display: flex;
                 -webkit-touch-callout: none; 
                 -webkit-user-select: none; 
                 user-select: none;
@@ -53,7 +67,7 @@ body {
                 a:link, 
                 a:visited {
                     text-decoration: none;
-                    color: $color-led-azure;
+                    color: $color-grey-smoke;
                 }
 
                 a:hover, 
@@ -65,15 +79,21 @@ body {
                 &:not(:first-child):not(:last-child):after {
                     content: "|";
                     margin: 0 2.4rem;
+                    color: $color-led-yellow;
                     transform: translateY(-10%);
+
+                    @include respond(phone) {
+                        margin: 0 4.8vw;
+                    }
                 }
 
                 &--logo {
                     flex: 1;
 
                     @include respond(phone) {
-                        align-self: stretch;
+                        text-align: center;
                         flex: 0 1 100%;
+                        margin-bottom: 2.4vw;
                     }
                 }
             }

@@ -2,7 +2,12 @@ body.around_2040 {
     height: 100vh;
     overflow: hidden;
 
-    & main {
+    @include respond(phone) {
+        height: auto;
+        overflow: auto;
+    }
+
+    & .tablet {
         width: 72rem;
         overflow: auto;
         @include black-mirror;
@@ -11,7 +16,7 @@ body.around_2040 {
 
         ::selection {
             color: $color-blade-runner-fog;
-            background-color: $color-led-azure;
+            background-color: $color-led-yellow;
         }
 
         &::-webkit-scrollbar {
@@ -21,12 +26,12 @@ body.around_2040 {
         }
 
         &::-webkit-scrollbar-thumb {
-            border: 1px solid $color-led-azure;
+            border: 1px solid $color-led-yellow;
         }
 
         @include respond(phone) {
             width: 100vw;
-            border: none;
+            margin: 2.4vw 0;
 
             &::-webkit-scrollbar {
                 width: 0;
