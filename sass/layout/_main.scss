@@ -2,14 +2,12 @@ body.around_2040 {
     height: 100vh;
     overflow: hidden;
 
-    @include respond(phone) {
-        height: auto;
+    & .container {
         overflow: auto;
     }
 
     & .tablet {
         width: 72rem;
-        overflow: auto;
         @include black-mirror;
 
         padding: 2.4rem;
@@ -32,6 +30,7 @@ body.around_2040 {
         @include respond(phone) {
             width: 100vw;
             margin: 2.4vw 0;
+            overflow: auto;
 
             &::-webkit-scrollbar {
                 width: 0;

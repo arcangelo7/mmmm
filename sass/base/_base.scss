@@ -89,7 +89,7 @@ body {
         background-color: $color-blade-runner-fog;
         background-image: url(../img/circuit.svg);
         background-position: center;
-        background-size: 140%;
+        background-size: 144%;
         background-repeat: no-repeat;
 
         display: flex;
@@ -100,6 +100,10 @@ body {
         @include respond(phone) {
             background-repeat: repeat;
             background-size: 274%;
+        }
+
+        p, h1, h2, h3, h4, h5, h6 {
+            margin: 2.4rem 0;
         }
     }
 }

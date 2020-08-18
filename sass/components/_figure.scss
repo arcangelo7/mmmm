@@ -50,9 +50,15 @@ body {
 
     &.around_2040 {
         figure {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            margin: 2.4rem auto;
+            box-shadow: .24rem .24rem .24rem $color-grey-smoke;
 
             & img {
-                width: 24rem;
+                width: 100%;
+                height: auto;
             }
         }
     }

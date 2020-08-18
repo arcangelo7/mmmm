@@ -88,7 +88,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin black-mirror {
     background-color: black;
-    opacity: .9;
+    // opacity: .9;
 }
 
 @mixin glitch {

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Around 2040</title>
+</head>
+<body class="around_2040">
+    <h2>Around 2040</h2>
+        <section>
+            <h3>General idea and purpose</h3>
+                <p>We imagined a future of <strong>sci-fi</strong> and <strong>cyberpunk</strong> themed publishing, inspired by a wide range of films, TV series and video games of this genre, such as <em>Blade Runner</em> (1982), <em>Tron Legacy</em> (2010), <em>Black Mirror</em> (2011-2019), <em>Deus Ex: Human Revolution</em> ( 2011) and <em>Deus Ex: Makind divided</em> (2016), <em>Detroit: Become Human</em> (2017) and <em>Altered Carbon</em> (2018-2020).</p>
+                <p>Against a background of <strong>interconnected circuits</strong>, the foreground text is contained in a box that simulates a mobile device. As early as June 2020, in fact, 50.88% of all internet traffic passes through smartphones, followed in second place by the desktop (46.39%) and in third place by tablets (2.74%).<a class="biblioRef" href="#b01">1</a> It is therefore legitimate to foresee an increasingly <strong>mobile-first future</strong>, in which websites are developed first for mobile and then for desktop.</p>
+                <p>The tones are the dark and gloomy ones of a cyberpunk megalopolis, but the dark theme also alludes to the increasingly massive presence of screens in people's lives. So, on the one hand it is a metaphor of the "<strong>black mirror</strong>", on the other it is a real <strong>dark mode</strong> in order not to tire the eyes oppressed by too many stresses.</p>
+            <h3>Base</h3>
+            <h4>Margins</h4>
+                <p>The goal is to create a <strong>tablet-like surface</strong> in the center of the screen. The inspiration comes from the magazines featured in the <em>Detroit: Become Human</em> (2017) video game, which are completely <strong>borderless</strong> and almost <strong>immaterial</strong> tablets.</p> 
+                <p>To position the textual portion in the center, <strong>multiples of 24</strong> were used, since the theme must reflect the design of a hypothetical 2040. The text was therefore assigned a width of 72vw (24 * 3) and a top and bottom margin of 24vh. In addition, there is a <strong>24px margin</strong> between the headings and <strong>paragraphs</strong>.</p>
+                <p>24 is a symbolic number for other reasons as well. The post-capitalist future will in fact be increasingly materialistic, a world where time is money: <strong>24 hours</strong> are in fact the day and pure gold is <strong>24 carat</strong>.</p>
+                <pre>
+                    <code class="prettyprint">
+body.around_2040 {
+    width: 72vw;
+    margin: 24vh auto; 
+
+    p, h1, h2, h3, h4, h5, h6 {
+        margin: 2.4rem 0;
+    }
+}
+                    </code>
+                </pre>
+            <h4>Background</h4>
+                <figure id="f01">
+                    <img src="../img/blade_runner_poster.png" alt="Blade Runner poster">
+                    <p class="num">Figure 1.</p>
+                    <p>City streets of LA, as pictured in the 1982 film Blade Runner.</p>
+                </figure>
+                <p>For the background color, a dark and opaque shade of blue was selected that recalled the <strong>sunless sky</strong> in the 1982 film <strong>Blade Runner</strong>.</p>
+                <p>From a poster (<a class="figureRef" href="#f01">Figure 1</a>), the relevant color was then sampled and renamed Blade Runner fog.</p>
+                <p>On this dark blue stands an <strong>intertwining</strong> of <strong>luminous circuits</strong>, an evident symbol of an increasingly <strong>technological</strong> and <strong>interconnected future</strong>.</p>
+                <p>The design is also a reference to the typical iconography of the <strong>Tron Legacy</strong> film, with its <strong>streets</strong> and its <strong>luminous suits</strong>. The color was in fact sampled from the <a class="figureRef" href="#f02">following image</a>.</p>
+                <p>To create the background and animation, we opted for an already animated <strong>vector</strong> image, which was not created from scratch but remodeled starting from a CodePen project by Noora Pirttilahti.<a class="biblioRef" href="#b02">2</a> Instead of the original Javascript function, the resulting svg image was taken and the style was integrated and modified directly within the file.</p>
+                <figure id="f02">
+                    <img src="../img/tron_legacy.jpg" alt="Tron Legacy poster">
+                    <p class="num">Figure 2.</p>
+                    <p>Sam and the isomorphic algorithm (ISO) during an arena battle.</p>
+                </figure>
+                <pre>    
+                    <code class="prettyprint">
+body.around_2040 {
+    background-color: #02161a; 
+    background-image: url(../img/circuit.svg);
+    background-position: center;
+    background-size: 144%; // 24 * 11
+    background-repeat: no-repeat;
+}
+
+// Inside the .svg file
+.line {
+    animation: line-anim 1s ease-in-out infinite alternate;
+    stroke: #8af3ff;
+    stroke-width: .024rem;
+}
+
+svg {
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.endpoint {
+    opacity: 0;
+    fill: #8af3ff;
+}
+
+.dot {
+    stroke-width: 2.4;
+    stroke: #8af3ff;
+}
+                    </code>
+                </pre>
+            <h4>Scrollbar and selection</h4>
+                <p>For the scrollbar, a solution was chosen that recalled a <strong>yellow LED strip</strong>. The selected color is bright yellow, but not too much, to avoid glare effects.</p>
+                <p>The same color was also used for the selection, while the text takes on the background color.</p>
+                <pre>
+                    <code class="prettyprint">
+body.around_2040 ::-moz-selection {
+    color: #02161a;
+    background-color: #fae127; 
+}
+body.around_2040 ::selection {
+    color: #02161a;
+    background-color: #fae127; 
+}
+body.around_2040::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+    background-color: #02161a; 
+}
+body.around_2040::-webkit-scrollbar-thumb {
+    border: 1px solid #fae127; 
+}
+                    </code>
+                </pre>
+        </section>
+        <section>
+            <h3>Typography</h3>
+            <h4>Font family</h4>
+                <p><strong>Electrolize</strong>, designed by Valery Zaveryaev, was chosen as the main font. The style was inspired by the letters of a Russian commuter train and has a <strong>square techno design</strong>.<a class="biblioRef" href="#b03">3</a></p>
+                <p>For the <strong>titles</strong> of each level a different font was used, namely the one created by Disney for the logo of the film <em>Tron Legacy</em>, 2010.<a class="biblioRef" href="#b04">4</a></p>
+                <pre>
+                    <code class="prettyprint">
+@font-face {
+    font-family: 'tron';
+    src: url("fonts/tr2n-webfont.woff2") format("woff2"), url("fonts/tr2n-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal; 
+}
+@font-face {
+    font-family: 'electrolize';
+    src: url("fonts/electrolize-regular-webfont.woff2") format("woff2"), url("fonts/electrolize-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal; 
+}
+body.around_2040 {
+    font-family: "electrolize", sans-serif;
+    font-size: 2.4rem;
+    color: #cccccc; 
+}
+body.around_2040 h1,
+body.around_2040 h2,
+body.around_2040 h3,
+body.around_2040 h4,
+body.around_2040 h5,
+body.around_2040 h6 {
+    font-family: "tron";
+    position: relative; 
+}
+                    </code>
+                </pre>
+            <h4>Font-size & color</h4>
+                <p>As for the margins, a number was chosen for the font-size that recalled the <strong>date 2040</strong>. Therefore the font for wide screens (min-width: 1200px) is <strong>24px</strong>.</p>
+                <p>For the color of the text, on the other hand, a <strong>light gray</strong> was chosen that would not create too much contrast with the background and would give the <strong>feeling of fog</strong>.</p>
+            <h4>Headers</h4>
+                <p>In a self-respecting cyberpunk theme, <strong>glitches</strong> cannot be missing. The impression we want to convey is that of looking at text displayed on a <strong>monitor</strong> that has been <strong>dropped</strong> to the ground too many times and <strong>pixel alignment</strong> is <strong>disabled</strong>.</p>
+                <p>To do this, we were inspired by the entirely CSS solution developed by Lucas Bebber<a class="biblioRef" href="#b05">5</a>, which however has been modified to obtain a less invasive effect.</p>
+                <pre>
+                    <code class="prettyprint">
+@keyframes glitch-anim-1 {
+    $steps: 20;
+    @for $i from 0 through $steps {
+        #{percentage($i*(1/$steps))} {
+            $top: random(100);
+            $bottom: random(101 - $top);
+            clip-path: inset(#{$top}% 0 #{$bottom}% 0);
+        }
+    }
+}
+@keyframes glitch-anim-2 {
+    $steps: 20;
+    @for $i from 0 through $steps {
+        #{percentage($i*(1/$steps))} {
+            $top: random(100);
+            $bottom: random(101 - $top);
+            clip-path: inset(#{$top}% 0 #{$bottom}% 0);
+        }
+    }
+}
+& h1, 
+& h2,
+& h3,
+& h4,
+& h5,
+& h6 {
+    position: relative;
+
+    &::before,
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-blade-runner-fog;
+    }
+    &:before{
+        left: .2rem;
+        animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        background-color: $color-blade-runner-fog;
+    }
+    &:after {
+        left: -.2rem;
+        animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        background-color: $color-blade-runner-fog;
+    }
+}
+                    </code>
+                </pre>
+                <h4>Links</h4>
+                    <p>For the links we have chosen the same blue LED color used for the circuits in the background, precisely because they are <strong>connections</strong>. For the <strong>hover</strong> effect, instead, we have selected an intermediate shade between the blue of the link and the gray of the text, a <strong>blue / gray</strong>, therefore.</p>
+                    <pre>
+                        <code class="prettyprint">
+body.around_2040 a:link,
+body.around_2040 a:visited {
+    color: #8af3ff;
+    text-decoration: none; 
+}
+body.around_2040 a:hover,
+body.around_2040 a:active {
+    color: #aff3f6; 
+}
+                        </code>
+                    </pre>
+        </section>
+        <section>
+            <h3>Sections</h3>
+                <h2>Navbar and footer</h2>
+                    <p>The navbar and footer play the role of frame for this <strong>sci-fi dashboard</strong>. On <strong>large screens</strong> (max-width: 1200px) they are in fact in a fixed position above and below the actual article.</p>
+                    <p>Their frame task is underlined by the <strong>line</strong> that is not straight, but <strong>angular</strong> and recessed at the level of the central box-tablet, which also allows for gaining more space.</p>
+                    <p>The same <strong>led yellow color</strong> used for the scrollbar and for the highlighting was then used to decorate the inclination of the two clipped sections and as a link separator in the navigation bar.</p>
+                    <p>On <strong>smartphones</strong> (max-width: 600px) the navigation bar is always visible at the top, while the footer disappears and can be reached after reading the entire article.</p>
+                    <pre>
+                        <code class="prettyprint">
+body {
+    &.around_2040 {
+        .nav {
+            font-family: "tron";
+            @include glow;
+            @include black-mirror;
+            width: 100%;
+            padding: 1.2rem 0 2.4rem 0;
+            display: flex;
+            justify-content: center;
+            position: relative;
+
+            animation: 1s ease-out 0s 1 moveInTop;
+
+
+            --margin-hor: calc((100% - 72rem) / 2);
+            clip-path: polygon(0 100%, calc(var(--margin-hor) - 1rem) 100%, var(--margin-hor) 77%, calc(var(--margin-hor) + 72rem) 77%, calc(var(--margin-hor) + 72rem + 1rem) 100%, 100% 100%, 100% 0, 0 0); 
+
+            &::after {
+                content: "//";
+                @include slash;     
+                bottom: -.6rem;
+                left: calc(var(--margin-hor) - 2.4rem);
+            }
+
+            &::before {
+                content: "\\\\";
+                @include slash; 
+                bottom: -.6rem;
+                left: calc(var(--margin-hor) + 72rem + .2rem);
+            }
+
+            @include respond(phone) {
+                clip-path: polygon(0 100%, 3% 100%, 4% 85%, 96% 85%, 97% 100%, 100% 100%, 100% 0, 0 0); 
+
+                &::after {
+                    content: "//";
+                    @include slash;     
+                    bottom: -.6rem;
+                    left: 0;
+                }
+    
+                &::before {
+                    content: "\\\\";
+                    @include slash; 
+                    bottom: -.6rem;
+                    left: 96%;
+                }
+            }
+
+            &__bar {
+                width: 72rem;
+                list-style: none;
+                display: flex;
+                
+                @include respond(phone) {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+            }
+
+            &__item {
+                -webkit-touch-callout: none; 
+                -webkit-user-select: none; 
+                user-select: none;
+
+                a:link, 
+                a:visited {
+                    text-decoration: none;
+                    color: $color-grey-smoke;
+                }
+
+                a:hover, 
+                a:active {
+                    position: relative;
+                    @include glitch;
+                }
+
+                &:not(:first-child):not(:last-child):after {
+                    content: "|";
+                    margin: 0 2.4rem;
+                    color: $color-led-yellow;
+                    transform: translateY(-10%);
+
+                    @include respond(phone) {
+                        margin: 0 4.8vw;
+                    }
+                }
+
+                &--logo {
+                    flex: 1;
+
+                    @include respond(phone) {
+                        text-align: center;
+                        flex: 0 1 100%;
+                        margin-bottom: 2.4vw;
+                    }
+                }
+            }
+        }
+    }
+}
+                        </code>
+                    </pre>
+        </section>
+        <section>
+            <h3>Audio effects</h3>
+                <p>To make the experience even more <strong>immersive</strong> with regards to the sci-fi and cyberpunk atmosphere, we have chosen to apply some sound feedback to some elements of the page.</p>
+                <p>Upon loading, the <strong>navbar</strong> and <strong>footer</strong> appear from top to bottom and bottom to top respectively with a <strong>deploy sound</strong>.</p>
+                <p>Electro sound badges are also produced when the mouse passes <strong>over</strong> the <strong>links</strong> in the navigation bar and <strong>clicks</strong> on any link.</p>
+                <p>All sounds are <strong>free licensed</strong> from the <a href="https://www.soundsnap.com/" title="Soundsnap.com" target="_blank">Soundsnap.com website</a>.<a class="biblioRef" href="#b06">6</a></p>
+        </section>
+        <section>
+            <h3>References</h3>
+                <p class="biblioItem" id="b01"><span class="biblioMarker">1. </span><em>Desktop vs Mobile vs Tablet Market Share Worldwide</em> (July 2019 - July 2020), Statcounter GlobalStats <a href="https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet" title="Desktop vs Mobile vs Tablet Market Share Worldwide chart" target="_blank">https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet</a>.</p>
+                <p class="biblioItem" id="b02"><span class="biblioMarker">2. </span>Noora Pirttilahti (06/02/2018), <em>Sci-fi</em> CodePen <a href="https://codepen.io/noorapirttilahti/pen/GQjjwj" title="Desktop vs Mobile vs Tablet Market Share Worldwide chart" target="_blank">https://codepen.io/noorapirttilahti/pen/GQjjwj</a>.</p>
+                <p class="biblioItem" id="b03"><span class="biblioMarker">3. </span>Electrolize font <a href="https://fonts.google.com/specimen/Electrolize" title="Electrolize font" target="_blank">https://fonts.google.com/specimen/Electrolize</a>.</p>
+                <p class="biblioItem" id="b04"><span class="biblioMarker">4. </span>Tron Legacy font <a href="https://www.dafont.com/tr2n.font" title="Tron Legacy font" target="_blank">https://www.dafont.com/tr2n.font</a>.</p>
+                <p class="biblioItem" id="b05"><span class="biblioMarker">5. </span>Coyler, Chris (21/08/2019). <em>Glitch Effect on Text / Images / SVG</em> <a href="https://css-tricks.com/glitch-effect-text-images-svg/" title="Glitch Effect on Text / Images / SVG article by Chris Coyier" target="_blank">https://css-tricks.com/glitch-effect-text-images-svg/</a>.</p>
+                <p class="biblioItem" id="b06"><span class="biblioMarker">6. </span>Soundsnap.com <a href="https://www.soundsnap.com/" title="Soundsnap.com" target="_blank">https://www.soundsnap.com/</a>.</p>
+                <p class="biblioItem" id="b06"><span class="biblioMarker">6. </span>Alligator.io (21/12/2017), <em>Using the Intersection Observer API to Trigger Animations and Transitions</em> <a href="https://alligator.io/js/intersection-observer/" title="Using the Intersection Observer API to Trigger Animations and Transitions article" target="_blank">https://alligator.io/js/intersection-observer/</a>.</p>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../script/audio.js"></script>
+        <script type="text/javascript" src="../script/2040.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</body>
+</html>

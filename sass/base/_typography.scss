@@ -111,5 +111,16 @@ body {
             -webkit-user-select: none; 
             user-select: none;
         }
+
+        a:link, 
+        a:visited {
+            color: $color-led-azure;
+            text-decoration: none;
+        }
+
+        a:hover, 
+        a:active {
+            color: $color-led-azure-light;
+        }
     }
 }
