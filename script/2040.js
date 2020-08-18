@@ -47,14 +47,40 @@ $(function(){
     });
 
     // Eye tracking
-    var $eye = $('.box');
-    var eyeX = $eye.offset().left + $eye.width() / 2;
-    var eyeY = $eye.offset().top + $eye.height() / 2;
-    $('body').on('mousemove', function(event){
-      var rad = Math.atan2(event.pageY - eyeY, event.pageX - eyeX);
-      var rot = rad * (180 / Math.PI);
-      $eye.css('transform', 'rotate(' + rot + 'deg)' )
-    })
+    // var $eye = $('.box');
+    // var eyeX = $eye.offset().left + $eye.width() / 2;
+    // var eyeY = $eye.offset().top + $eye.height() / 2;
+    // $('body').on('mousemove', function(event){
+    //   var rad = Math.atan2(event.pageY - eyeY, event.pageX - eyeX);
+    //   var rot = rad * (180 / Math.PI);
+    //   $eye.css('transform', 'rotate(' + rot + 'deg)' )
+    // })
+
+    $(document).mousemove(function(e){
+        var eye = $('.eye');
+        var eyeX = (eye.offset().left + eye.width() / 2);
+        var eyeY = (eye.offset().top + eye.height() / 2);
+        var eyeXPercent = Math.round(eyeX / $(this).width() * 100)
+        var eyeYPercent = Math.round(eyeY / $(this).width() * 100)
+        var xPos = e.pageX; 
+        var yPos = e.pageY;
+        var mouseXPercent = Math.round(xPos / $(this).width() * 100);
+        var mouseYPercent = Math.round(yPos / $(this).height() * 100);
+
+        $('.iris').css('top',mouseYPercent - eyeYPercent);
+        $('.iris').css('left',mouseXPercent - eyeXPercent);
+
+        var iris = $(".iris");
+        if (parseInt(iris.css("top")) > 8) {
+            iris.css("top", "8");
+        }
+        if (parseInt(iris.css("left")) < -8) {
+            iris.css("left", "-8");
+        }
+        if (parseInt(iris.css("left")) > 8) {
+            iris.css("left", "8");
+        }
+    }); 
 });
 
 

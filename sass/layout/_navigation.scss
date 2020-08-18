@@ -52,11 +52,13 @@ body {
                 width: 72rem;
                 list-style: none;
                 display: flex;
+                align-items: center;
+                justify-content: space-around;
                 
-                @include respond(phone) {
-                    flex-wrap: wrap;
-                    justify-content: center;
-                }
+                // @include respond(phone) {
+                //     flex-wrap: wrap;
+                //     justify-content: center;
+                // }
             }
 
             &__item {
@@ -76,24 +78,22 @@ body {
                     @include glitch;
                 }
 
-                &:not(:first-child):not(:last-child):after {
-                    content: "|";
-                    margin: 0 2.4rem;
-                    color: $color-led-yellow;
-                    transform: translateY(-10%);
+                // &:not(:first-child):not(:last-child):after {
+                //     content: "|";
+                //     margin: 0 2.4rem;
+                //     color: $color-led-yellow;
+                //     transform: translateY(-10%);
 
-                    @include respond(phone) {
-                        margin: 0 4.8vw;
-                    }
-                }
+                //     @include respond(phone) {
+                //         margin: 0 4.8vw;
+                //     }
+                // }
 
                 &--logo {
-                    flex: 1;
-
                     @include respond(phone) {
-                        text-align: center;
-                        flex: 0 1 100%;
-                        margin-bottom: 2.4vw;
+                        // text-align: center;
+                        // flex: 0 1 100%;
+                        // margin-bottom: 2.4vw;
                     }
                 }
             }
