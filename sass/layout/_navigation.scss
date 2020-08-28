@@ -1,4 +1,110 @@
 body {
+    &.before_1500 {
+        .nav {
+            display: flex;
+            margin-bottom: 11vw;
+
+            @include respond(tab-port) {
+                margin-bottom: 0;
+            }
+            
+            &__bar {
+                list-style: none;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+
+                @include respond(tab-port) {
+                    width: 11vw;
+                    // overflow: hidden;
+                    position: fixed;
+                    top: 11vh;
+                    right: 2rem;
+                    flex-direction: column;
+                    align-items: flex-end;
+                }
+            }
+
+            &__item {
+                flex: 1;
+                padding: 3.3rem 1.65rem;
+                position: relative;
+                border-top: .33rem solid $color-red;
+
+                @include respond(tab-port) {
+                    font-size: 50%;
+                    padding: 1.65rem 0.825rem;
+                    border-top: none;
+                    border-right: .33rem solid $color-red;
+                }
+
+                a:link, 
+                a:visited {
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    color: $color-black;
+                } 
+
+                a:hover, 
+                a:active {
+                    color: $color-blue;
+                }
+                
+                &:not(:last-child) {
+                    margin-right: 3.3rem;
+
+                    @include respond(tab-port) {
+                        margin-right: 0;
+                        margin-bottom: 3.3rem;
+                    }
+                }
+
+                &--logo {
+                    background-color: $color-red;
+
+                    &::before, 
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        border-top: 9.9rem solid $color-red;
+                        bottom: -9.9rem;
+
+                        @include respond(tab-port) {
+                            border-top: none;
+                            border-right: 3.3rem solid $color-red;
+                            bottom: initial;
+                            left: -3rem;
+                        }
+                    }
+
+                    &::before {
+                        left: 0;
+                        border-right: 9.9rem solid transparent;
+
+                        @include respond(tab-port) {
+                            left: -3rem;
+                            top: 0;
+                            border-right: 3.3rem solid $color-red;
+                            border-bottom: 3.3rem solid transparent;
+                        }
+                    }
+
+                    &::after {
+                        right: 0;
+                        border-left: 9.9rem solid transparent;
+
+                        @include respond(tab-port) {
+                            right: initial;
+                            bottom: 0;
+                            border-left: none;
+                            border-top: 3.3rem solid transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     &.around_2040 {
         .nav {
             font-family: "tron";
@@ -8,7 +114,6 @@ body {
             padding: 1.2rem 0 2.4rem 0;
             display: flex;
             justify-content: center;
-            position: relative;
 
             animation: 1s ease-out 0s 1 moveInTop;
 
