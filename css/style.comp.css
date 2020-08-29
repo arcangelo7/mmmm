@@ -34,135 +34,135 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @keyframes glitch-anim-1 {
   0% {
-    clip-path: inset(67% 0 34% 0); }
+    clip-path: inset(59% 0 42% 0); }
   5% {
-    clip-path: inset(39% 0 6% 0); }
+    clip-path: inset(84% 0 8% 0); }
   10% {
-    clip-path: inset(82% 0 9% 0); }
+    clip-path: inset(55% 0 45% 0); }
   15% {
-    clip-path: inset(80% 0 12% 0); }
+    clip-path: inset(9% 0 55% 0); }
   20% {
-    clip-path: inset(59% 0 9% 0); }
+    clip-path: inset(2% 0 47% 0); }
   25% {
-    clip-path: inset(53% 0 16% 0); }
+    clip-path: inset(24% 0 24% 0); }
   30% {
-    clip-path: inset(88% 0 3% 0); }
+    clip-path: inset(44% 0 34% 0); }
   35% {
-    clip-path: inset(45% 0 8% 0); }
+    clip-path: inset(6% 0 9% 0); }
   40% {
-    clip-path: inset(8% 0 28% 0); }
+    clip-path: inset(10% 0 44% 0); }
   45% {
-    clip-path: inset(35% 0 50% 0); }
+    clip-path: inset(89% 0 12% 0); }
   50% {
-    clip-path: inset(95% 0 5% 0); }
+    clip-path: inset(81% 0 9% 0); }
   55% {
-    clip-path: inset(78% 0 6% 0); }
+    clip-path: inset(61% 0 10% 0); }
   60% {
-    clip-path: inset(41% 0 38% 0); }
+    clip-path: inset(22% 0 53% 0); }
   65% {
-    clip-path: inset(5% 0 22% 0); }
+    clip-path: inset(32% 0 50% 0); }
   70% {
-    clip-path: inset(52% 0 4% 0); }
+    clip-path: inset(95% 0 6% 0); }
   75% {
-    clip-path: inset(52% 0 34% 0); }
+    clip-path: inset(55% 0 26% 0); }
   80% {
-    clip-path: inset(79% 0 12% 0); }
+    clip-path: inset(75% 0 17% 0); }
   85% {
-    clip-path: inset(79% 0 9% 0); }
+    clip-path: inset(71% 0 26% 0); }
   90% {
-    clip-path: inset(19% 0 36% 0); }
+    clip-path: inset(12% 0 52% 0); }
   95% {
-    clip-path: inset(20% 0 69% 0); }
+    clip-path: inset(67% 0 29% 0); }
   100% {
-    clip-path: inset(94% 0 7% 0); } }
+    clip-path: inset(78% 0 2% 0); } }
 
 @keyframes glitch-anim-2 {
   0% {
-    clip-path: inset(54% 0 27% 0); }
+    clip-path: inset(72% 0 19% 0); }
   5% {
-    clip-path: inset(16% 0 30% 0); }
+    clip-path: inset(31% 0 67% 0); }
   10% {
-    clip-path: inset(22% 0 45% 0); }
+    clip-path: inset(74% 0 16% 0); }
   15% {
-    clip-path: inset(91% 0 7% 0); }
+    clip-path: inset(3% 0 73% 0); }
   20% {
-    clip-path: inset(80% 0 11% 0); }
+    clip-path: inset(23% 0 4% 0); }
   25% {
-    clip-path: inset(78% 0 9% 0); }
+    clip-path: inset(51% 0 5% 0); }
   30% {
-    clip-path: inset(8% 0 92% 0); }
+    clip-path: inset(69% 0 13% 0); }
   35% {
-    clip-path: inset(91% 0 3% 0); }
+    clip-path: inset(46% 0 39% 0); }
   40% {
-    clip-path: inset(24% 0 15% 0); }
+    clip-path: inset(28% 0 47% 0); }
   45% {
-    clip-path: inset(17% 0 24% 0); }
+    clip-path: inset(63% 0 16% 0); }
   50% {
-    clip-path: inset(45% 0 56% 0); }
+    clip-path: inset(34% 0 61% 0); }
   55% {
-    clip-path: inset(61% 0 36% 0); }
+    clip-path: inset(18% 0 40% 0); }
   60% {
-    clip-path: inset(35% 0 17% 0); }
+    clip-path: inset(53% 0 9% 0); }
   65% {
-    clip-path: inset(97% 0 3% 0); }
+    clip-path: inset(65% 0 28% 0); }
   70% {
-    clip-path: inset(12% 0 13% 0); }
+    clip-path: inset(87% 0 8% 0); }
   75% {
-    clip-path: inset(6% 0 59% 0); }
+    clip-path: inset(94% 0 6% 0); }
   80% {
-    clip-path: inset(90% 0 11% 0); }
+    clip-path: inset(40% 0 1% 0); }
   85% {
-    clip-path: inset(85% 0 2% 0); }
+    clip-path: inset(34% 0 64% 0); }
   90% {
-    clip-path: inset(20% 0 45% 0); }
+    clip-path: inset(97% 0 3% 0); }
   95% {
-    clip-path: inset(65% 0 2% 0); }
+    clip-path: inset(15% 0 46% 0); }
   100% {
-    clip-path: inset(20% 0 60% 0); } }
+    clip-path: inset(16% 0 8% 0); } }
 
 @keyframes noise-anim-2 {
   0% {
-    clip: rect(95px, 9999px, 44px, 0); }
+    clip: rect(10px, 9999px, 5px, 0); }
   5% {
-    clip: rect(82px, 9999px, 27px, 0); }
+    clip: rect(92px, 9999px, 46px, 0); }
   10% {
-    clip: rect(41px, 9999px, 95px, 0); }
+    clip: rect(79px, 9999px, 27px, 0); }
   15% {
-    clip: rect(14px, 9999px, 35px, 0); }
+    clip: rect(25px, 9999px, 30px, 0); }
   20% {
-    clip: rect(35px, 9999px, 29px, 0); }
+    clip: rect(100px, 9999px, 19px, 0); }
   25% {
-    clip: rect(31px, 9999px, 33px, 0); }
+    clip: rect(83px, 9999px, 72px, 0); }
   30% {
-    clip: rect(12px, 9999px, 29px, 0); }
+    clip: rect(92px, 9999px, 32px, 0); }
   35% {
-    clip: rect(84px, 9999px, 44px, 0); }
+    clip: rect(32px, 9999px, 86px, 0); }
   40% {
-    clip: rect(41px, 9999px, 61px, 0); }
+    clip: rect(60px, 9999px, 97px, 0); }
   45% {
-    clip: rect(23px, 9999px, 1px, 0); }
+    clip: rect(54px, 9999px, 72px, 0); }
   50% {
-    clip: rect(72px, 9999px, 18px, 0); }
+    clip: rect(76px, 9999px, 76px, 0); }
   55% {
-    clip: rect(22px, 9999px, 55px, 0); }
+    clip: rect(39px, 9999px, 38px, 0); }
   60% {
-    clip: rect(87px, 9999px, 24px, 0); }
+    clip: rect(43px, 9999px, 21px, 0); }
   65% {
-    clip: rect(9px, 9999px, 55px, 0); }
+    clip: rect(75px, 9999px, 64px, 0); }
   70% {
-    clip: rect(19px, 9999px, 85px, 0); }
+    clip: rect(43px, 9999px, 98px, 0); }
   75% {
-    clip: rect(91px, 9999px, 13px, 0); }
+    clip: rect(96px, 9999px, 75px, 0); }
   80% {
-    clip: rect(46px, 9999px, 80px, 0); }
+    clip: rect(37px, 9999px, 44px, 0); }
   85% {
-    clip: rect(83px, 9999px, 52px, 0); }
+    clip: rect(97px, 9999px, 15px, 0); }
   90% {
-    clip: rect(69px, 9999px, 75px, 0); }
+    clip: rect(73px, 9999px, 35px, 0); }
   95% {
-    clip: rect(86px, 9999px, 19px, 0); }
+    clip: rect(4px, 9999px, 89px, 0); }
   100% {
-    clip: rect(70px, 9999px, 74px, 0); } }
+    clip: rect(6px, 9999px, 95px, 0); } }
 
 .fade-in {
   animation: fade-in .7s ease-out; }
@@ -389,6 +389,9 @@ body.before_1500 .play {
   body.before_1500 .play__icon {
     width: 5rem;
     height: 5rem; }
+  @media only screen and (max-height: 18.75em) {
+    body.before_1500 .play {
+      display: none; } }
 
 .biblioRef {
   font-size: 75%;
@@ -873,6 +876,7 @@ body.around_2040 .nav {
   padding: 1.2rem 0 2.4rem 0;
   display: flex;
   justify-content: center;
+  position: relative;
   animation: 1s ease-out 0s 1 moveInTop;
   --margin-hor: calc((100% - 72rem) / 2);
   clip-path: polygon(0 100%, calc(var(--margin-hor) - 1rem) 100%, var(--margin-hor) 77%, calc(var(--margin-hor) + 72rem) 77%, calc(var(--margin-hor) + 72rem + 1rem) 100%, 100% 100%, 100% 0, 0 0); }
