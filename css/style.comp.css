@@ -34,135 +34,135 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @keyframes glitch-anim-1 {
   0% {
-    clip-path: inset(72% 0 29% 0); }
+    clip-path: inset(67% 0 34% 0); }
   5% {
-    clip-path: inset(25% 0 4% 0); }
+    clip-path: inset(39% 0 6% 0); }
   10% {
-    clip-path: inset(54% 0 25% 0); }
+    clip-path: inset(82% 0 9% 0); }
   15% {
-    clip-path: inset(45% 0 23% 0); }
+    clip-path: inset(80% 0 12% 0); }
   20% {
-    clip-path: inset(38% 0 34% 0); }
+    clip-path: inset(59% 0 9% 0); }
   25% {
-    clip-path: inset(23% 0 47% 0); }
+    clip-path: inset(53% 0 16% 0); }
   30% {
-    clip-path: inset(34% 0 35% 0); }
+    clip-path: inset(88% 0 3% 0); }
   35% {
-    clip-path: inset(46% 0 25% 0); }
+    clip-path: inset(45% 0 8% 0); }
   40% {
-    clip-path: inset(9% 0 54% 0); }
+    clip-path: inset(8% 0 28% 0); }
   45% {
-    clip-path: inset(10% 0 2% 0); }
+    clip-path: inset(35% 0 50% 0); }
   50% {
-    clip-path: inset(88% 0 12% 0); }
+    clip-path: inset(95% 0 5% 0); }
   55% {
-    clip-path: inset(79% 0 7% 0); }
+    clip-path: inset(78% 0 6% 0); }
   60% {
-    clip-path: inset(49% 0 43% 0); }
+    clip-path: inset(41% 0 38% 0); }
   65% {
-    clip-path: inset(5% 0 93% 0); }
+    clip-path: inset(5% 0 22% 0); }
   70% {
-    clip-path: inset(33% 0 43% 0); }
+    clip-path: inset(52% 0 4% 0); }
   75% {
-    clip-path: inset(7% 0 25% 0); }
+    clip-path: inset(52% 0 34% 0); }
   80% {
-    clip-path: inset(1% 0 2% 0); }
+    clip-path: inset(79% 0 12% 0); }
   85% {
-    clip-path: inset(26% 0 59% 0); }
+    clip-path: inset(79% 0 9% 0); }
   90% {
-    clip-path: inset(76% 0 11% 0); }
+    clip-path: inset(19% 0 36% 0); }
   95% {
-    clip-path: inset(13% 0 8% 0); }
+    clip-path: inset(20% 0 69% 0); }
   100% {
-    clip-path: inset(39% 0 2% 0); } }
+    clip-path: inset(94% 0 7% 0); } }
 
 @keyframes glitch-anim-2 {
   0% {
-    clip-path: inset(47% 0 51% 0); }
+    clip-path: inset(54% 0 27% 0); }
   5% {
-    clip-path: inset(56% 0 44% 0); }
+    clip-path: inset(16% 0 30% 0); }
   10% {
-    clip-path: inset(5% 0 2% 0); }
+    clip-path: inset(22% 0 45% 0); }
   15% {
-    clip-path: inset(89% 0 10% 0); }
+    clip-path: inset(91% 0 7% 0); }
   20% {
-    clip-path: inset(70% 0 20% 0); }
+    clip-path: inset(80% 0 11% 0); }
   25% {
-    clip-path: inset(10% 0 5% 0); }
+    clip-path: inset(78% 0 9% 0); }
   30% {
-    clip-path: inset(69% 0 7% 0); }
+    clip-path: inset(8% 0 92% 0); }
   35% {
-    clip-path: inset(63% 0 1% 0); }
+    clip-path: inset(91% 0 3% 0); }
   40% {
-    clip-path: inset(71% 0 2% 0); }
+    clip-path: inset(24% 0 15% 0); }
   45% {
-    clip-path: inset(38% 0 24% 0); }
+    clip-path: inset(17% 0 24% 0); }
   50% {
-    clip-path: inset(26% 0 68% 0); }
+    clip-path: inset(45% 0 56% 0); }
   55% {
-    clip-path: inset(33% 0 39% 0); }
+    clip-path: inset(61% 0 36% 0); }
   60% {
-    clip-path: inset(4% 0 64% 0); }
+    clip-path: inset(35% 0 17% 0); }
   65% {
-    clip-path: inset(35% 0 62% 0); }
+    clip-path: inset(97% 0 3% 0); }
   70% {
-    clip-path: inset(19% 0 3% 0); }
+    clip-path: inset(12% 0 13% 0); }
   75% {
-    clip-path: inset(22% 0 74% 0); }
+    clip-path: inset(6% 0 59% 0); }
   80% {
-    clip-path: inset(38% 0 38% 0); }
+    clip-path: inset(90% 0 11% 0); }
   85% {
-    clip-path: inset(65% 0 5% 0); }
+    clip-path: inset(85% 0 2% 0); }
   90% {
-    clip-path: inset(13% 0 61% 0); }
+    clip-path: inset(20% 0 45% 0); }
   95% {
-    clip-path: inset(18% 0 43% 0); }
+    clip-path: inset(65% 0 2% 0); }
   100% {
-    clip-path: inset(57% 0 18% 0); } }
+    clip-path: inset(20% 0 60% 0); } }
 
 @keyframes noise-anim-2 {
   0% {
-    clip: rect(84px, 9999px, 41px, 0); }
+    clip: rect(95px, 9999px, 44px, 0); }
   5% {
-    clip: rect(49px, 9999px, 97px, 0); }
+    clip: rect(82px, 9999px, 27px, 0); }
   10% {
-    clip: rect(92px, 9999px, 38px, 0); }
+    clip: rect(41px, 9999px, 95px, 0); }
   15% {
-    clip: rect(34px, 9999px, 63px, 0); }
+    clip: rect(14px, 9999px, 35px, 0); }
   20% {
-    clip: rect(99px, 9999px, 65px, 0); }
+    clip: rect(35px, 9999px, 29px, 0); }
   25% {
-    clip: rect(8px, 9999px, 24px, 0); }
+    clip: rect(31px, 9999px, 33px, 0); }
   30% {
-    clip: rect(69px, 9999px, 64px, 0); }
+    clip: rect(12px, 9999px, 29px, 0); }
   35% {
-    clip: rect(97px, 9999px, 12px, 0); }
+    clip: rect(84px, 9999px, 44px, 0); }
   40% {
-    clip: rect(92px, 9999px, 56px, 0); }
+    clip: rect(41px, 9999px, 61px, 0); }
   45% {
-    clip: rect(59px, 9999px, 80px, 0); }
+    clip: rect(23px, 9999px, 1px, 0); }
   50% {
-    clip: rect(64px, 9999px, 19px, 0); }
+    clip: rect(72px, 9999px, 18px, 0); }
   55% {
-    clip: rect(47px, 9999px, 27px, 0); }
+    clip: rect(22px, 9999px, 55px, 0); }
   60% {
-    clip: rect(51px, 9999px, 71px, 0); }
+    clip: rect(87px, 9999px, 24px, 0); }
   65% {
-    clip: rect(71px, 9999px, 58px, 0); }
+    clip: rect(9px, 9999px, 55px, 0); }
   70% {
-    clip: rect(55px, 9999px, 60px, 0); }
+    clip: rect(19px, 9999px, 85px, 0); }
   75% {
-    clip: rect(62px, 9999px, 51px, 0); }
+    clip: rect(91px, 9999px, 13px, 0); }
   80% {
-    clip: rect(95px, 9999px, 75px, 0); }
+    clip: rect(46px, 9999px, 80px, 0); }
   85% {
-    clip: rect(41px, 9999px, 13px, 0); }
+    clip: rect(83px, 9999px, 52px, 0); }
   90% {
-    clip: rect(60px, 9999px, 80px, 0); }
+    clip: rect(69px, 9999px, 75px, 0); }
   95% {
-    clip: rect(28px, 9999px, 43px, 0); }
+    clip: rect(86px, 9999px, 19px, 0); }
   100% {
-    clip: rect(48px, 9999px, 89px, 0); } }
+    clip: rect(70px, 9999px, 74px, 0); } }
 
 .fade-in {
   animation: fade-in .7s ease-out; }
@@ -196,7 +196,7 @@ html {
       font-size: 50%; } }
   @media only screen and (max-width: 37.5em) {
     html {
-      font-size: 43.75%; } }
+      font-size: 30.25%; } }
 
 body {
   box-sizing: border-box; }
@@ -390,6 +390,17 @@ body.before_1500 .play {
     width: 5rem;
     height: 5rem; }
 
+.biblioRef {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -.5em; }
+  .biblioRef::before {
+    content: "["; }
+  .biblioRef::after {
+    content: "]"; }
+
 .btn, .btn:link, .btn:visited {
   padding: .5rem;
   border-radius: 50%;
@@ -547,6 +558,10 @@ body.before_1500 figure {
       border-image-slice: 10;
       border-image-repeat: repeat;
       margin-bottom: 5.5vw; } }
+  @media only screen and (max-width: 56.25em) and (max-width: 37.5em) {
+    body.before_1500 figure {
+      border-width: 4rem;
+      border-image-slice: 40; } }
   body.before_1500 figure img {
     width: calc(30.35vw - 11rem);
     filter: sepia(50%); }
@@ -580,7 +595,7 @@ body.before_1500 table {
   margin: 0 auto; }
   @media only screen and (max-width: 37.5em) {
     body.before_1500 table {
-      font-size: 35%; } }
+      font-size: 83%; } }
 
 body.before_1500 table, body.before_1500 th, body.before_1500 td {
   border: 1rem solid transparent;
@@ -706,6 +721,10 @@ body.before_1500 #Cover .byline {
   border-image-slice: 10;
   border-image-repeat: repeat;
   margin: 5.5vw 0; }
+  @media only screen and (max-width: 37.5em) {
+    body.before_1500 #Cover .byline {
+      border-width: 4rem;
+      border-image-slice: 40; } }
 
 body.before_1500 #Cover .label {
   color: #1c4d6d;
@@ -732,6 +751,11 @@ body.before_1500 #Summary {
       border-image-source: url(../img/border-image.svg);
       border-image-slice: 10;
       border-image-repeat: repeat; } }
+  @media only screen and (max-width: 56.25em) and (max-width: 37.5em) {
+    body.before_1500 #Cover,
+    body.before_1500 #Summary {
+      border-width: 4rem;
+      border-image-slice: 40; } }
   body.before_1500 #Cover p,
   body.before_1500 #Summary p {
     column-count: 1; }
@@ -766,6 +790,81 @@ body.around_2040 {
         body.around_2040 .tablet::-webkit-scrollbar-thumb {
           border: none; } }
 
+body.before_1500 .nav {
+  display: flex;
+  margin-bottom: 11vw; }
+  @media only screen and (max-width: 56.25em) {
+    body.before_1500 .nav {
+      margin-bottom: 0; } }
+  body.before_1500 .nav__bar {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-between; }
+    @media only screen and (max-width: 56.25em) {
+      body.before_1500 .nav__bar {
+        position: fixed;
+        top: 11vh;
+        right: 2rem;
+        flex-direction: column;
+        align-items: flex-end; } }
+  body.before_1500 .nav__item {
+    flex: 1;
+    padding: 3.3rem 1.65rem;
+    position: relative;
+    border-top: 0.33rem solid #a8432f; }
+    @media only screen and (max-width: 56.25em) {
+      body.before_1500 .nav__item {
+        font-size: 50%;
+        padding: 1.65rem 0.825rem;
+        border-top: none;
+        border-right: 0.33rem solid #a8432f; } }
+    body.before_1500 .nav__item a:link,
+    body.before_1500 .nav__item a:visited {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #3f3529; }
+    body.before_1500 .nav__item a:hover,
+    body.before_1500 .nav__item a:active {
+      color: #1c4d6d; }
+    body.before_1500 .nav__item:not(:last-child) {
+      margin-right: 3.3rem; }
+      @media only screen and (max-width: 56.25em) {
+        body.before_1500 .nav__item:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 3.3rem; } }
+    body.before_1500 .nav__item--logo {
+      background-color: #a8432f; }
+      body.before_1500 .nav__item--logo::before, body.before_1500 .nav__item--logo::after {
+        content: "";
+        position: absolute;
+        border-top: 9.9rem solid #a8432f;
+        bottom: -9.9rem; }
+        @media only screen and (max-width: 56.25em) {
+          body.before_1500 .nav__item--logo::before, body.before_1500 .nav__item--logo::after {
+            border-top: none;
+            border-right: 3.3rem solid #a8432f;
+            bottom: initial;
+            left: -3rem; } }
+      body.before_1500 .nav__item--logo::before {
+        left: 0;
+        border-right: 9.9rem solid transparent; }
+        @media only screen and (max-width: 56.25em) {
+          body.before_1500 .nav__item--logo::before {
+            left: -3rem;
+            top: 0;
+            border-right: 3.3rem solid #a8432f;
+            border-bottom: 3.3rem solid transparent; } }
+      body.before_1500 .nav__item--logo::after {
+        right: 0;
+        border-left: 9.9rem solid transparent; }
+        @media only screen and (max-width: 56.25em) {
+          body.before_1500 .nav__item--logo::after {
+            right: initial;
+            bottom: 0;
+            border-left: none;
+            border-top: 3.3rem solid transparent; } }
+
 body.around_2040 .nav {
   font-family: "tron";
   text-shadow: 0 0 0.5rem #cccccc;
@@ -774,7 +873,6 @@ body.around_2040 .nav {
   padding: 1.2rem 0 2.4rem 0;
   display: flex;
   justify-content: center;
-  position: relative;
   animation: 1s ease-out 0s 1 moveInTop;
   --margin-hor: calc((100% - 72rem) / 2);
   clip-path: polygon(0 100%, calc(var(--margin-hor) - 1rem) 100%, var(--margin-hor) 77%, calc(var(--margin-hor) + 72rem) 77%, calc(var(--margin-hor) + 72rem + 1rem) 100%, 100% 100%, 100% 0, 0 0); }

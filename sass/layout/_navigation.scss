@@ -15,7 +15,6 @@ body {
                 justify-content: space-between;
 
                 @include respond(tab-port) {
-                    width: 11vw;
                     // overflow: hidden;
                     position: fixed;
                     top: 11vh;

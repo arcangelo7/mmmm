@@ -39,6 +39,11 @@
     border-image-source: url(../img/border-image.svg);
     border-image-slice: 10;
     border-image-repeat: repeat;
+
+    @include respond(phone){
+        border-width: 4rem;
+        border-image-slice: 40;
+    }
 }
 
 // MEDIA QUERY MANAGER
