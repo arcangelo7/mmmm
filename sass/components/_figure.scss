@@ -35,14 +35,15 @@ body {
             }
     
             & figcaption {
+
+                margin-left: 5.5vw;                
+
+                @include respond(tab-land) {
+                    margin-left: 0;
+                }
     
                 & p {
                     column-count: 1;
-                    margin-left: 5.5vw;
-    
-                    @include respond(tab-land) {
-                        margin-left: 0;
-                    }
                 }
             }
         }

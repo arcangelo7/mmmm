@@ -1,12 +1,17 @@
 body.before_1500{
     .play {
+        display: none;
         position: fixed;
-        bottom: 2rem;
-        right: 2rem;
+        bottom: 2.75vw;
+        right: 2.75vw;
 
         &__icon {
             width: 5rem;
             height: 5rem;
+        }
+
+        @include respond(phone-landscape) {
+            display: none;
         }
     }
 }

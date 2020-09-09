@@ -4,6 +4,7 @@ body {
             @include black-mirror;
             width: 100%;
             display: flex;
+            order: 2;
             justify-content: center;
             position: relative;
 

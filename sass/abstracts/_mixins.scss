@@ -7,6 +7,13 @@
     }
 }
 
+@mixin absCenter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @mixin dropcap {
     font-family: "schwabacher";
     font-size: 9rem;
@@ -38,6 +45,7 @@
     border-width: 1rem;
     border-image-source: url(../img/border-image.svg);
     border-image-slice: 10;
+    border-image-outset: 0;
     border-image-repeat: repeat;
 
     @include respond(phone){
@@ -73,6 +81,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
         @media only screen and (max-width: 37.5em) { @content }; // 600px
+    }
+    @if $breakpoint == phone-landscape {
+        @media only screen and (max-height: 28.75em) {@content }; // 460px
     }
     @if $breakpoint == tab-port {
         @media only screen and (max-width: 56.25em) { @content }; // 900px

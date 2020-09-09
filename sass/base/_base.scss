@@ -21,6 +21,8 @@ html {
     @include respond(phone) { // width < 600?
         font-size: 30.25%; // 1 rem = 4.84px, 4.84/16 = 30.25% -> 3.3rem = 16px
     }
+
+    scroll-behavior: smooth;
 }
 
 body {

@@ -8,7 +8,7 @@ $(function() {
             .attr("type", "audio/mp3");
         $("body").append("<div class='play'>")
         $(".play")
-            .append("<button class='play__button btn btn--blue btn--animated'>")
+            .append("<button class='play__button btn btn--color btn--animated-up'>")
         $(".play__button")
             .append("<img class='play__icon' src='img/pipe_organ.svg'>")
 
@@ -17,12 +17,12 @@ $(function() {
         function togglePlay() {
             if (isPlaying) {
                 audio.pause();
-                $(".btn--blue").css("background-color", "#1c4d6d");
-                $('.btn--blue').toggleClass('changed');
+                $(".play__button").css("background-color", "#1c4d6d");
+                $('.play__button').toggleClass('changed');
             } else {
                 audio.play();
-                $(".btn--blue").css("background-color", "#a8432f");
-                $('.btn--blue').toggleClass('changed');
+                $(".play__button").css("background-color", "#a8432f");
+                $('.play__button').toggleClass('changed');
             }
         };
         audio.onplaying = function() {

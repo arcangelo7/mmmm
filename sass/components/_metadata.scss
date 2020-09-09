@@ -1,0 +1,367 @@
+.metadata {
+    position: fixed;
+    right: 0;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    font-size: 83%;
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    & {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        width: 5rem;
+        height: 5rem;
+        position: fixed;
+        border-radius: 50%;
+        z-index: 2000;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &__background {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        position: absolute;
+        background-image: radial-gradient(
+            $color-white,
+            $color-blue
+        );
+        z-index: 1000;
+
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards;
+        transition: all .8s cubic-bezier(0.83, 0, 0.17, 1);
+    }
+
+    &__nav {
+        z-index: 1500;
+        position: absolute;
+
+        opacity: 0;
+        width: 0;
+        transition: all .6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+
+    //FUNCTIONALITY
+    &__checkbox:checked ~ &__background {
+        transform: scale(120);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;    
+    }
+
+    &__checkbox:checked {
+        + .metadata__tab--label {
+            background: darken($color-blue, 10%);
+
+            &::after {
+                transform: rotate(90deg);
+            }
+        }
+        ~ .metadata__tab--content {
+            max-height: 100%;
+        }
+    }
+
+    &__icon {
+        
+        img {
+            position: absolute;
+            top: .7rem;
+            left: .2rem;
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+    }
+
+    &__tabs {
+        border-radius: .8rem;
+        box-shadow: 0 .4rem .4rem -.2rem rgba(0,0,0,0.5);
+    }
+
+    &__tab {
+        width: 100%;
+        overflow: hidden;
+
+        &--label {
+            display: flex;
+            justify-content: space-between;
+            padding: 1em;
+            font-weight: bold;
+            cursor: pointer;
+        
+            &:hover {
+                background: darken($color-blue, 10%);
+            }
+        
+            &::after {
+                content: "\276F";
+                width: 1em;
+                height: 1em;
+                text-align: center;
+                transition: all .35s;
+            }
+        }
+      
+        &--content {
+            max-height: 0;
+        }
+    }
+
+    .index {
+        &__btn {
+            flex: 1;
+            font-size: inherit;
+
+            &--container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: stretch;
+            }
+        }
+    }
+}
+
+body{
+    &.before_1500 {
+        .metadata {
+            top: 0;
+            width: calc(22.2222vw - 5.5vw);
+            height: 100vh;
+
+            @include respond(tab-port) {
+                border-radius: 1rem;
+                height: 30vh;
+                z-index: 1;
+                width: 94.5vw;
+                top: initial;
+                left: 2.75vw;
+                bottom: 2.75vw;
+            }
+
+            ::selection {
+                background-color: $color-blue;
+                color: $color-white;
+            }
+            
+            &__button {
+                top: 2.75vw;
+                right: 2.75vw;
+
+                @include respond(tab-port) {
+                    top: initial;
+                    bottom: 2.75vw;
+                }
+            }
+
+            &__svg {
+                fill: $color-white;
+            }
+
+            &__background {
+                top: 3vw;
+                right: 3vw;
+                background-image: radial-gradient(
+                    $color-white,
+                    $color-blue
+                );
+
+                @include respond(tab-port) {
+                    top: initial;
+                    bottom: .75vw;
+                    right: .75vw;
+                }
+            }
+
+            &__nav {
+                top: 11.1111vh;
+
+                @include respond(tab-port) {
+                    top: 0;
+                }
+            }
+
+            &__tab {
+                color: $color-white;
+                background-color: $color-white;
+
+                &--label {
+                    background-color: $color-blue;
+                }
+
+                &--content {
+                    background-color: $color-white;
+                    color: $color-blue;
+                }
+            }
+
+            &__checkbox:checked {
+                + .metadata__tab--label {
+                    background: darken($color-blue, 10%);
+                }
+            }
+
+            .index {
+                &__btn {
+                    margin: 1.375vw 2.75vw 0 2.75vw;
+                    // padding: 1.375vw 2.75vw;
+                    white-space: pre-line;
+
+                    @include respond(tab-land) {
+                        padding: .6875vw 1.375vw;
+                    }
+                }
+
+                &__list {
+                    margin: 2.75vw;
+                }
+
+                &__item {
+                    margin: 1.375vw 2.75vw;
+                }
+            }
+
+            a.anchor {
+                display: block;
+                position: relative;
+                top: -11rem;
+                visibility: hidden;
+            }
+
+            #indexOfDatesSort {
+                img {
+                    height: 3.3rem;
+                    width: 3.3rem;
+                }
+            }
+        }
+    }
+
+    &.around_2040 {
+        .metadata {
+            width: calc((100vw - 72rem) / 2 - 2.4rem);
+            height: 95.5vh;
+
+            @include respond(tab-port) {
+                border-radius: 1rem;
+                height: 30vh;
+                z-index: 1;
+                width: calc(100vw - 4.8rem);
+                top: initial;
+                left: 2.4rem;
+                bottom: 2.4rem;
+            }
+            
+            ::selection {
+                color: $color-blade-runner-fog;
+                background-color: $color-led-yellow;
+            }
+            
+            &__button {
+                top: 10.8rem; // 2.4rem below navbar
+                right: 2.4rem;
+
+                @include respond(tab-port) {
+                    top: initial;
+                    bottom: 2.4rem;
+                }
+            }
+
+            &__svg {
+                fill: $color-blade-runner-fog;
+            }
+            
+            &__background {
+                top: 11.2rem;
+                right: 2.9rem;
+                background-image: radial-gradient(
+                    $color-blade-runner-fog,
+                    black
+                );
+
+                @include respond(tab-port) {
+                    top: initial;
+                    right: .75rem;
+                    bottom: .75rem;
+                }
+            }
+
+            &__nav {
+                top: 16.6vh; // 2.4rem below toggle
+
+                @include respond(tab-port) {
+                    top: 0;
+                }
+            }
+
+            &__tab {
+                color: $color-grey-smoke;
+                background-color: black;
+
+                &--label {
+                    background-color: $color-grey-smoke;
+                    color: $color-blade-runner-fog;
+                }
+
+                &--content {
+                    background-color: black;
+                    color: $color-grey-smoke;
+                }
+            }
+
+            &__checkbox:checked {
+                + .metadata__tab--label {
+                    background: darken($color-grey-smoke, 24%);
+                }
+            }
+
+            .index {
+                &__btn {
+                    margin: 1.2rem 2.4rem 0 2.4rem;
+                    padding: 1.2rem 2.4rem;
+                }
+
+                &__list {
+                    margin: 2.4rem;
+                }
+    
+                &__item {
+                    margin: 2.4rem;
+                }
+            }
+
+            a.anchor {
+                display: block;
+                position: relative;
+                top: -11rem;
+                visibility: hidden;
+            }
+
+            #indexOfDatesSort {
+                img {
+                    height: 2.4rem;
+                    width: 2.4rem;
+                }
+            }
+        }
+    }
+}
+
+
+

@@ -15,16 +15,17 @@ body {
                 justify-content: space-between;
 
                 @include respond(tab-port) {
-                    // overflow: hidden;
                     position: fixed;
-                    top: 11vh;
-                    right: 2rem;
+                    top: 11.1111vh;
+                    right: 2.75vw;
                     flex-direction: column;
                     align-items: flex-end;
                 }
             }
 
             &__item {
+                max-width: 20rem;
+                text-align: center;
                 flex: 1;
                 padding: 3.3rem 1.65rem;
                 position: relative;
@@ -58,7 +59,7 @@ body {
                     }
                 }
 
-                &--logo {
+                &--active {
                     background-color: $color-red;
 
                     &::before, 
@@ -112,7 +113,9 @@ body {
             width: 100%;
             padding: 1.2rem 0 2.4rem 0;
             display: flex;
+            order: 0;
             justify-content: center;
+            position: relative;
 
             animation: 1s ease-out 0s 1 moveInTop;
 

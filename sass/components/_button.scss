@@ -2,8 +2,9 @@
     &,
     &:link,
     &:visited {
+        font-family: inherit;
         padding: .5rem;
-        border-radius: 50%;
+        border-radius: 10rem;
         transition: all .2s;
         position: relative;
 
@@ -11,36 +12,9 @@
         border: none;
         cursor: pointer;
     }
-    
-    &:hover {
-        transform: translateY(-.3rem);
-        box-shadow: 0 1rem 2rem rgba($color-black,.2);
-
-        &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
-        }
-    }
-    
-    &:active {
-        outline: none;
-        transform: translateY(-.1rem);
-        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
-    }
 
     &:focus {
         outline: none;
-    }
-    
-    &--blue {
-        background-color: $color-blue;
-
-        &::after {
-            background-color: $color-blue;
-        }
-        &.changed::after {
-            background-color: $color-red;
-        }
     }
     
     &::after {
@@ -48,16 +22,75 @@
         display: inline-block;
         height: 100%;
         width: 100%;
-        border-radius: 50%;
+        border-radius: 10rem;
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
         transition: all .4s;
     }
+
+    &--color {
+        &:hover {
+            transform: translateY(-.3rem);
+            box-shadow: 0 1rem 2rem rgba($color-black,.2);
     
-    &--animated {
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+            }
+        }
+        
+        &:active {
+            outline: none;
+            transform: translateY(-.1rem);
+            box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+        }
+    }
+    
+    &--animated-up {
         animation: moveInBottom .5s ease-out .75s;
         animation-fill-mode: backwards;
+    }
+
+    &--animated-down {
+        animation: moveInTop .5s ease-out .75s;
+        animation-fill-mode: backwards;
+    }
+}
+
+body{
+    &.before_1500 {
+        .btn {
+            box-shadow: 0 1rem 3rem rgba($color-black, 1);
+
+            &--color {
+                background-color: $color-blue;
+        
+                &::after {
+                    background-color: $color-blue;
+                }
+                &.changed::after {
+                    background-color: $color-red;
+                }
+            }          
+        }
+    }
+
+    &.around_2040 {
+        .btn {
+            box-shadow: 0 1rem 3rem rgba(black, 1);
+
+            &--color {
+                background-color: $color-led-azure;
+        
+                &::after {
+                    background-color: $color-led-azure;
+                }
+                &.changed::after {
+                    background-color: $color-led-yellow;
+                }
+            }
+        }
     }
 }

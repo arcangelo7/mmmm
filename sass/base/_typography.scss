@@ -71,19 +71,19 @@ body {
         }
     
         // Drop Caps
-        & > section:not(#references) > p:nth-child(odd)::first-letter,
+        & > section:not(#References) > p:nth-child(odd)::first-letter,
         & .biblioItem:nth-child(odd) .biblioMarker {
             color: $color-red;
             @include dropcap;
         }
     
-        & > section:not(#references) > p:nth-child(even)::first-letter,
+        & > section:not(#References) > p:nth-child(even)::first-letter,
         & .biblioItem:nth-child(even) .biblioMarker {
             color: $color-blue;
             @include dropcap;
         }
     
-        & > section:not(#references) > p:first-of-type::first-letter {
+        & > section:not(#References) > p:first-of-type::first-letter {
             @include special-dropcap;
         } 
     }
@@ -112,10 +112,16 @@ body {
             user-select: none;
         }
 
-        a:link, 
-        a:visited {
+        .glitch {
+            position: relative;
+            @include glitch; 
+        }
+
+        a {
             color: $color-led-azure;
             text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
         }
 
         a:hover, 
