@@ -1,0 +1,132 @@
+body {
+
+    .formats {   
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        &__select {
+            font-family: inherit;
+            align-self: stretch;
+            -moz-appearance:none; /* Firefox */
+            -webkit-appearance:none; /* Safari and Chrome */
+            appearance:none;
+            margin: 0 auto;
+            padding: .5rem 1rem;
+            border-radius: .3rem;
+            // icon click must open select
+            background-color: transparent;
+            z-index: 1;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &__icon {
+            position: absolute;
+            transition: all .35s;
+            transform: rotate(-90deg);
+            
+            &--rotate {
+                transform: rotate(0deg);
+            }
+        }
+    }
+
+    &.before_1500 {
+
+        .formats {
+
+            &__select {
+                margin: 0 2.75vw;
+                
+                option {
+                    background-color: $color-white;
+                }
+            }
+
+            &__label {
+                margin: 1.375vw 2.75vw;
+            }
+
+            &__icon {
+                fill: $color-black;
+                top: 50%;
+                right: 17%;
+                
+                @include respond(big-desktop) {
+                    top: 44.5%;
+                }
+
+                @include respond(tab-port) {
+                    top: 38.5%;
+                    right: 3%;
+                }
+
+                @include respond(phone) {
+                    top: 35%;
+                    right: 3%;
+                }
+            }
+        }
+    }
+
+    &.around_2040 {
+
+        .formats {
+
+            &__select {
+                color: $color-grey-smoke;
+                margin: 0 2.4rem;
+
+                option {
+                    background-color: black;
+                }
+            }
+
+            &__label {
+                margin: 2.4rem;
+            }
+
+            &__icon {
+                fill: $color-grey-smoke;
+                top: 7.35rem;
+                right: 3rem;
+            }
+        }
+    }
+
+    &.early_20th {
+        .formats {
+
+            &__select {
+                color: $bauhaus-dark;
+                margin: 0 2.4rem;
+                
+                option {
+                    background-color: $bauhaus-back;
+                }
+            }
+
+            &__label {
+                margin: 2.4rem;
+            }
+
+            &__icon {
+                fill: $bauhaus-dark;
+                top: 7.6rem;
+                right: 3rem;
+
+                @include respond(tab-port){
+                    top: 8.2rem;
+                }
+
+                @include respond(phone){
+                    top: 10rem;
+                }
+            }
+        }       
+    }
+}

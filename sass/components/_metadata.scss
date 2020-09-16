@@ -29,6 +29,11 @@
         z-index: 2000;
         text-align: center;
         cursor: pointer;
+
+        @include respond(phone){
+            width: 8rem;
+            height: 8rem;
+        }
     }
 
     &__background {
@@ -45,6 +50,10 @@
         animation: moveInBottom .5s ease-out .75s;
         animation-fill-mode: backwards;
         transition: all .8s cubic-bezier(0.83, 0, 0.17, 1);
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
     }
 
     &__nav {
@@ -76,6 +85,7 @@
         }
         ~ .metadata__tab--content {
             max-height: 100%;
+            display: block;
         }
     }
 
@@ -105,6 +115,10 @@
             padding: 1em;
             font-weight: bold;
             cursor: pointer;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
         
             &:hover {
                 background: darken($color-blue, 10%);
@@ -120,6 +134,7 @@
         }
       
         &--content {
+            display: none;
             max-height: 0;
         }
     }
@@ -131,8 +146,10 @@
 
             &--container {
                 display: flex;
+                flex-direction: column;
                 flex-wrap: wrap;
-                justify-content: stretch;
+                justify-content: center;
+                align-items: stretch;
             }
         }
     }
@@ -147,9 +164,10 @@ body{
 
             @include respond(tab-port) {
                 border-radius: 1rem;
-                height: 30vh;
+                transition: height .8s;
+                height: 0;
                 z-index: 1;
-                width: 94.5vw;
+                width: calc(94.5vw - (100vw - 100%)); // Without scrollbar
                 top: initial;
                 left: 2.75vw;
                 bottom: 2.75vw;
@@ -208,6 +226,10 @@ body{
                 &--content {
                     background-color: $color-white;
                     color: $color-blue;
+
+                    p {
+                        column-count: 1;
+                    }
                 }
             }
 
@@ -234,6 +256,7 @@ body{
 
                 &__item {
                     margin: 1.375vw 2.75vw;
+                    // column-count: 1;
                 }
             }
 
@@ -250,6 +273,10 @@ body{
                     width: 3.3rem;
                 }
             }
+
+            #download {
+                margin-bottom: 1.375vw;
+            }
         }
     }
 
@@ -260,11 +287,16 @@ body{
 
             @include respond(tab-port) {
                 border-radius: 1rem;
-                height: 30vh;
+                transition: height .8s;
+                height: 0;
                 z-index: 1;
-                width: calc(100vw - 4.8rem);
+                width: calc(100vw - 4.8rem - (100vw - 100%));
                 top: initial;
                 left: 2.4rem;
+                bottom: 11.5rem; // 2.4rem above footer
+            }
+
+            @include respond(phone) {
                 bottom: 2.4rem;
             }
             
@@ -278,6 +310,11 @@ body{
                 right: 2.4rem;
 
                 @include respond(tab-port) {
+                    top: initial;
+                    bottom: 11.5rem; // 2.4rem above footer
+                }
+
+                @include respond(phone) {
                     top: initial;
                     bottom: 2.4rem;
                 }

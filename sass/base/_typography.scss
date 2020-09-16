@@ -30,6 +30,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'kalos';
+    src: url('fonts/Kalos/Kalos.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 //////////////////////////////////////
 ///////// BEFORE 1500
 body {
@@ -37,11 +44,11 @@ body {
         font-family: "schwabacher";
         font-size: 3.3rem;
         color: $color-black;
-    
+
         & h1 {
             color: $color-red;
         }
-    
+
         & h2,
         & h3,
         & h4,
@@ -50,7 +57,7 @@ body {
             color: $color-red;
             margin-top: 2.75vw;
         }
-    
+
         & p {
             text-align: justify;
             word-wrap: break-word;
@@ -59,33 +66,33 @@ body {
             -webkit-hyphens: auto;
             hyphens: auto;
         }
-    
-        & a:link, 
+
+        & a:link,
         & a:visited {
             color: $color-blue;
         }
-    
-        & a:hover, 
+
+        & a:hover,
         & a:active {
             color: $color-red;
         }
-    
+
         // Drop Caps
-        & > section:not(#References) > p:nth-child(odd)::first-letter,
+        .container__text > section:not(#References) > p:nth-child(odd)::first-letter,
         & .biblioItem:nth-child(odd) .biblioMarker {
             color: $color-red;
             @include dropcap;
         }
-    
-        & > section:not(#References) > p:nth-child(even)::first-letter,
+
+        .container__text > section:not(#References) > p:nth-child(even)::first-letter,
         & .biblioItem:nth-child(even) .biblioMarker {
             color: $color-blue;
             @include dropcap;
         }
-    
-        & > section:not(#References) > p:first-of-type::first-letter {
+
+        .container__text > section:not(#References) > p:first-of-type::first-letter {
             @include special-dropcap;
-        } 
+        }
     }
 
 
@@ -96,7 +103,7 @@ body {
         font-size: 2.4rem;
         color: $color-grey-smoke;
 
-        & h1, 
+        & h1,
         & h2,
         & h3,
         & h4,
@@ -105,16 +112,16 @@ body {
             font-family: "tron";
             position: relative;
             @include glow;
-            @include glitch;
+            // @include glitch;
 
-            -webkit-touch-callout: none; 
-            -webkit-user-select: none; 
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
             user-select: none;
         }
 
         .glitch {
             position: relative;
-            @include glitch; 
+            @include glitch;
         }
 
         a {
@@ -124,9 +131,62 @@ body {
             cursor: pointer;
         }
 
-        a:hover, 
+        a:hover,
         a:active {
             color: $color-led-azure-light;
+        }
+    }
+
+    &.early_20th {
+        font-family: "kalos";
+        font-weight: 200;
+        font-size: 19px;
+        line-height: 28px;
+        margin-top: 8px; // The vertical offset pushing the text down
+        padding-bottom: 28px; // Extra line between the paragraphs
+
+        & h1 {
+            font-size: 50px;
+            line-height: 56px;
+            border-bottom: 15px solid $bauhaus-red;
+            margin-top: 8px;
+            padding-bottom: 28px;
+        }
+
+        & h2 {
+            font-size: 25px;
+            line-height: 28px;
+            border-bottom: 15px solid $bauhaus-red;
+            margin-top: 5px;
+            padding-bottom: 7px;
+        }
+        & h3,
+        & h4,
+        & h5,
+        & h6 {
+
+            color: $bauhaus-red;
+            margin-top: 8px;
+            padding-bottom: 20px;
+        }
+
+        & p {
+            text-align: justify;
+            word-wrap: break-word;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+        }
+
+        & a:link,
+        & a:visited {
+            color: $bauhaus-dark;
+        }
+
+        & a:hover,
+        & a:active {
+            color: $bauhaus-red;
         }
     }
 }

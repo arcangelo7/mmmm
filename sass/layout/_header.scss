@@ -16,18 +16,73 @@ body.before_1500 {
         }
     }
 
-    & #Cover, 
+    & #Cover,
     & #Summary {
         padding: 2.75vw;
         margin-bottom: 5.5vw;
         @include border-large;
 
         @include respond(tab-port) {
-            @include border-slim; 
+            @include border-slim;
         }
 
         & p {
             column-count: 1;
         }
+    }
+}
+
+
+body.early_20th {
+
+    & #Cover {
+        border-left: 15px solid $bauhaus-red;
+        margin-top: 25px;
+
+
+        & .byline {
+            margin-top: 8px;
+            padding-bottom: 20px;
+        }
+
+        & .label {
+            font-weight: 900;
+            // font-size: 2.5rem;
+            // border-bottom: 7px solid $bauhaus-red;
+        }
+
+        & p {
+            text-align: center;
+            display: block;
+        }
+    }
+
+    & #Cover,
+    & #Summary {
+
+        padding-left: 2.75vw;
+        padding-right: 2.75vw;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        & p {
+            column-count: 1;
+        }
+    }
+
+    & #Summary {
+      padding-top: 48px;
+      padding-bottom: 63px;
+
+      & p {
+        display: inline;
+        line-height: 28px;
+      }
+
+      border-right: 15px solid $bauhaus-red;
+      border-top: 15px solid $bauhaus-red;
+      border-bottom: 15px solid $bauhaus-red;
+      // margin-bottom: 51px;
+
     }
 }

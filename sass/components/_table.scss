@@ -5,46 +5,46 @@ body {
             font-size: inherit;
             width: 64.6667vw; // 66 - 2rem of margin
             margin: 0 auto;
-    
+
             @include respond(phone) {
                 font-size: 83%;
             }
         }
-    
+
         & table, th, td {
             border: 1rem solid transparent;
             border-image-source: url(../img/border-image.svg);
             border-image-slice: 10;
             border-image-repeat: repeat;
-    
+
             text-align: center;
             padding: 1rem;
-    
+
             @include respond(tab-port) {
                 border: 1px solid black;
                 border-image-source: none;
                 border-collapse: collapse;
             }
         }
-    
+
         & table tr:hover {
             background-color: $color-blue;
             color: $color-white;
         }
-    
+
         & table caption {
             border-top-style: solid;
             border-top-width: 15rem;
             border-bottom: 0;
             border-left: 0;
-            border-right: 0;        
+            border-right: 0;
             border-image-source: url(../img/medieval-frame.svg);
             border-image-slice: 150;
             border-image-repeat: repeat;
-    
+
             margin-top: 2.75vw;
             padding: 1rem;
-    
+
             @include respond(tab-port) {
                 border-top-style: solid;
                 border-top-width: 1rem;
@@ -53,10 +53,10 @@ body {
                 border-right: 0;
                 border-image-source: url(../img/border-image.svg);
                 border-image-slice: 10;
-                border-image-repeat: repeat;        
+                border-image-repeat: repeat;
             }
         }
-    
+
         & table caption p {
             column-count: 1;
         }
@@ -68,7 +68,7 @@ body {
             margin: 2.4rem auto;
             box-shadow: .24rem .24rem .24rem white;
 
-            & th, td {       
+            & th, td {
                 text-align: center;
                 padding: .72rem;
             }
@@ -77,6 +77,28 @@ body {
                 background-color: $color-grey-smoke;
                 color: black;
             }
+        }
+    }
+
+    &.early_20th {
+
+        & table {
+          background-color: rgba($bauhaus-red, 0.4);
+          break-inside: avoid;
+          padding-bottom: 24px;
+
+          caption {
+            line-height: 28px;
+          }
+          tr {
+            height: 54px;
+          }
+          tr th {
+            border-bottom: 2px solid $bauhaus-red;
+          }
+          tr td {
+            text-align: center;
+          }
         }
     }
 }

@@ -5,43 +5,43 @@ body {
             flex-direction: row;
             justify-content: center;
             align-items: center;
-    
+
             @include respond(tab-land) {
                 flex-direction: column;
             }
-            
+
             padding: 1rem;
             margin-bottom: 2.75vw;
             margin-top: 2.75vw;
             @include border-large;
-    
+
             @include respond(tab-port) {
                 @include border-slim;
                 margin-bottom: 5.5vw;
             }
-    
+
             & img {
                 width: calc(30.35vw - 11rem); // column-width (30.35vw) - margin (10rem) - padding (1rem)
                 filter: sepia(50%);
-    
+
                 @include respond(tab-land) {
                     width: calc(66.6667vw - 22rem); // column-width (66.6667vw) - 2 * margin (20rem) - 2* padding (2rem)
                     margin-bottom: 2.75vw;
                 }
-    
+
                 @include respond(tab-port) {
                     width: calc(66.6667vw - 4rem); // column-width (66.6667vw) - 2 * margin (2rem) - 2* padding (2rem)
                 }
             }
-    
+
             & figcaption {
 
-                margin-left: 5.5vw;                
+                margin-left: 5.5vw;
 
                 @include respond(tab-land) {
                     margin-left: 0;
                 }
-    
+
                 & p {
                     column-count: 1;
                 }
@@ -63,5 +63,42 @@ body {
             }
         }
     }
-}
 
+    &.early_20th {
+        figure {
+            display: table;
+            background-color: rgba($bauhaus-red, 0.4);
+            align-items: center;
+            text-align: center;
+
+            $grid-unit: 28px;
+            $image-height: 15 * $grid-unit;
+            $image-width: 14 * $grid-unit;
+
+            height: $image-height;
+            max-width: $image-width;
+
+            margin-bottom: 28px;
+
+
+            & img {
+                display: table-row;
+                max-width: 100%;
+                max-height: 0.7 * $image-height;
+                padding: 10px;
+                margin: auto;
+            }
+
+            & figcaption {
+              display: table-row;
+
+                & p {
+                    line-height: 14px;
+                    padding-bottom: 0px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+}

@@ -30,6 +30,7 @@ body {
                 padding: 3.3rem 1.65rem;
                 position: relative;
                 border-top: .33rem solid $color-red;
+                font-size: 70%;
 
                 @include respond(tab-port) {
                     font-size: 50%;

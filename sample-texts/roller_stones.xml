@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <TEI xmlns="http://www.tei-c.org/ns/1.0">
+<?xml-stylesheet type="text/xsl" href="text.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -50,7 +51,7 @@
                 <p xml:id="keywords"><label>Keywords: </label>calyceal, kidney stone, renal calculi, roller coaster</p>
             </div>
 
-            <div type="section" xml:id="Introduction">
+            <div type="section" xml:id="Inrowoduction">
                 <p>In the United States each year, more than 300,000 patients seek emergency department care for kidney stones, or renal calculi. <ref type="biblioRef" target="#b01">1</ref> Patient positional inversion, hydration, and external application of force to the body wall has been used to facilitate renal calculi</p>
                 <p>passage with variable success.<ref type="biblioRef" target="#b02">2</ref>-<ref type="biblioRef" target="#b05">5</ref> Reports of spontaneous renal calculi passage associated with bungee cord jumping and roller coaster riding have been published in the foreign lay press.<ref type="biblioRef" target="#b06">6</ref> The lifetime prevalence of kidney stones in men is approximately 11% and in women, 6%.<ref type="biblioRef" target="#b01">1</ref></p>
                 <p>Over several years, a notable number of our patients reported passing renal calculi spontaneously after riding the Big Thunder Mountain Railroad roller coaster at Walt Disney World’s Magic Kingdom theme park in Orlando, Florida. The number of stone passages was sufficient to raise suspicions of a possible link between riding a roller coaster and passing renal calculi. One patient reported passing renal calculi after each of 3 consecutive rides on the roller coaster. Many patients reported passing renal calculi within hours of leaving the amusement park, and all of them rode the same roller coaster during their visit.</p>

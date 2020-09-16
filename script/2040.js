@@ -1,25 +1,6 @@
 $(function(){
     if ($(".around_2040").length > 0) {
-        // Add nav with eye
-        // $(".around_2040").prepend(`
-        //     <nav class="nav">
-        //         <ul class="nav__bar"> 
-        //             <li class="nav__item nav__item--logo visited"><a href="#">mmmm</a></li>
-        //             <div class="eye">
-        //                 <div class="blade"><div></div></div>  
-        //                 <div class="blade"><div></div></div>
-        //                 <div class="blade"><div></div></div>  
-        //                 <div class="blade"><div></div></div>
-        //                 <div class="blade"><div></div></div>  
-        //                 <div class="blade"><div></div></div>
-        //                 <div class="blade"><div></div></div>  
-        //                 <div class="blade"><div></div></div>
-        //                 <div class="iris"></div>
-        //             </div>
-        //             <li class="nav__item"><a href="#">nutella</a></li>
-        //         </ul>
-        //     </nav>
-        // `);
+        // Add eye to nav
         $(".nav__item--logo").after(`
             <div class="eye">
                 <div class="blade"><div></div></div>  
@@ -35,7 +16,7 @@ $(function(){
         `);
 
         // Glitches
-        $(".around_2040").find("h1, h2, h3, h4, h5, h6, .nav__item a").each(function() {
+        $(".around_2040").find(".nav__item a").each(function() {
             $(this).attr("data-text", $(this).text());
         });
 
@@ -43,13 +24,9 @@ $(function(){
         // Tablet-like device
         function wrapInMain(x) {
             if (x.matches) { // If media query matches
-                $(".tablet").children().unwrap();
-                $(".around_2040").children(":not(nav)").wrapAll("<div class='container'>");
-                $(".container").children(":not(footer)").wrapAll("<div class='tablet'>");
+                $(".foot").detach().appendTo(".container");
             } else {
-                $(".tablet").children().unwrap();
-                $(".container").children().unwrap();
-                $(".around_2040").children(":not(nav, footer)").wrapAll("<main class='tablet'>");
+                $(".foot").detach().appendTo(".around_2040");
             }
         }
         
@@ -57,15 +34,12 @@ $(function(){
         wrapInMain(x) // Call listener function at run time
         x.addListener(wrapInMain) // Attach listener function on state changes
 
+        $(document).on("click", ".selector__article", function(){
+            wrapInMain(x);
+            x.addListener(wrapInMain) // Attach listener function on state changes
+        });
 
         // Scroll into view
-        const toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
-
-        // const config = {
-        //     rootMargin: '-100px'
-        //     // threshold: [0, 0.25, 0.75, 1]
-        // };
-
         observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.intersectionRatio > 0) {
@@ -76,11 +50,23 @@ $(function(){
                 } 
             });
         });
-        
+
+        var toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
         toFade.forEach(table => {
             observer.observe(table);
         });
 
+        $(document).on("click", ".selector__article", function(){
+            toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
+            toFade.forEach(table => {
+                observer.observe(table);
+            });
+        });
+
+        // const config = {
+        //     rootMargin: '-100px'
+        //     // threshold: [0, 0.25, 0.75, 1]
+        // };
 
         // Eye tracking
         $(document).mousemove(function(e){
@@ -99,13 +85,13 @@ $(function(){
 
             var iris = $(".iris");
             if (parseInt(iris.css("top")) > 8) {
-                iris.css("top", "8");
+                iris.css("top", "8px");
             }
             if (parseInt(iris.css("left")) < -6) {
-                iris.css("left", "-6");
+                iris.css("left", "-6px");
             }
             if (parseInt(iris.css("left")) > 6) {
-                iris.css("left", "6");
+                iris.css("left", "6px");
             }
         }); 
     }

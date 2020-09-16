@@ -1,76 +1,98 @@
 @keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-    
-    100% {
-        opacity: .9;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInTop {
   0% {
       opacity: 0;
-      transform: translateY(-3rem);
+      transform: translateY(3rem);
   }
-  
+
   100% {
       opacity: .9;
       transform: translate(0);
   }
 }
 
+@keyframes moveInTop {
+0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+}
+
+100% {
+    opacity: .9;
+    transform: translate(0);
+}
+}
+
 @keyframes glitch-anim-1 {
-    $steps: 20;
-    @for $i from 0 through $steps {
-      #{percentage($i*(1/$steps))} {
-            $top: random(100);
-            $bottom: random(101 - $top);
-            clip-path: inset(#{$top}% 0 #{$bottom}% 0);
-        }
-    }
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+          $top: random(100);
+          $bottom: random(101 - $top);
+          clip-path: inset(#{$top}% 0 #{$bottom}% 0);
+      }
+  }
 }
 
 @keyframes glitch-anim-2 {
-    $steps: 20;
-    @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-            $top: random(100);
-            $bottom: random(101 - $top);
-            clip-path: inset(#{$top}% 0 #{$bottom}% 0);
-        }
-    }
+  $steps: 20;
+  @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+          $top: random(100);
+          $bottom: random(101 - $top);
+          clip-path: inset(#{$top}% 0 #{$bottom}% 0);
+      }
+  }
 }
 
-  @keyframes noise-anim-2{
-    $steps:20;
-    @for $i from 0 through $steps{
-      #{percentage($i*(1/$steps))}{
-        clip:rect(random(100)+px,9999px,random(100)+px,0);
-      }
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
     }
   }
+}
 
-  .fade-in {
-    animation: fade-in .7s ease-out;
+.fade-in {
+  animation: fade-in .7s ease-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
   }
-  
-  @keyframes fade-in {
-    0% {
-      -webkit-filter: blur(24px);
-      -moz-filter: blur(24px);
-      -o-filter: blur(24px);
-      -ms-filter: blur(24px);      // transform: translateY(24rem);
-    }
-    100% {
-      -webkit-filter: blur(0px);
-      -moz-filter: blur(0px);
-      -o-filter: blur(0px);
-      -ms-filter: blur(0px);      // transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
   }
+}
 
+@keyframes highlight_before_1500 {
+  0% {
+    background-color: $color-red;
+  }
+  100% {
+    background-color: $color-white;
+  }
+}
 
-  
+@keyframes highlight_early_20th {
+  0% {
+    background-color: $bauhaus-red;
+  }
+  100% {
+    background-color: $bauhaus-back;
+  }
+}
+
+// @keyframes rotateCaret {
+//   0% {
+//     -ms-transform: rotate(0deg); /* IE 9 */
+//     -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     -ms-transform: rotate(180deg); /* IE 9 */
+//     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+//     transform: rotate(180deg);
+//   }  
+// }
