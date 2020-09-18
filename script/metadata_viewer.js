@@ -1,10 +1,3 @@
-var people = [],
-    places = [],
-    dates = [];
-var peopleToSort = [], 
-    placesToSort = [], 
-    datesToSort = [];
-
 $(function(){
     $("body").prepend(`
         <label for="meta-toggle" class="metadata__button btn btn--color btn--animated-up">
@@ -23,10 +16,19 @@ $(function(){
         <div class="metadata">
 
             <input type="checkbox" class="metadata__checkbox" id="meta-toggle">
-
             <div class="metadata__background">&nbsp;</div>
 
             <nav class="metadata__nav">
+                <div class="metadata__context">
+                    <div class="metadata__input">
+                        <input type="radio" id="currentArticle" name="context" value="currentArticle" checked="checked">
+                        <label for="currentArticle" class="u-nowrap">Current article</label>
+                    </div>
+                    <div class="metadata__input">
+                        <input type="radio" id="everyArticle" name="context" value="everyArticle">
+                        <label for="everyArticle" class="u-nowrap">Every article</label>      
+                    </div>
+                </div>
                 <div class="metadata__tabs">
                     <div class="metadata__tab tableOfContents">
                         <input type="checkbox" class="metadata__checkbox" id="tableOfContents" checked>
@@ -97,56 +99,61 @@ $(function(){
         $('.metadata__button').toggleClass('changed');
     };
 
-    function sortUnorderedList (ul, items, itemsToSort, sortDescending, textOrder) {
+    function sortUnorderedList (list, sortDescending, textOrder, items) {
         if (textOrder) {
-            ul.each(function(i){
-                this.innerHTML = items[i];
+            $(`.${list} li`).each(function(i){
+                this.outerHTML = items[i];
             });
+            $(`#${list}TextOrder`).prop('disabled', true);
+            $(`#${list}TextOrder`).removeClass("btn--color");
+            $(`#${list}Sort`).html("Sort <span class='u-nowrap'>A-Z</span>");
             return
         }
-        itemsToSort.sort();
-        if(sortDescending) {
-            itemsToSort.reverse();
-        }
-        ul.each(function(i){
-            this.innerHTML = itemsToSort[i];
+        $(`.${list} li`).sort(function(a, b){
+            if (sortDescending) {
+                a = $(b).attr("data-text");
+                b = $(a).attr("data-text");
+                $(`#${list}Sort`).html("Sort <span class='u-nowrap'>A-Z</span>");            
+            } else {
+                a = $(a).attr("data-text");
+                b = $(b).attr("data-text");
+                $(`#${list}Sort`).html("Sort <span class='u-nowrap'>Z-A</span>");
+            }
+            if (a < b) {
+                return 1
+            } else if (a == b) {
+                return 0
+            } else if (a > b) {
+                return -1;
+            }
+        }).each(function(){
+            $(`.${list} ul`).prepend(this);
         });
-    }
-
-    function handleSortButton(list, items, itemsToSort, desc) {
-        if (desc){
-            sortUnorderedList($(`.${list} li`), items, itemsToSort, desc, false);
-            $(`#${list}Sort`).html("Sort <span class='u-nowrap'>A-Z</span>");
-        } else {
-            sortUnorderedList($(`.${list} li`), items, itemsToSort, desc, false);
-            $(`#${list}Sort`).html("Sort <span class='u-nowrap'>Z-A</span>");
-        }
         $(`#${list}TextOrder`).prop('disabled', false);
         $(`#${list}TextOrder`).addClass("btn--color");
     }
 
-    function handleTextOrderButton(list, items, itemsToSort, desc) {
-        sortUnorderedList($(`.${list} li`), items, itemsToSort, desc, true);
-        $(`#${list}TextOrder`).prop('disabled', true);
-        $(`#${list}TextOrder`).removeClass("btn--color");
-        $(`#${list}Sort`).html("Sort <span class='u-nowrap'>A-Z</span>");
-    }
-
     function expandMetadataViewer(x) {
-        if (x.matches) {
+        if (!isActive && x.matches) {
             $(".metadata").css("height", "0");
+            $(".metadata__nav").css("height", "0");
+        } else if (isActive && x.matches){
+            $(".metadata").css("height", "30vh");
+            $(".metadata__nav").css("height", "30vh");
         } else if (!x.matches && $(".around_2040").length > 0) {
-            $(".metadata").css("height", "95.5vh");
+            $(".metadata").css("height", "91vh");
+            $(".metadata__nav").css("height", "91vh");
         } else if (!x.matches && $(".before_1500").lenth > 0) {
             $(".metadata").css("height", "100vh");
+            $(".metadata__nav").css("height", "100vh");
         } else if (!x.matches && $(".early_20th").lenth > 0) {
             $(".metadata").css("height", "100vh");
+            $(".metadata__nav").css("height", "100vh");
         } else {
             $(!x.matches && ".metadata").css("height", "100vh");
+            $(".metadata__nav").css("height", "100vh");
         }
     }
-
-    var isActive = false;
 
     $(document).on("click", ".metadata__button", function(){
         toggleColor();
@@ -158,9 +165,11 @@ $(function(){
 
     $(document).on("click", ".metadata__button", function(){
         if (isActive && x.matches) {
-            $(".metadata").css("height", "30vh")
+            $(".metadata").css("height", "30vh");
+            $(".metadata__nav").css("height", "30vh");
         } else if (!isActive && x.matches) {
             $(".metadata").css("height", "0");
+            $(".metadata__nav").css("height", "0");
         }
     });
 
@@ -168,12 +177,12 @@ $(function(){
     var peopleDesc = false;
 
     $(document).on("click", "#indexOfPeopleSort", function(){
-        handleSortButton("indexOfPeople", people, peopleToSort, peopleDesc);
+        sortUnorderedList("indexOfPeople", peopleDesc, false, peopleTextOrder);
         peopleDesc = !peopleDesc;
     });
 
     $(document).on("click", "#indexOfPeopleTextOrder", function(){
-        handleTextOrderButton("indexOfPeople", people, peopleToSort, peopleDesc);
+        sortUnorderedList("indexOfPeople", peopleDesc, true, peopleTextOrder);
         peopleDesc = false;
     });
 
@@ -181,12 +190,12 @@ $(function(){
     var placesDesc = false;
 
     $(document).on("click", "#indexOfPlacesSort", function(){
-        handleSortButton("indexOfPlaces", places, placesToSort, placesDesc);
+        sortUnorderedList("indexOfPlaces", placesDesc, false, placesTextOrder);
         placesDesc = !placesDesc;
     });
 
     $(document).on("click", "#indexOfPlacesTextOrder", function(){
-        handleTextOrderButton("indexOfPlaces", places, placesToSort, placesDesc);
+        sortUnorderedList("indexOfPlaces", placesDesc, true, placesTextOrder);
         placesDesc = false;
     });
 
@@ -196,14 +205,14 @@ $(function(){
     $(document).on("click", "#indexOfDatesSort", function(){
         if (clockwise) {
             $(".indexOfDates li").sort(function(a, b){
-                return Date.parse($(b).attr("data-date")) - Date.parse($(a).attr("data-date"));
+                return Date.parse($(b).attr("data-text")) - Date.parse($(a).attr("data-text"));
             }).each(function(){
                 $(".indexOfDates ul").prepend(this);
             });
             $("#indexOfDatesSort").html("<img alt='anti-clockwise icon' src='img/anti-clockwise.svg'></img>")
         } else {
             $(".indexOfDates li").sort(function(a, b){
-                return Date.parse($(a).attr("data-date")) - Date.parse($(b).attr("data-date"));
+                return Date.parse($(a).attr("data-text")) - Date.parse($(b).attr("data-text"));
             }).each(function(){
                 $(".indexOfDates ul").prepend(this);
             });
@@ -216,7 +225,7 @@ $(function(){
 
     $(document).on("click", "#indexOfDatesTextOrder", function(){
         $(".indexOfDates li").each(function(i){
-            this.outerHTML = dates[i];
+            this.outerHTML = datesTextOrder[i];
         });
         $("#indexOfDatesTextOrder").prop("disabled", true);
         $("#indexOfDatesTextOrder").removeClass("btn--color");
@@ -226,6 +235,20 @@ $(function(){
 
     // All indexes
     $(document).on("click", ".index__link", function(){
+        var targetId = $(this).attr("href");
+        var targetDocument = targetId.substring(targetId.indexOf('_') + 1, targetId.lastIndexOf('_'));
+        if (!($(".tableOfContents")[0].contains(this)) && targetDocument != $(".selector__article--active").attr("title")){
+            // Update document
+            var documentSelected = `${targetDocument}.html`;
+            $(".container__text").html(tempDictOfDocuments[documentSelected]);
+            // Update active link
+            $(".selector__article").each(function(){
+                $(this).removeClass("selector__article--active");
+                if ($(this).attr("title") == targetDocument){
+                    $(this).addClass("selector__article--active");
+                }
+            });
+        }
         var target =  $(`${$(this).attr("href")}`);
         if ($(".before_1500").length > 0) {
             target.css("animation", "none");
@@ -295,6 +318,11 @@ $(function(){
         }
     });
 
+    // Every article
+    $(document).on("change", "input[type=radio][name=context]", function() {
+        createList(tempDictOfDocuments, this.value);
+    });    
+
     // Result I want
     // {
     //     "@id": "http://127.0.0.1:8080/fromTeiToHtml.html",
@@ -335,20 +363,9 @@ $(function(){
     $("body").attr("xmlns:xsd", "http://www.w3.org/2001/XMLSchema#");
     $("body").attr("xmlns:crm", "http://www.cidoc-crm.org/cidoc-crm/");
 
-    // Add RDFa tags
-    function addRDFa(classe) {
-        $(`.${classe}`).each(function(i, val) {
-            // addWikipedia(val);
-            if (classe == "person") {
-                $(val).wrap(`<span about="#${$(val).attr("id")}" instanceof="foaf:Person" property="foaf:name"></span>`);
-            } else if (classe == "place") {
-                $(val).wrap(`<span about="#${$(val).attr("id")}" instanceof="crm:E53_Place" property="crm:P168_place_is_defined_by"></span>`);
-            } else if (classe="date") {
-                $(val).find("time").wrap(`<span about="#${$(val).attr("id")}" instanceof="crm:E2_Temporal_Entity" datatype="xsd:date" property="crm:P4_has_time-span"></span>`);
-            }
-
-        });
-    }  
+    // $(document).on("click", ".selector__article", function(){
+    //         $("head").append(createObj());
+    // });
     
     // Add Wikipedia 
     // function addWikipedia(val){
@@ -366,8 +383,4 @@ $(function(){
     //         }        
     //     });
     // }
-
-    addRDFa("person");
-    addRDFa("place");
-    addRDFa("date");
 });
