@@ -80,12 +80,26 @@ body {
         }
     }
 
+    &.late_20th {
+        & table {
+          margin-top: 50px;
+          margin-bottom: 50px;
+          margin-left: auto;
+          margin-right: auto;
+          column-span: all;
+          text-align: center;
+          border: 2px solid #ccc;
+        }
+    }
+
     &.early_20th {
 
         & table {
           background-color: rgba($bauhaus-red, 0.4);
           break-inside: avoid;
           padding-bottom: 24px;
+          margin-left: auto;
+          margin-right: auto;
 
           caption {
             line-height: 28px;

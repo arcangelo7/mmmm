@@ -1,6 +1,6 @@
 body {
 
-    .formats {   
+    .formats {
         position: relative;
         display: flex;
         flex-direction: column;
@@ -28,7 +28,7 @@ body {
             position: absolute;
             transition: all .35s;
             transform: rotate(-90deg);
-            
+
             &--rotate {
                 transform: rotate(0deg);
             }
@@ -41,7 +41,7 @@ body {
 
             &__select {
                 margin: 0 2.75vw;
-                
+
                 option {
                     background-color: $color-white;
                 }
@@ -55,7 +55,7 @@ body {
                 fill: $color-black;
                 top: 50%;
                 right: 17%;
-                
+
                 @include respond(big-desktop) {
                     top: 44.5%;
                 }
@@ -104,7 +104,7 @@ body {
             &__select {
                 color: $bauhaus-dark;
                 margin: 0 2.4rem;
-                
+
                 option {
                     background-color: $bauhaus-back;
                 }
@@ -127,6 +127,34 @@ body {
                     top: 10rem;
                 }
             }
-        }       
+        }
+    }
+    &.late_20th {
+        .formats {
+
+            &__select {
+                color: black;
+                margin: 0 2.4rem;
+
+                option {
+                    background-color: #ccc;
+                }
+            }
+
+            &__label {
+                margin: 2.4rem;
+                color: black;
+            }
+
+            &__icon {
+                fill: black;
+                top: 6.5rem;
+                right: 3rem;
+
+                @include respond(phone){
+                    top: 7rem;
+                }
+            }
+        }
     }
 }

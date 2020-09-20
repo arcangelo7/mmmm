@@ -37,6 +37,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'cheltenham';
+    src: url('fonts/CheltenhamStdLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 //////////////////////////////////////
 ///////// BEFORE 1500
 body {
@@ -137,6 +144,60 @@ body {
         }
     }
 
+      &.late_20th {
+        font: 1.5rem 'cheltenham', sans-serif;
+        text-align: justify;
+        color: #333;
+        a {
+          color: black;
+        }
+        h1 {
+          font: 2.5em 'cheltenham';
+          font-style: italic;
+          font-weight: bold;
+          margin-bottom: 2rem;
+          column-span: all;
+          text-align: left;
+      }
+
+      h2 {
+        font: 2em 'cheltenham';
+        font-style: italic;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        column-span: all;
+        text-align: center;
+        & a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+
+      & h3,
+      & h4,
+      & h5,
+      & h6  {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        & a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+
+      & p {
+        margin-bottom: 5px;
+        &.subtitle {
+          column-span: all;
+          font-style: italic;
+          font-weight: bold;
+          margin-bottom: 2rem;
+          text-align: left;
+        }
+      }
+    }
+
     &.early_20th {
         font-family: "kalos";
         font-weight: 200;
@@ -159,15 +220,23 @@ body {
             border-bottom: 15px solid $bauhaus-red;
             margin-top: 5px;
             padding-bottom: 7px;
+            & a {
+              text-decoration: none;
+              color: inherit;
+            }
         }
         & h3,
         & h4,
         & h5,
         & h6 {
-
             color: $bauhaus-red;
             margin-top: 8px;
             padding-bottom: 20px;
+
+            & a {
+              text-decoration: none;
+              color: inherit;
+            }
         }
 
         & p {

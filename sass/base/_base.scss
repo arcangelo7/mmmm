@@ -28,6 +28,22 @@ html {
 body {
     box-sizing: border-box;
 
+    &.late_20th {
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+      column-width: 14em;
+      column-gap: 2em;
+      column-rule: 1px solid #ccc;
+      @include respond(tab-port) {
+          column-count: 1;
+          margin: 0 30;
+      }
+
+      border-left: 5px solid #ccc;
+      border-right: 5px solid #ccc;
+    }
+
     &.early_20th {
         background: #fff;
         background-image: linear-gradient(rgba(169, 169, 169, 0.2) 0.05em, transparent 0.1em), linear-gradient(90deg, rgba(169, 169, 169, 0.2) 0.05em, transparent 0.1em);
@@ -41,40 +57,97 @@ body {
         margin-right: auto;
 
         max-width: 900px;
-
-
-        > section:nth-of-type(n+3) {
-            column-count: 2;
-            column-gap: 5.5vw;
-            column-rule: 1rem solid $bauhaus-dark;
-            border-left: 15px solid $bauhaus-red;
-
-            padding-left: 2.75vw;
-            padding-right: 2.75vw;
-            padding-top: 0;
-            padding-bottom: 0;
-
-            @include respond(tab-port) {
-                column-count: 1;
+        & .container {
+          &__text {
+            > p {
+              margin-right: 50px;
+              margin-left: 50px;
             }
-        }
 
-        > section:last-child {
-          border-bottom: 15px solid $bauhaus-red;
-        }
+            > section:nth-of-type(n+3) {
+                column-count: 2;
+                column-gap: 5.5vw;
+                column-rule: 1rem solid $bauhaus-dark;
+                border-left: 15px solid $bauhaus-red;
 
-        & p {
-            margin-top: 8px;
-            padding-bottom: 20px;
+                padding-left: 2.75vw;
+                padding-right: 2.75vw;
+                padding-top: 0;
+                padding-bottom: 0;
 
-            break-inside: avoid;
-            display: inline-block;
-        }
+                @include respond(tab-port) {
+                    column-count: 1;
+                }
+            }
 
-        ::selection {
-            background-color: $bauhaus-dark;
-            color: $bauhaus-back;
+            > section:last-of-type {
+              border-bottom: 15px solid $bauhaus-red;
+            }
+
+            & p {
+                margin-top: 8px;
+                padding-bottom: 20px;
+
+                break-inside: avoid;
+                display: inline-block;
+            }
+
+            ::selection {
+                background-color: $bauhaus-dark;
+                color: $bauhaus-back;
+            }
+          }
         }
+        //> p {
+        //  margin-right: 50px;
+        //  margin-left: 50px;
+        //}
+        //background: #fff;
+        //background-image: linear-gradient(rgba(169, 169, 169, 0.2) 0.05em, transparent 0.1em), linear-gradient(90deg, rgba(169, 169, 169, 0.2) 0.05em, transparent 0.1em);
+        //background-position-x: calc(50% - 0.875rem);
+        //background-position-y: -17px;
+        //background-size: 28px 28px;
+        //background-attachment: scroll;
+        //background-color: rgba($bauhaus-back, 0.7);
+        //
+        //margin-left: auto;
+        //margin-right: auto;
+        //
+        //max-width: 900px;
+        //
+        //
+        //> section:nth-of-type(n+3) {
+        //    column-count: 2;
+        //    column-gap: 5.5vw;
+        //    column-rule: 1rem solid $bauhaus-dark;
+        //    border-left: 15px solid $bauhaus-red;
+        //
+        //    padding-left: 2.75vw;
+        //    padding-right: 2.75vw;
+        //    padding-top: 0;
+        //    padding-bottom: 0;
+        //
+        //    @include respond(tab-port) {
+        //        column-count: 1;
+        //    }
+        //}
+        //
+        //> section:last-of-type {
+        //  border-bottom: 15px solid $bauhaus-red;
+        //}
+        //
+        //& p {
+        //    margin-top: 8px;
+        //    padding-bottom: 20px;
+        //
+        //    break-inside: avoid;
+        //    display: inline-block;
+        //}
+        //
+        //::selection {
+        //    background-color: $bauhaus-dark;
+        //    color: $bauhaus-back;
+        //}
     }
 
 
@@ -159,29 +232,29 @@ body {
         }
         height: 100vh;
         overflow: hidden;
-    
+
         & .container {
             width: 72rem;
             overflow: auto;
             @include black-mirror;
             order: 1;
             scroll-behavior: smooth;
-    
+
             ::selection {
                 color: $color-blade-runner-fog;
                 background-color: $color-led-yellow;
             }
-    
+
             &::-webkit-scrollbar {
                 width: 1rem;
                 height: 1rem;
                 background-color: $color-blade-runner-fog;
             }
-    
+
             &::-webkit-scrollbar-thumb {
                 border: 1px solid $color-led-yellow;
             }
-    
+
             @include respond(phone){
                 width: 100vw;
                 margin-top: 2.4vw;
@@ -190,14 +263,14 @@ body {
                     height: 0;
                     background-color: transparent;
                 }
-        
+
                 &::-webkit-scrollbar-thumb {
                     border: none;
                 }
             }
             &__text {
                 padding: 2.4rem;
-    
+
                 @include respond(phone){
                     padding: 9.6rem; // 2.4 * 3
                 }

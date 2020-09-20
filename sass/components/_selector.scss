@@ -1,4 +1,4 @@
-.metadata {
+.selector {
     position: fixed;
     right: 0;
     overflow: hidden;
@@ -67,25 +67,11 @@
 
     &__checkbox:checked ~ &__nav {
         opacity: 1;
-        width: 100%;
-    }
-
-    &__checkbox:checked {
-        + .metadata__tab--label {
-            background: darken($color-blue, 10%);
-
-            &::after {
-                transform: rotate(90deg);
-            }
-        }
-        ~ .metadata__tab--content {
-            max-height: 100%;
-            display: block;
-        }
+        width: 100%;    
     }
 
     &__icon {
-
+        
         img {
             position: absolute;
             top: .7rem;
@@ -124,11 +110,11 @@
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
-
+        
             &:hover {
                 background: darken($color-blue, 10%);
             }
-
+        
             &::after {
                 content: "\276F";
                 width: 1em;
@@ -137,7 +123,7 @@
                 transition: all .35s;
             }
         }
-
+      
         &--content {
             display: none;
             max-height: 0;
@@ -157,12 +143,29 @@
                 align-items: stretch;
             }
         }
+
+        &__checkbox {
+            display: none;
+        }
+
+        &__checkbox:checked {
+            + .selector__tab--label {
+
+                &::after {
+                    transform: rotate(90deg);
+                }
+            }
+            ~ .selector__tab--content {
+                max-height: 100%;
+                display: block;
+            }
+        }
     }
 }
 
 body{
     &.before_1500 {
-        .metadata {
+        .selector {
             top: 0;
             width: calc(22.2222vw - 5.5vw);
             height: 100vh;
@@ -182,14 +185,13 @@ body{
                 background-color: $color-blue;
                 color: $color-white;
             }
-
+            
             &__button {
-                bottom: 2.75vw;
+                bottom: 8.5vw;
                 right: 2.75vw;
 
                 @include respond(tab-port) {
-                    top: initial;
-                    bottom: 2.75vw;
+                    bottom: 10.85vw;
                 }
             }
 
@@ -198,7 +200,7 @@ body{
             }
 
             &__background {
-                bottom: 3vw;
+                bottom: 8.8vw;
                 right: 3vw;
                 background-image: radial-gradient(
                     $color-white,
@@ -207,7 +209,7 @@ body{
 
                 @include respond(tab-port) {
                     top: initial;
-                    bottom: .75vw;
+                    bottom: 8.8vw;
                     right: .75vw;
                 }
             }
@@ -250,7 +252,7 @@ body{
             }
 
             &__checkbox:checked {
-                + .metadata__tab--label {
+                + .selector__tab--label {
                     background: darken($color-blue, 10%);
                 }
             }
@@ -300,7 +302,7 @@ body{
     }
 
     &.around_2040 {
-        .metadata {
+        .selector {
             width: calc((100vw - 72rem) / 2 - 2.4rem);
             height: 91vh;
 
@@ -318,33 +320,23 @@ body{
             @include respond(phone) {
                 bottom: 2.4rem;
             }
-
+            
             ::selection {
                 color: $color-blade-runner-fog;
                 background-color: $color-led-yellow;
             }
-
+            
             &__button {
-                bottom: 10.8rem; // 2.4rem over navbar
+                bottom: 18.9rem; // 2.4rem over metadata-viewer
                 right: 2.4rem;
-
-                @include respond(tab-port) {
-                    top: initial;
-                    bottom: 11.5rem; // 2.4rem above footer
-                }
-
-                @include respond(phone) {
-                    top: initial;
-                    bottom: 2.4rem;
-                }
             }
 
             &__svg {
                 fill: $color-blade-runner-fog;
             }
-
+            
             &__background {
-                bottom: 2.6rem;
+                bottom: 10.7rem;
                 right: 2.9rem;
                 background-image: radial-gradient(
                     $color-blade-runner-fog,
@@ -368,9 +360,10 @@ body{
 
             &__nav {
                 height: 91vh;
+                margin-top: 12.3rem;
 
                 @include respond(tab-port) {
-                    padding-top: 2.4rem;
+                    margin-top: 0;
                 }
             }
 
@@ -394,7 +387,7 @@ body{
             }
 
             &__checkbox:checked {
-                + .metadata__tab--label {
+                + .selector__tab--label {
                     background: darken($color-grey-smoke, 24%);
                 }
             }
@@ -408,7 +401,7 @@ body{
                 &__list {
                     margin: 2.4rem;
                 }
-
+    
                 &__item {
                     margin: 2.4rem;
                 }
@@ -430,8 +423,8 @@ body{
         }
     }
 
-    &.early_20th {
-        .metadata {
+        &.early_20th {
+        .selector {
             top: 0;
             width: calc((100vw - 900px)/2);
             height: 100vh;
@@ -441,7 +434,7 @@ body{
                 transition: height .8s;
                 height: 0;
                 z-index: 1;
-                width: calc(94.5vw - (100vw - 100%));
+                width: calc(94.5vw - (100vw - 100%)); // Without scrollbar
                 top: initial;
                 left: 2.75vw;
                 bottom: 2.75vw;
@@ -452,14 +445,15 @@ body{
                 color: $bauhaus-back;
             }
 
+
             &__button {
-                bottom: 2.75vw;
+                bottom: 8.5vw;
                 right: 2.75vw;
                 background-color: $bauhaus-red;
 
                 @include respond(tab-port) {
                     top: initial;
-                    bottom: 2.75vw;
+                    bottom: 10.85vw;
                 }
             }
 
@@ -468,7 +462,7 @@ body{
             }
 
             &__background {
-                bottom: 3vw;
+                bottom: 8.8vw;
                 right: 3vw;
                 background-image: radial-gradient(
                     $bauhaus-dark,
@@ -489,11 +483,10 @@ body{
             }
 
             &__nav {
-                height: 100vh;
-                padding-top: 11.1111vh;
+                top: 11.1111vh;
 
                 @include respond(tab-port) {
-                    padding-top: 0;
+                    top: 0;
                 }
             }
 
@@ -550,7 +543,7 @@ body{
 
     &.late_20th {
 
-        .metadata {
+        .selector {
             top: 0;
             width: calc((100vw - 800px)/2);
             height: 100vh;
@@ -567,13 +560,13 @@ body{
             }
 
             &__button {
-                bottom: 2.75vw;
+                bottom: 8.5vw;
                 right: 2.75vw;
                 background-color: white;
 
                 @include respond(tab-port) {
                     top: initial;
-                    bottom: 2.75vw;
+                    bottom: 10.85vw;
                 }
             }
 
@@ -582,7 +575,7 @@ body{
             }
 
             &__background {
-                bottom: 3vw;
+                bottom: 8.8vw;
                 right: 3vw;
 
                 background-image: radial-gradient(
@@ -668,3 +661,6 @@ body{
         }
     }
 }
+
+
+

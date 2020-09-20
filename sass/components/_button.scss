@@ -93,4 +93,38 @@ body{
             }
         }
     }
+
+    &.early_20th {
+        .btn {
+            box-shadow: 0 1rem 3rem rgba($bauhaus-dark, 1);
+
+            &--color {
+                background-color: $bauhaus-red;
+
+                &::after {
+                    background-color: $bauhaus-red;
+                }
+                &.changed::after {
+                    background-color: $bauhaus-dark;
+                }
+            }
+        }
+    }
+
+    &.late_20th {
+        .btn {
+            box-shadow: 0 1rem 3rem rgba(#ccc, 1);
+
+            &--color {
+                background-color: white;
+
+                &::after {
+                    background-color: white;
+                }
+                &.changed::after {
+                    background-color: #ccc;
+                }
+            }
+        }
+    }
 }

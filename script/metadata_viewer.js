@@ -1,3 +1,49 @@
+// Button effect
+function toggleColor(button, state) {
+    if ($(".before_1500").length > 0){
+        if (state) {
+            $(`.${button}__button`).css("background-color", "#1c4d6d");
+        } else {
+            $(`.${button}__button`).css("background-color", "#a8432f");
+        }
+    } else if ($(".around_2040").length > 0){
+        if (state) {
+            $(`.${button}__button`).css("background-color", "#8af3ff");
+        } else {
+            $(`.${button}__button`).css("background-color", "#fae127");
+        }
+    } else if ($(".early_20th").length > 0){
+        if (state) {
+            $(`.${button}__button`).css("background-color", "#c76351");
+        } else {
+            $(`.${button}__button`).css("background-color", "#5d5a4f");
+        }
+    } else if ($(".late_20th").length > 0) {
+        if (state) {
+            $(`.${button}__button`).css("background-color", "white");
+        } else {
+            $(`.${button}__button`).css("background-color", "#ccc");
+        }
+    }
+    $(`.${button}__button`).toggleClass('changed');
+};
+
+// Hide widget container when not active
+function hideWidget(widget, state){
+    if (state) {
+        $(`.${widget}`).css("z-index", "-1")
+    } else {
+        $(`.${widget}`).css("z-index", "1")
+    }
+}
+
+function hideOtherWidget(otherWidget, otherWidgetState){
+    if(otherWidgetState){
+        $(`.${otherWidget}__button`).trigger("click");
+        hideWidget(otherWidget, otherWidgetState);
+    }
+}
+
 $(function(){
     $("body").prepend(`
         <label for="meta-toggle" class="metadata__button btn btn--color btn--animated-up">
@@ -74,31 +120,6 @@ $(function(){
         </div>
     `);
 
-    // Button effect
-    function toggleColor() {
-        if ($(".before_1500").length > 0){
-            if (isActive) {
-                $(".metadata__button").css("background-color", "#1c4d6d");
-            } else {
-                $(".metadata__button").css("background-color", "#a8432f");
-            }
-        } else if ($(".around_2040").length > 0){
-            if (isActive) {
-                $(".metadata__button").css("background-color", "#8af3ff");
-            } else {
-                $(".metadata__button").css("background-color", "#fae127");
-            }
-        }
-        else if ($(".early_20th").length > 0){
-            if (isActive) {
-                $(".metadata__button").css("background-color", "#5d5a4f");
-            } else {
-                $(".metadata__button").css("background-color", "#c76351");
-            }
-        }
-        $('.metadata__button').toggleClass('changed');
-    };
-
     function sortUnorderedList (list, sortDescending, textOrder, items) {
         if (textOrder) {
             $(`.${list} li`).each(function(i){
@@ -113,7 +134,7 @@ $(function(){
             if (sortDescending) {
                 a = $(b).attr("data-text");
                 b = $(a).attr("data-text");
-                $(`#${list}Sort`).html("Sort <span class='u-nowrap'>A-Z</span>");            
+                $(`#${list}Sort`).html("Sort <span class='u-nowrap'>A-Z</span>");
             } else {
                 a = $(a).attr("data-text");
                 b = $(b).attr("data-text");
@@ -134,19 +155,23 @@ $(function(){
     }
 
     function expandMetadataViewer(x) {
-        if (!isActive && x.matches) {
+        if (!metadataActive && x.matches) {
             $(".metadata").css("height", "0");
             $(".metadata__nav").css("height", "0");
-        } else if (isActive && x.matches){
+        } else if (metadataActive && x.matches){
             $(".metadata").css("height", "30vh");
             $(".metadata__nav").css("height", "30vh");
         } else if (!x.matches && $(".around_2040").length > 0) {
             $(".metadata").css("height", "91vh");
             $(".metadata__nav").css("height", "91vh");
-        } else if (!x.matches && $(".before_1500").lenth > 0) {
+        } else if (!x.matches && $(".before_1500").length > 0) {
+            $(".metadata").css("height", "100vh");
+        } else if (!x.matches && $(".early_20th").length > 0) {
+            $(".metadata").css("height", "100vh");
+        } else if (!x.matches && $(".late_20th").length > 0) {
             $(".metadata").css("height", "100vh");
             $(".metadata__nav").css("height", "100vh");
-        } else if (!x.matches && $(".early_20th").lenth > 0) {
+        } else if (!x.matches && $(".early_20th").length > 0) {
             $(".metadata").css("height", "100vh");
             $(".metadata__nav").css("height", "100vh");
         } else {
@@ -156,18 +181,23 @@ $(function(){
     }
 
     $(document).on("click", ".metadata__button", function(){
-        toggleColor();
-        isActive = !isActive;
+        toggleColor("metadata", metadataActive);
+        hideWidget("metadata", metadataActive);
+        if(selectorActive){
+            $(".selector__button").trigger("click");
+            selectorActive = false;
+        }
+        metadataActive = !metadataActive;
     });
 
-    var x = window.matchMedia("(max-width: 56.25em)");
     x.addListener(expandMetadataViewer);
 
+    // Height 0 when closed on mobile
     $(document).on("click", ".metadata__button", function(){
-        if (isActive && x.matches) {
+        if (metadataActive && x.matches) {
             $(".metadata").css("height", "30vh");
             $(".metadata__nav").css("height", "30vh");
-        } else if (!isActive && x.matches) {
+        } else if (!metadataActive && x.matches) {
             $(".metadata").css("height", "0");
             $(".metadata__nav").css("height", "0");
         }
@@ -254,7 +284,7 @@ $(function(){
             target.css("animation", "none");
             setTimeout(function(){
                 target.css("animation", "highlight_before_1500 3s");
-            }, 10);   
+            }, 10);
         } else if ($(".around_2040").length > 0) {
             target.addClass('glitch');
             setTimeout(function() {
@@ -264,7 +294,9 @@ $(function(){
             target.css("animation", "none");
             setTimeout(function(){
                 target.css("animation", "highlight_early_20th 3s");
-            }, 10);        
+            }, 10);
+        } else if ($(".late_20th").length > 0) {
+            target.effect("highlight", {color: "#ccc"}, 3000);
         }
 
         if (x.matches) {
@@ -293,7 +325,7 @@ $(function(){
             $("#indexOfDates").prop('checked', true);
         }
 
-        if (isActive == false) {
+        if (metadataActive == false) {
             $(".metadata__button").trigger("click");
             setTimeout(function() {
                 anchor[0].scrollIntoView();
@@ -315,13 +347,15 @@ $(function(){
             setTimeout(function(){
                 target.css("animation", "highlight_early_20th 4s");
             }, 10);
+        } else if ($(".late_20th").length > 0) {
+            target.effect("highlight", {color: "#ccc"}, 3000);
         }
     });
 
     // Every article
     $(document).on("change", "input[type=radio][name=context]", function() {
         createList(tempDictOfDocuments, this.value);
-    });    
+    });
 
     // Result I want
     // {
@@ -357,7 +391,7 @@ $(function(){
         return JSON.stringify(metadata);
     }
 
-    // From HTML to RDFa 
+    // From HTML to RDFa
     // Add curie to <body>
     $("body").attr("xmlns:foaf", "http://xmlns.com/foaf/0.1/");
     $("body").attr("xmlns:xsd", "http://www.w3.org/2001/XMLSchema#");
@@ -366,8 +400,8 @@ $(function(){
     // $(document).on("click", ".selector__article", function(){
     //         $("head").append(createObj());
     // });
-    
-    // Add Wikipedia 
+
+    // Add Wikipedia
     // function addWikipedia(val){
     //     var target =  $(`${$(val).attr("href").replace("--anchor","--index")}`);
     //     $.ajax({
@@ -380,7 +414,7 @@ $(function(){
     //             if (matcher.test(data.query.search[0].title)) {
     //                 target.after(` <a title="Wikipedia page about ${$(val).attr("title")}" href="http://en.wikipedia.org/?curid=${data.query.search[0].pageid}" target="_blank">&rarr;</a>`);
     //             }
-    //         }        
+    //         }
     //     });
     // }
 });

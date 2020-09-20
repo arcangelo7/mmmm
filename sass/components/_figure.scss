@@ -64,8 +64,42 @@ body {
         }
     }
 
+    &.late_20th {
+      figure {
+        margin: 2rem;
+        column-span: all;
+        text-align: center;
+
+        & img {
+            max-height: 400px;
+            max-width: 700px;
+            padding: 10px;
+            margin: auto;
+            @include respond(tab-port) {
+                max-width: 500px;
+            }
+            @include respond(phone) {
+                max-width: 300px;
+            }
+        }
+
+        & figcaption {
+
+            & p {
+                font-family: 'magazine';
+                line-height: 14px;
+                padding-bottom: 0px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+      }
+    }
+
     &.early_20th {
         figure {
+            margin-left: auto;
+            margin-right: auto;
             display: table;
             background-color: rgba($bauhaus-red, 0.4);
             align-items: center;
@@ -84,7 +118,7 @@ body {
             & img {
                 display: table-row;
                 max-width: 100%;
-                max-height: 0.7 * $image-height;
+                max-height: 0.65 * $image-height;
                 padding: 10px;
                 margin: auto;
             }

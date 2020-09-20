@@ -3,7 +3,10 @@ var peopleTextOrder = [],
     placesTextOrder = [],
     datesTextOrder = [];
 
-var isActive = false;
+var metadataActive = false;
+var selectorActive = false;
+
+var x = window.matchMedia("(max-width: 56.25em)");
 
 function createList(dictOfDocuments, context){
     var documentSelected = `${$(".selector__article--active").attr("title")}.html`;
@@ -15,7 +18,7 @@ function createList(dictOfDocuments, context){
     var documentName;
     $(".metadata__tab:not(.tableOfContents) .index__list").each(function(){
         $(this).html("");
-    })
+    });
     if (context == "everyArticle"){
         $.each(dictOfDocuments, function(document, metadata){
             documentName = document.replace(/ |,|\.|html/g,'');
@@ -97,7 +100,7 @@ function createList(dictOfDocuments, context){
                 }  
             });
         }); 
-    }
+    }    
 }
 
 $(function(){
@@ -142,6 +145,10 @@ $(function(){
         $(documentFragment).find("time").each(function(i){
             $(this).replaceWith(`<time datetime="${$(this).attr("datetime")}" class="date"'>${this.innerHTML}</time>`);
         });
+
+        var articleTitle = $(documentFragment).closest("h1").text() ? $(documentFragment).closest("h1").text() : $(documentFragment).find("h1").text();
+        $(".indexOfArticles .index__list").append(`<li class="index__item"><a class="selector__article" href="#" title="${documentName}">${articleTitle}</a></li>`)
+
         // Temporary
         $(documentFragment).find("head, title, meta, script, nav, footer").remove();
 
@@ -203,6 +210,9 @@ $(function(){
         $('h2').each(function(i){
             var instance = this.innerHTML;
             var instanceNoSpecialCharacters = this.innerHTML.replace(/ |,|\./g,'');
+
+            var parent = $(this).parent();
+            var subheadings = $(parent).find('h3');
   
             $(this).replaceWith(`
                 <h2>
@@ -216,8 +226,77 @@ $(function(){
                     <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
                 </li>
             `);
+
+        if (subheadings.length != 0) {
+            $('.tableOfContents .index__list li').last().append(`
+              <ul></ul>
+            `);
+            subheadings.each(function(i){
+                var instance = this.innerHTML;
+                var instanceNoSpecialCharacters = this.innerHTML.replace(/ |,|\./g,'');
+
+                $(this).replaceWith(`<h3><a title="${instance}" data-text="${instance}" id="${instanceNoSpecialCharacters}_${i}" href="#${instanceNoSpecialCharacters}_${i}--anchor">
+                    ${instance}</a></h3>
+                `);
+
+                $('.tableOfContents .index__list li ul').last().append(`
+                  <li class="index__item">
+                    <a class='index__link' title='${instance}' data-text="${instance}" id='${instanceNoSpecialCharacters}_${i}--index' href='#${instanceNoSpecialCharacters}_${i}'>${instance}</a>
+                    <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
+                  </li>
+                `);
+            });
+        }
         });
     }
+    //
+    // function createTableOfContents() {
+    //   if ($('h2').length == 0) {
+    //       $('.tableOfContents .metadata__tab--content').prepend('This article has no headings!');
+    //       // $('.tableOfContents').css("display", "none");
+    //   }
+    //
+    //   $('h2').each(function(i){
+    //       var instance = this.innerHTML;
+    //       var instanceNoSpecialCharacters = this.innerHTML.replace(/ |,|\./g,'');
+    //
+    //       var parent = $(this).parent();
+    //       // console.log($(parent).find('h3').get());
+    //       var subheadings = $(parent).find('h3');
+    //
+    //     $(this).replaceWith(`<h2><a title="${instance}" data-text="${instance}" id="${instanceNoSpecialCharacters}_${i}" href="#${instanceNoSpecialCharacters}_${i}--anchor">
+    //         ${instance}</a></h2>
+    //     `);
+    //
+    //     $('.tableOfContents .index__list').append(`
+    //         <li class="index__item">
+    //             <a class='index__link' title='${instance}' data-text="${instance}" id='${instanceNoSpecialCharacters}_${i}--index' href='#${instanceNoSpecialCharacters}_${i}'>${instance}</a>
+    //             <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
+    //         </li>
+    //       `);
+    //
+    //     if (subheadings.length != 0) {
+    //         $('.tableOfContents .index__list li').last().append(`
+    //           <ul></ul>
+    //         `);
+    //         subheadings.each(function(i){
+    //             var instance = this.innerHTML;
+    //             var instanceNoSpecialCharacters = this.innerHTML.replace(/ |,|\./g,'');
+    //
+    //             $(this).replaceWith(`<h3><a title="${instance}" data-text="${instance}" id="${instanceNoSpecialCharacters}_${i}" href="#${instanceNoSpecialCharacters}_${i}--anchor">
+    //                 ${instance}</a></h3>
+    //             `);
+    //
+    //             $('.tableOfContents .index__list li ul').last().append(`
+    //               <li class="index__item">
+    //                 <a class='index__link' title='${instance}' data-text="${instance}" id='${instanceNoSpecialCharacters}_${i}--index' href='#${instanceNoSpecialCharacters}_${i}'>${instance}</a>
+    //                 <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
+    //               </li>
+    //             `);
+    //         });
+    //     }
+    //   });
+    // }
 
     var templistOfArticles = ["NYTimes.html", "validation.html"];
     var tempListOfClasses = ["person", "place", "date"];
@@ -239,8 +318,12 @@ $(function(){
         createList(tempDictOfDocuments, "currentArticle");
 
         // Close metadata widget
-        if (isActive) {
+        if (metadataActive) {
             $(".metadata__button").trigger("click");
+        }
+
+        if (selectorActive) {
+            $(".selector__button").trigger("click");
         }
 
         // Reset radio button

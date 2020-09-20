@@ -7,7 +7,7 @@ body {
             @include respond(tab-port) {
                 margin-bottom: 0;
             }
-            
+
             &__bar {
                 list-style: none;
                 display: flex;
@@ -39,18 +39,18 @@ body {
                     border-right: .33rem solid $color-red;
                 }
 
-                a:link, 
+                a:link,
                 a:visited {
                     text-decoration: none;
                     text-transform: uppercase;
                     color: $color-black;
-                } 
+                }
 
-                a:hover, 
+                a:hover,
                 a:active {
                     color: $color-blue;
                 }
-                
+
                 &:not(:last-child) {
                     margin-right: 3.3rem;
 
@@ -63,7 +63,7 @@ body {
                 &--active {
                     background-color: $color-red;
 
-                    &::before, 
+                    &::before,
                     &::after {
                         content: "";
                         position: absolute;
@@ -108,6 +108,7 @@ body {
 
     &.around_2040 {
         .nav {
+            z-index: 3;
             font-family: "tron";
             @include glow;
             @include black-mirror;
@@ -122,35 +123,35 @@ body {
 
 
             --margin-hor: calc((100% - 72rem) / 2);
-            clip-path: polygon(0 100%, calc(var(--margin-hor) - 1rem) 100%, var(--margin-hor) 77%, calc(var(--margin-hor) + 72rem) 77%, calc(var(--margin-hor) + 72rem + 1rem) 100%, 100% 100%, 100% 0, 0 0); 
+            clip-path: polygon(0 100%, calc(var(--margin-hor) - 1rem) 100%, var(--margin-hor) 77%, calc(var(--margin-hor) + 72rem) 77%, calc(var(--margin-hor) + 72rem + 1rem) 100%, 100% 100%, 100% 0, 0 0);
 
             &::after {
                 content: "//";
-                @include slash;     
+                @include slash;
                 bottom: -.6rem;
                 left: calc(var(--margin-hor) - 2.4rem);
             }
 
             &::before {
                 content: "\\\\";
-                @include slash; 
+                @include slash;
                 bottom: -.6rem;
                 left: calc(var(--margin-hor) + 72rem + .2rem);
             }
 
             @include respond(phone) {
-                clip-path: polygon(0 100%, 3% 100%, 4% 85%, 96% 85%, 97% 100%, 100% 100%, 100% 0, 0 0); 
+                clip-path: polygon(0 100%, 3% 100%, 4% 85%, 96% 85%, 97% 100%, 100% 100%, 100% 0, 0 0);
 
                 &::after {
                     content: "//";
-                    @include slash;     
+                    @include slash;
                     bottom: -.6rem;
                     left: 0;
                 }
-    
+
                 &::before {
                     content: "\\\\";
-                    @include slash; 
+                    @include slash;
                     bottom: -.6rem;
                     left: 96%;
                 }
@@ -162,7 +163,7 @@ body {
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
-                
+
                 // @include respond(phone) {
                 //     flex-wrap: wrap;
                 //     justify-content: center;
@@ -170,17 +171,17 @@ body {
             }
 
             &__item {
-                -webkit-touch-callout: none; 
-                -webkit-user-select: none; 
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
                 user-select: none;
 
-                a:link, 
+                a:link,
                 a:visited {
                     text-decoration: none;
                     color: $color-grey-smoke;
                 }
 
-                a:hover, 
+                a:hover,
                 a:active {
                     position: relative;
                     @include glitch;
@@ -206,5 +207,97 @@ body {
                 }
             }
         }
+    }
+
+    &.late_20th {
+      .nav {
+          column-span: all;
+          text-align: center;
+          display: flex;
+          margin-bottom: 50px;
+          border: 5px solid #ccc;
+
+          &__bar {
+              list-style: none;
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+          }
+
+          &__item {
+              max-width: 20rem;
+              text-align: center;
+              flex: 1;
+              padding: 3.3rem 1.65rem;
+              position: relative;
+
+
+              a:link,
+              a:visited {
+                  text-decoration: none;
+                  text-transform: uppercase;
+                  color: black;
+              }
+
+              a:hover,
+              a:active {
+                  text-decoration: underline;
+              }
+
+
+              &--active {
+                background-color: #ccc;
+              }
+          }
+       }
+    }
+
+    &.early_20th {
+      .nav {
+          width: 450px;
+          height: 84px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          display: flex;
+          margin-bottom: 40px;
+          margin-top: 12px;
+          border: 10px solid $bauhaus-red;
+          background-color: $bauhaus-back;
+
+          &__bar {
+              list-style: none;
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+          }
+
+          &__item {
+              max-width: 20rem;
+              text-align: center;
+              flex: 1;
+              padding-bottom: 20px;
+              padding-top: 20px;
+              position: relative;
+
+
+              a:link,
+              a:visited {
+                  text-decoration: none;
+                  text-transform: uppercase;
+                  color: black;
+              }
+
+              a:hover,
+              a:active {
+                  text-decoration: underline;
+              }
+
+
+              &--active {
+                background-color: $bauhaus-red;
+              }
+          }
+       }
     }
 }

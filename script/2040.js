@@ -1,4 +1,54 @@
-$(function(){
+var toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
+var phone = window.matchMedia("(max-width: 37.5em)")
+
+// Tablet-like device
+function wrapInMain(phone) {
+    if (phone.matches) { // If media query matches
+        $(".foot").detach().appendTo(".container");
+    } else {
+        $(".foot").detach().appendTo(".around_2040");
+    }
+}
+
+function mouseTracking(e){
+    var eye = $('.eye');
+    var eyeX = (eye.offset().left + eye.width() / 2);
+    var eyeY = (eye.offset().top + eye.height() / 2);
+    var eyeXPercent = Math.round(eyeX / $(this).width() * 100)
+    var eyeYPercent = Math.round(eyeY / $(this).width() * 100)
+    var xPos = e.pageX; 
+    var yPos = e.pageY;
+    var mouseXPercent = Math.round(xPos / $(this).width() * 100);
+    var mouseYPercent = Math.round(yPos / $(this).height() * 100);
+
+    $('.iris').css('top',mouseYPercent - eyeYPercent);
+    $('.iris').css('left',mouseXPercent - eyeXPercent);
+
+    var iris = $(".iris");
+    if (parseInt(iris.css("top")) > 8) {
+        iris.css("top", "8px");
+    }
+    if (parseInt(iris.css("left")) < -6) {
+        iris.css("left", "-6px");
+    }
+    if (parseInt(iris.css("left")) > 6) {
+        iris.css("left", "6px");
+    }
+}
+
+// Scroll into view
+var observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+            entry.target.classList.add('fade-in')
+            // observer.unobserve(entry.target);
+        } else {
+            entry.target.classList.remove('fade-in');
+        } 
+    });
+});
+
+function manage2040(){
     if ($(".around_2040").length > 0) {
         // Add eye to nav
         $(".nav__item--logo").after(`
@@ -20,47 +70,25 @@ $(function(){
             $(this).attr("data-text", $(this).text());
         });
 
+        wrapInMain(phone) // Call listener function at run time
+        phone.addListener(wrapInMain) // Attach listener function on state changes
 
-        // Tablet-like device
-        function wrapInMain(x) {
-            if (x.matches) { // If media query matches
-                $(".foot").detach().appendTo(".container");
-            } else {
-                $(".foot").detach().appendTo(".around_2040");
+        $(document).on("click", ".selector__article", function(){
+            wrapInMain(phone);
+            phone.addListener(wrapInMain) // Attach listener function on state changes
+        });
+
+        toFade.forEach(element => {
+            observer.observe(element);
+        });
+
+        $(document).on("click", ".selector__article", function(){
+            if ($(".around_2040").length > 0) {
+                toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
+                toFade.forEach(element => {
+                    observer.observe(element);
+                });
             }
-        }
-        
-        var x = window.matchMedia("(max-width: 37.5em)")
-        wrapInMain(x) // Call listener function at run time
-        x.addListener(wrapInMain) // Attach listener function on state changes
-
-        $(document).on("click", ".selector__article", function(){
-            wrapInMain(x);
-            x.addListener(wrapInMain) // Attach listener function on state changes
-        });
-
-        // Scroll into view
-        observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.intersectionRatio > 0) {
-                    entry.target.classList.add('fade-in')
-                    // observer.unobserve(entry.target);
-                } else {
-                    entry.target.classList.remove('fade-in');
-                } 
-            });
-        });
-
-        var toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
-        toFade.forEach(table => {
-            observer.observe(table);
-        });
-
-        $(document).on("click", ".selector__article", function(){
-            toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
-            toFade.forEach(table => {
-                observer.observe(table);
-            });
         });
 
         // const config = {
@@ -69,31 +97,22 @@ $(function(){
         // };
 
         // Eye tracking
-        $(document).mousemove(function(e){
-            var eye = $('.eye');
-            var eyeX = (eye.offset().left + eye.width() / 2);
-            var eyeY = (eye.offset().top + eye.height() / 2);
-            var eyeXPercent = Math.round(eyeX / $(this).width() * 100)
-            var eyeYPercent = Math.round(eyeY / $(this).width() * 100)
-            var xPos = e.pageX; 
-            var yPos = e.pageY;
-            var mouseXPercent = Math.round(xPos / $(this).width() * 100);
-            var mouseYPercent = Math.round(yPos / $(this).height() * 100);
+        $(document).mousemove(mouseTracking); 
+    }
+}
 
-            $('.iris').css('top',mouseYPercent - eyeYPercent);
-            $('.iris').css('left',mouseXPercent - eyeXPercent);
+function remove2040(){
+    $(".eye").remove();
+    phone.removeListener(wrapInMain);
+    $(document).off("mousemove", mouseTracking);
+    toFade.forEach(element => {
+        observer.unobserve(element);
+    });
+}
 
-            var iris = $(".iris");
-            if (parseInt(iris.css("top")) > 8) {
-                iris.css("top", "8px");
-            }
-            if (parseInt(iris.css("left")) < -6) {
-                iris.css("left", "-6px");
-            }
-            if (parseInt(iris.css("left")) > 6) {
-                iris.css("left", "6px");
-            }
-        }); 
+$(function(){
+    if ($(".around_2040").length > 0) {
+        manage2040();
     }
 });
 
