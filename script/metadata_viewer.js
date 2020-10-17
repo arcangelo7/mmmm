@@ -44,6 +44,24 @@ function hideOtherWidget(otherWidget, otherWidgetState){
     }
 }
 
+function collision($div1, $div2) {
+    var x1 = $div1.offset().left;
+    var y1 = $div1.offset().top;
+    var h1 = $div1.outerHeight(true);
+    var w1 = $div1.outerWidth(true);
+    var b1 = y1 + h1;
+    var r1 = x1 + w1;
+    var x2 = $div2.offset().left;
+    var y2 = $div2.offset().top;
+    var h2 = $div2.outerHeight(true);
+    var w2 = $div2.outerWidth(true);
+    var b2 = y2 + h2;
+    var r2 = x2 + w2;
+      
+    if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+    return true;
+}
+
 $(function(){
     $("body").prepend(`
         <label for="meta-toggle" class="metadata__button btn btn--color btn--animated-up">
@@ -166,6 +184,7 @@ $(function(){
             $(".metadata__nav").css("height", "91vh");
         } else if (!x.matches && $(".before_1500").length > 0) {
             $(".metadata").css("height", "100vh");
+            $(".metadata__nav").css("height", "100vh");
         } else if (!x.matches && $(".early_20th").length > 0) {
             $(".metadata").css("height", "100vh");
         } else if (!x.matches && $(".late_20th").length > 0) {
@@ -189,6 +208,15 @@ $(function(){
         }
         metadataActive = !metadataActive;
     });
+
+    window.setInterval(function() {
+        $(".metadata__button, .selector__button").css("opacity", "1");
+        $(".index__list").each(function(){
+            if(collision($(this), $('.selector__button'))){
+                $(".metadata__button, .selector__button").css("opacity", ".5");
+            } 
+        })
+    }, 200);
 
     x.addListener(expandMetadataViewer);
 
@@ -269,8 +297,8 @@ $(function(){
         var targetDocument = targetId.substring(targetId.indexOf('_') + 1, targetId.lastIndexOf('_'));
         if (!($(".tableOfContents")[0].contains(this)) && targetDocument != $(".selector__article--active").attr("title")){
             // Update document
-            var documentSelected = `${targetDocument}.html`;
-            $(".container__text").html(tempDictOfDocuments[documentSelected]);
+            var documentSelected = `${targetDocument}`;
+            $(".container__text").html(dictOfDocuments[documentSelected]);
             // Update active link
             $(".selector__article").each(function(){
                 $(this).removeClass("selector__article--active");
@@ -304,7 +332,7 @@ $(function(){
         }
     });
 
-    $(document).on("click", ".person, .place, .date, h2 a", function(){
+    $(document).on("click", ".person, .place, .date, h2 a, h3 a", function(){
         var target =  $(`${$(this).attr("href").replace("--anchor","--index")}`);
         var anchor = $(`${$(this).attr("href")}`);
 
@@ -323,6 +351,11 @@ $(function(){
             $("#indexOfPeople").prop('checked', false);
             $("#indexOfPlaces").prop('checked', false);
             $("#indexOfDates").prop('checked', true);
+        } else {
+            $("#tableOfContents").prop('checked', true);
+            $("#indexOfPeople").prop('checked', false);
+            $("#indexOfPlaces").prop('checked', false);
+            $("#indexOfDates").prop('checked', false);            
         }
 
         if (metadataActive == false) {
@@ -354,7 +387,7 @@ $(function(){
 
     // Every article
     $(document).on("change", "input[type=radio][name=context]", function() {
-        createList(tempDictOfDocuments, this.value);
+        createList(dictOfDocuments, this.value);
     });
 
     // Result I want
@@ -375,46 +408,9 @@ $(function(){
     //     "dcterms:bibliographicCitations": "J Am Osteopath Assoc. 2016;116(10):647-652"
     //   }
 
-    // From HTML to JSON-LD
-    function createObj(){
-        var metadata = {
-            "@id": window.location.href,
-            "@context": {
-               "DC": "http://purl.org/dc/elements/1.1/",
-               "DCTERMS": "http://purl.org/dc/terms/"
-            }
-        }
-        $("head meta").not("meta[name='viewport']").each(function(){
-            var prefix = $(this).attr("name").replace("\.", ":");
-            metadata[prefix] = $(this).attr("content");
-        });
-        return JSON.stringify(metadata);
-    }
-
     // From HTML to RDFa
     // Add curie to <body>
     $("body").attr("xmlns:foaf", "http://xmlns.com/foaf/0.1/");
     $("body").attr("xmlns:xsd", "http://www.w3.org/2001/XMLSchema#");
     $("body").attr("xmlns:crm", "http://www.cidoc-crm.org/cidoc-crm/");
-
-    // $(document).on("click", ".selector__article", function(){
-    //         $("head").append(createObj());
-    // });
-
-    // Add Wikipedia
-    // function addWikipedia(val){
-    //     var target =  $(`${$(val).attr("href").replace("--anchor","--index")}`);
-    //     $.ajax({
-    //         url: 'http://en.wikipedia.org/w/api.php',
-    //         data: { action: 'query', list: 'search', srsearch: $(val).text(), format: 'json' },
-    //         dataType: 'jsonp',
-    //     }).done(function(data){
-    //         if (data.query.search[0]) {
-    //             var matcher = new RegExp($(val).attr("data-text"));
-    //             if (matcher.test(data.query.search[0].title)) {
-    //                 target.after(` <a title="Wikipedia page about ${$(val).attr("title")}" href="http://en.wikipedia.org/?curid=${data.query.search[0].pageid}" target="_blank">&rarr;</a>`);
-    //             }
-    //         }
-    //     });
-    // }
 });

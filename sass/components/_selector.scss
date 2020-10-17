@@ -130,6 +130,33 @@
         }
     }
 
+    &__article, &__issue {
+
+        &--active {
+            text-decoration: none;
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+
+    .themeSelector--active {
+        text-decoration: none;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    &__docbook {
+        width: 100%;
+
+        a {
+            display: block !important;
+            width: 90%;
+            text-align: center;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    }
+
     .index {
         &__btn {
             flex: 1;
@@ -141,6 +168,21 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: stretch;
+            }
+        }
+
+        &__nextprevious {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            &--next {
+                text-align: right;
+                cursor: pointer;
+            }
+
+            &--previous {
+                cursor: pointer;
             }
         }
 
@@ -191,7 +233,11 @@ body{
                 right: 2.75vw;
 
                 @include respond(tab-port) {
-                    bottom: 10.85vw;
+                    bottom: 10rem;
+                }
+
+                @include respond(phone){
+                    bottom: 12rem;
                 }
             }
 
@@ -251,9 +297,22 @@ body{
                 }
             }
 
-            &__checkbox:checked {
-                + .selector__tab--label {
-                    background: darken($color-blue, 10%);
+            &__article, &__issue {
+
+                &--active {
+                    color: $color-black !important;
+                }
+            }
+
+            .themeSelector--active {
+                color: $color-black !important;
+            }
+
+            &__docbook {
+                margin-bottom: 2.75vw;
+
+                @include respond(tab-port){
+                    margin: 2.75vw 0;
                 }
             }
 
@@ -277,6 +336,12 @@ body{
 
                     @include respond(tab-port){
                         margin: 1.375vw 2.75vw;
+                    }
+                }
+
+                &__checkbox:checked {
+                    + .selector__tab--label {
+                        background: darken($color-blue, 10%);
                     }
                 }
             }
@@ -329,6 +394,10 @@ body{
             &__button {
                 bottom: 18.9rem; // 2.4rem over metadata-viewer
                 right: 2.4rem;
+
+                @include respond(phone){
+                    bottom: 13.9rem;
+                }
             }
 
             &__svg {
@@ -359,7 +428,7 @@ body{
             }
 
             &__nav {
-                height: 91vh;
+                height: 79vh;
                 margin-top: 12.3rem;
 
                 @include respond(tab-port) {
@@ -386,9 +455,22 @@ body{
                 }
             }
 
-            &__checkbox:checked {
-                + .selector__tab--label {
-                    background: darken($color-grey-smoke, 24%);
+            &__article, &__issue {
+
+                &--active {
+                    color: $color-grey-smoke;
+                }
+            }
+
+            .themeSelector--active {
+                color: $color-grey-smoke;
+            }
+
+            &__docbook {
+                margin-bottom: 2.4rem;
+
+                @include respond(tab-port){
+                    margin: 2.4rem 0;
                 }
             }
 
@@ -404,6 +486,12 @@ body{
     
                 &__item {
                     margin: 2.4rem;
+                }
+
+                &__checkbox:checked {
+                    + .selector__tab--label {
+                        background: darken($color-grey-smoke, 24%);
+                    }
                 }
             }
 
@@ -424,10 +512,10 @@ body{
     }
 
         &.early_20th {
-        .selector {
-            top: 0;
-            width: calc((100vw - 900px)/2);
-            height: 100vh;
+            .selector {
+                top: 0;
+                width: calc((100vw - 900px)/2);
+                height: 100vh;
 
             @include respond(tab-port) {
                 border-radius: 1rem;
@@ -452,8 +540,11 @@ body{
                 background-color: $bauhaus-red;
 
                 @include respond(tab-port) {
-                    top: initial;
-                    bottom: 10.85vw;
+                    bottom: 10rem;
+                }
+
+                @include respond(phone){
+                    bottom: 12rem;
                 }
             }
 
@@ -483,7 +574,7 @@ body{
             }
 
             &__nav {
-                top: 11.1111vh;
+                height: 100vh;
 
                 @include respond(tab-port) {
                     top: 0;
@@ -504,24 +595,43 @@ body{
                 }
             }
 
-            &__checkbox:checked {
-                + .metadata__tab--label {
-                    background: darken($bauhaus-dark, 10%);
+            &__article, &__issue {
+
+                &--active {
+                    color: $bauhaus-dark !important;
+                }
+            }
+
+            .themeSelector--active {
+                color: $bauhaus-dark !important;
+            }
+
+            &__docbook {
+                margin-bottom: 2.75vw;
+
+                @include respond(tab-port){
+                    margin: 2.75vw 0;
                 }
             }
 
             .index {
                 &__btn {
-                    margin: 2.4rem;
+                    margin: 1.2rem;
                     padding: 1.2rem 2.4rem;
                 }
 
                 &__list {
-                    margin: 2.4rem;
+                    margin: 1.2rem;
                 }
 
                 &__item {
-                    margin: 2.4rem;
+                    margin: 1.2rem;
+                }
+
+                &__checkbox:checked {
+                    + .metadata__tab--label {
+                        background: darken($bauhaus-dark, 10%);
+                    }
                 }
             }
 
@@ -565,8 +675,11 @@ body{
                 background-color: white;
 
                 @include respond(tab-port) {
-                    top: initial;
-                    bottom: 10.85vw;
+                    bottom: 10rem;
+                }
+
+                @include respond(phone){
+                    bottom: 12rem;
                 }
             }
 
@@ -590,14 +703,16 @@ body{
                 }
             }
 
-            &__context {
-                @include respond(tab-port){
-                    margin-top: 2.75vw;
-                }
-            }
+            // &__context {
+
+            //     @include respond(tab-port){
+            //         margin-top: 2.75vw;
+            //     }
+            // }
 
             &__nav {
-                top: 11.1111vh;
+                height: 100vh;
+                top: calc(2em + 5px);
 
                 @include respond(tab-port) {
                     top: 0;
@@ -618,9 +733,22 @@ body{
                 }
             }
 
-            &__checkbox:checked {
-                + .metadata__tab--label {
-                    background: darken(#ccc, 10%);
+            &__article, &__issue {
+
+                &--active {
+                    color: black !important;
+                }
+            }
+
+            .themeSelector--active {
+                color: black !important;
+            }
+
+            &__docbook {
+                margin-bottom: 2.75vw;
+
+                @include respond(tab-port){
+                    margin: 2.75vw 0;
                 }
             }
 
@@ -642,6 +770,12 @@ body{
                   :visited {
                     color: inherit;
                   }
+                }
+
+                &__checkbox:checked {
+                    + .metadata__tab--label {
+                        background: darken(#ccc, 10%);
+                    }
                 }
             }
 

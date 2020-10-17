@@ -1,4 +1,3 @@
-@import "abstracts/functions";
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
@@ -9,6 +8,7 @@
 
 @import "components/audio";
 @import "components/biblioRef";
+@import "components/book";
 @import "components/button";
 @import "components/code";
 @import "components/eye";
@@ -21,7 +21,7 @@
 @import "layout/footer";
 @import "layout/header";
 @import "layout/navigation";
-@import "layout/section";
 
+@import "pages/about";
 @import "pages/documentation";
 @import "pages/roller_stones";

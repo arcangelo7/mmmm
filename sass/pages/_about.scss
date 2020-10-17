@@ -1,0 +1,459 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+
+    @include respond(tab-port){
+        flex-direction: column;
+    }
+}
+
+.card {
+    max-width: 40%;
+    flex: 1;
+
+    @include respond(tab-port){
+        min-width: 100%;
+    }
+
+    p {
+        column-count: 1 !important;
+    }
+
+    // FUNCTIONALITY
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 64rem;
+
+    &:not(:last-child) {
+        margin-bottom: 5rem;
+    }
+
+    &__side {
+        height: 64rem;
+        transition: all .8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 3px;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &--back {
+            transform: rotateY(180deg);
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    // FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 23rem;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px; 
+        
+        @include respond(tab-port) {
+            height: 50rem;
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: .5rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    &__details {
+        padding: 3rem;
+    }
+
+    // BACK SIDE STYLING
+    &__cta {
+        @include absCenter;
+        width: 90%;
+        text-align: center;
+
+        button {
+            padding: 1rem 2rem;
+        }
+    }
+
+    // @include respond(tab-port) 
+    @media only screen and (max-width: 56.25em),
+    only screen and (hover:none) {
+        align-self: center;
+        height: auto;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &__side {
+            height: auto;
+            position: relative;
+            box-shadow: none;
+
+            &--back {
+                transform: rotateY(0);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+
+        &:hover &__side--front {
+            transform: rotateY(0);
+        }
+
+        &__details {
+            padding: 1rem 3rem;
+        }
+
+        // BACK SIDE STYLING
+        &__cta {
+            position: relative;
+            top: 0%;
+            left: 0;
+            transform: translate(0);            
+            width: 100%;
+            padding: 7rem 4rem 4rem 4rem;
+        }
+    }
+}
+
+body {
+    &.before_1500{
+        .row {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            min-width: 100%;
+
+            &__picture {        
+                &--1 {
+                    background-image: linear-gradient(
+                        to right bottom, 
+                        $color-red, 
+                        $color-white),
+                        url(../../img/arcangelo.JPG);
+                }
+        
+                &--2 {
+                    background-image: linear-gradient(
+                        to right bottom, 
+                        $color-blue, 
+                        $color-white),
+                        url(../../img/nooshin.jpg);
+                }              
+            }
+
+            &__heading {
+                top: 18rem;
+                right: 2rem;
+
+                @include respond(tab-port){
+                    top: 41rem;
+                    right: 0rem;
+                }
+            }
+
+            &__heading-span {        
+                &--1 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba($color-red, .85),
+                        rgba($color-white, .85));
+                }
+        
+                &--2 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba($color-blue, .85),
+                        rgba($color-white, .85));
+                }
+            }
+
+            &__side {
+                &--front {
+                    @include border-slim;
+                    background-color: $color-white;
+                }
+                
+                &--back {            
+                    &-1 {
+                        background-image: linear-gradient(to right bottom, $color-red, $color-white);
+                    }
+                
+                    &-2 {
+                        background-image: linear-gradient(to right bottom, $color-blue, $color-white);
+                    }
+                }
+            }
+
+            @media only screen and (max-width: 56.25em),
+            only screen and (hover:none) {
+                background-color: $color-white;
+
+                @include border-slim;
+
+                &__side--front {
+                    border-width: 0;
+                }            
+            }
+        }
+    }
+
+    &.around_2040 {
+        .row {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            min-width: 80%;
+            &__picture {        
+                &--1 {
+                    background-image: linear-gradient(
+                        to right bottom, 
+                        black, 
+                        $color-led-azure),
+                        url(../../img/arcangelo.JPG);
+                }
+        
+                &--2 {
+                    background-image: linear-gradient(
+                        to right bottom, 
+                        black, 
+                        $color-led-yellow),
+                        url(../../img/nooshin.jpg);
+                }              
+            }
+
+            &__heading {
+                top: -7rem;
+                right: -9rem;
+            }
+
+            &__heading-span {        
+                &--1 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba(black, .85),
+                        rgba($color-led-azure, .85));
+                }
+        
+                &--2 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba(black, .85),
+                        rgba($color-led-yellow, .85));
+                }
+            }
+
+            &__side {
+                box-shadow: .24rem .24rem .24rem $color-grey-smoke;
+
+                &--front {
+                    background-color: black;
+                }
+
+                &--back {            
+                    &-1 {
+                        background-image: linear-gradient(to right bottom, black, $color-led-azure);
+                    }
+                
+                    &-2 {
+                        background-image: linear-gradient(to right bottom, black, $color-led-yellow);
+                    }
+                }
+            }
+
+            &__details {
+                padding: 0 3rem;
+            }
+
+            @media only screen and (max-width: 56.25em),
+            only screen and (hover:none) {
+                background-color: black;
+                box-shadow: .24rem .24rem .24rem $color-grey-smoke;
+                
+                &__side {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    &.early_20th {
+        .row {
+            margin: 56px 5rem 0 5rem;
+        }
+        .card {
+            &__picture {        
+                &--1 {
+                    background-image: linear-gradient(
+                        to right bottom, 
+                        $bauhaus-dark, 
+                        $bauhaus-back),
+                        url(../../img/arcangelo.JPG);
+                }
+        
+                &--2 {
+                    background-image: linear-gradient(
+                        to right bottom, 
+                        $bauhaus-red, 
+                        $bauhaus-back),
+                        url(../../img/nooshin.jpg);
+                }              
+            }
+
+            &__heading {
+                top: 17rem;
+                right: 1rem;
+            }
+
+            &__heading-span {
+                &--1 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba($bauhaus-dark, .85),
+                        rgba($bauhaus-back, .85));
+                }
+        
+                &--2 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba($bauhaus-red, .85),
+                        rgba($bauhaus-back, .85));
+                }
+            }
+
+            &__side {
+                border: 10px solid #c76351;
+                &--front {
+                    background-color: $bauhaus-back;
+                }
+
+                &--back {            
+                    &-1 {
+                        background-image: linear-gradient(to right bottom, $bauhaus-dark, $bauhaus-back);
+                    }
+                
+                    &-2 {
+                        background-image: linear-gradient(to right bottom, $bauhaus-red, $bauhaus-back);
+                    }
+                }
+            }
+
+            @media only screen and (max-width: 56.25em),
+            only screen and (hover:none) {
+                background-color: $bauhaus-back;
+                border: 10px solid #c76351;
+                &__side {
+                    border: none;
+                }
+            }
+        }
+    }
+
+    &.late_20th {
+        .row {
+            column-span: all;
+        }
+        
+        .card {     
+            height: 60rem;       
+            &__picture {        
+                &--1 {
+                    background-image: url(../../img/arcangelo.JPG);
+                }
+        
+                &--2 {
+                    background-image: url(../../img/nooshin.jpg);
+                }              
+            }
+
+            &__heading {
+                top: 15rem;
+                right: 0rem;
+
+                @include respond(tab-port){
+                    top: 39rem;
+                }
+            }
+
+            &__heading-span {        
+                &--1 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba(black, .85),
+                        rgba(#ccc, .85));
+                }
+        
+                &--2 {
+                    background-image: linear-gradient(
+                        to right bottom,
+                        rgba(black, .85),
+                        rgba(#ccc, .85));
+                }
+            }
+
+            &__side {
+                
+                &--front {
+                    background-color: #ccc;
+                    height: 60rem;
+                }
+
+                &--back {            
+                    &-1 {
+                        background-image: linear-gradient(to right bottom, black, #ccc);
+                    }
+                
+                    &-2 {
+                        background-image: linear-gradient(to right bottom, black, #ccc);
+                    }
+                }
+            }
+
+            &__mail-box {
+                color: #fff;
+                margin-bottom: 3rem;
+            }
+
+            @media only screen and (max-width: 56.25em),
+            only screen and (hover:none) {
+                background-color: #ccc;
+
+                &__heading {
+                    position: fixed;
+                }
+            }
+        }
+    }
+}
+

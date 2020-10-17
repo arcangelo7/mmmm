@@ -31,13 +31,19 @@ $(function(){
                         <input type="checkbox" class="index__checkbox" id="indexOfIssues" checked>
                         <label class="selector__tab--label" for="indexOfIssues">Index of issues</label>
                         <div class="selector__tab--content">
+                        <ul class="index__list"></ul>
                         </div>
                     </div>
                     <div class="selector__tab index indexOfArticles">
-                        <input type="checkbox" class="index__checkbox" id="indexOfArticles">
+                        <input type="checkbox" class="index__checkbox" id="indexOfArticles" checked>
                         <label class="selector__tab--label" for="indexOfArticles">Index of articles</label>
                         <div class="selector__tab--content">
-                            <ul class="index__list"></ul>
+                            <ul class="index__list">
+                                <div class="index__nextprevious">
+                                    <a class="index__nextprevious--previous">&larr;</a>
+                                    <a class="index__nextprevious--next">&rarr;</a>
+                                </div>
+                            </ul>
                         </div>
                     </div>
                     <div class="selector__tab indexOfThemes">
@@ -62,7 +68,7 @@ $(function(){
             $(".selector__nav").css("height", "30vh");
         } else if (!x.matches && $(".around_2040").length > 0) {
             $(".selector").css("height", "91vh");
-            $(".selector__nav").css("height", "91vh");
+            $(".selector__nav").css("height", "79vh");
         } else if (!x.matches && $(".before_1500").length > 0) {
             $(".selector").css("height", "100vh");
             $(".selector__nav").css("height", "100vh");
@@ -120,12 +126,51 @@ $(function(){
                 break;
         }
         $(".indexOfThemes .index__list").append(`
-            <li class="list__item"><a href="#" title="${theme}" class="themeSelector">${prettyTheme}</a></li>
+            <li class="index__item">
+                <a href="#" title="${theme}" class="themeSelector">${prettyTheme}</a>
+                <a href="#" title="${prettyTheme}"><i class="fas fa-info-circle"></i></a>
+            </li>
         `);
+        // Add class active to active theme
+        $(`.indexOfThemes a[title="${$('body').attr('class')}"]`).addClass("themeSelector--active");
     });
+
+    $(document).on("click", ".fa-info-circle", function(){
+        var documentation;
+        switch ($(this).parent().attr("title")) {
+            case "Before 1500":
+                documentation = before_1500_doc;
+                break;
+            case "Around 2040":
+                documentation = around_2040_doc;
+                break;
+            case "Early 20th":
+                documentation = early_20th_doc;
+                break;
+            case "Late 20th":
+                documentation = late_20th_doc;
+                break;
+        }
+        $(".container__text").html(documentation);
+
+        // Update active link
+        $(".fa-info-circle").each(function(){
+            $(this).removeClass("themeSelector--active");
+        });
+        $(this).addClass("themeSelector--active");
+    });
+
     $(document).on("click", ".themeSelector", function(){
         $("body").removeClass();
         $("body").addClass($(this).attr("title"));
+
+        // Update selector colors
+        $(".selector__button").trigger("click");
+
+        // One click to set right colors
+        $(".metadata__button").trigger("click");
+        // One click to close it
+        $(".metadata__button").trigger("click");
 
         // Disable or enable around_2040 js
         if ($(".around_2040").length > 0) {
@@ -133,5 +178,65 @@ $(function(){
         } else {
             remove2040();
         }
+
+        // Change widget height only on desktop
+        if ($(".around_2040").length > 0) {
+            $(".metadata, .selector").css("height", "91vh");
+        } else if (!x.matches) {
+            $(".metadata, .selector").css("height", "100vh");
+        }
+
+        // Update active link
+        $(".themeSelector").each(function(){
+            $(this).removeClass("themeSelector--active");
+            if ($(this).attr("title") == $("body").attr("class")){
+                $(this).addClass("themeSelector--active");
+            }
+        });
+    });
+
+    $(document).on("click", ".index__nextprevious a", function(){
+        // Update document
+        var currentArticle = $(".selector__article--active").parent();
+
+        if ($(this).hasClass("index__nextprevious--previous")) {
+            var nextArticle = currentArticle.prev().not(".index__nextprevious");
+            if ($(nextArticle).length == 0){
+                nextArticle = currentArticle.siblings(":last");
+            }    
+        } else {
+            var nextArticle = currentArticle.next();
+            if ($(nextArticle).length == 0){
+                nextArticle = currentArticle.parent().children(":nth-child(2)");
+            }
+        }
+
+        nextArticle.find("a").trigger("click");
+    });
+
+    function saveAsFile(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+
+    $(document).on("click", ".selector__docbook a", function(){
+        var xml_url = $(".selector__article--active").attr("folder");
+        var curArticleTitle = xml_url.split("/").pop().split(".")[0];
+        console.log(curArticleTitle)
+        var xsl_url = "./DocBook.xsl"
+        // From TEI to DocBook
+        $.when($.get(xml_url), $.get(xsl_url))
+        .done(function(xml_doc, xsl_doc) {
+            var xsltProcessor = new XSLTProcessor();
+            xsltProcessor.importStylesheet(xsl_doc[0]);
+            resultDocument = xsltProcessor.transformToDocument(xml_doc[0]);
+            var resultDocumentString = new XMLSerializer().serializeToString(resultDocument.documentElement);
+            saveAsFile(`${curArticleTitle}.dbk`, resultDocumentString);
+        });
     });
 });

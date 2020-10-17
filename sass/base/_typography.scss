@@ -44,9 +44,28 @@
     font-style: normal;
 }
 
+body {
+    a {
+        display: initial !important;
+        word-wrap: break-word;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto; 
+    }
+
+    .nav__item a {
+        word-wrap: initial;
+    }
+
+    #References {    
+        p {
+            column-count: 1;
+        }
+    }
+
 //////////////////////////////////////
 ///////// BEFORE 1500
-body {
     &.before_1500 {
         font-family: "schwabacher";
         font-size: 3.3rem;
@@ -62,7 +81,7 @@ body {
         & h5,
         & h6 {
             color: $color-red;
-            margin-top: 2.75vw;
+            // margin-top: 2.75vw;
         }
 
         & p {
@@ -119,7 +138,6 @@ body {
             font-family: "tron";
             position: relative;
             @include glow;
-            // @include glitch;
 
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -150,6 +168,7 @@ body {
         color: #333;
         a {
           color: black;
+          word-break: break-all;
         }
         h1 {
           font: 2.5em 'cheltenham';
@@ -210,7 +229,7 @@ body {
             font-size: 50px;
             line-height: 56px;
             border-bottom: 15px solid $bauhaus-red;
-            margin-top: 8px;
+            margin-top: 0px;
             padding-bottom: 28px;
         }
 

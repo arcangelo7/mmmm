@@ -1,4 +1,20 @@
 body {
+    &.before_1500 {
+        .foot {
+            margin-top: 11vw;
+
+            p {
+                column-count: 1;
+            }
+
+            @include border-large;
+
+            @include respond(tab-port) {
+                @include border-slim;
+            }
+        }
+    }
+
     &.around_2040 {
         .foot {
             @include black-mirror;
@@ -81,7 +97,7 @@ body {
 
     &.early_20th {
       .foot {
-          width: 450px;
+          width: 450px; // 450px
           height: 168px;
           margin-left: auto;
           margin-right: auto;

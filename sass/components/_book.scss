@@ -1,0 +1,112 @@
+
+.book {
+  column-span: all;
+  margin: 5rem auto;
+  width: 42rem;
+  height: 34rem;
+  perspective: 70rem;
+}
+
+.cover {
+  background-color: #36354e;
+  transform: rotateY(0deg);
+  width: 21rem; // Aurea proportion, Fibonacci numbers
+  height: 34rem; // Aurea proportion, Fibonacci numbers
+}
+
+.page {
+  top: 1rem;
+  left: 2rem;
+  // background-color: #e9e6c4;
+  transform: rotateY(0deg);
+  width: 19rem;
+  height: 32rem;
+}
+
+// .page::before, .page::after {
+//   display: block;
+//   border-top: 1px dashed rgba(0, 0, 0, 0.3);
+//   content: "";
+//   padding-bottom: 1rem;
+// }
+
+.cover, .page {
+  position: absolute;
+  transform-origin: 100% 0;
+  border-radius: 5px 0 0 5px;
+  box-sizing: border-box;
+}
+
+.cover.turn {
+  animation: bookCover 3s forwards;
+}
+
+// .page.turn {
+//   animation: bookOpen 3s forwards;
+// }
+
+.page:nth-of-type(1) {
+  animation: bookOpen180 3s forwards;
+  animation-delay: 0.05s;
+}
+
+.page:nth-of-type(2) {
+  animation: bookOpen180 3s forwards;
+  animation-delay: 0.33s
+}
+
+.page:nth-of-type(3) {
+  animation: bookOpen181 3s forwards;
+  animation-delay: 0.66s;
+}
+
+.page:nth-of-type(4) {
+  animation: bookOpen125deg 3s forwards;
+  animation-delay: 0.99s;
+}
+
+.page:nth-of-type(5) {
+  animation: bookOpen30deg 3s forwards;
+  animation-delay: 1.2s;
+}
+
+.page:nth-of-type(6) {
+  animation: bookOpen55deg 3s forwards;
+  animation-delay: 1.25s;
+}
+
+@keyframes bookOpen180 {
+  30% { z-index: 6 }
+  100% {  transform: rotateY(180deg);
+    z-index: 1;}
+}
+
+@keyframes bookOpen181 {
+  30% { z-index: 5 }
+  100% {  transform: rotateY(181deg);
+    z-index: 1;}
+}
+
+@keyframes bookCover {
+  30% { z-index: 7 }
+  100% {  transform: rotateY(180deg);
+    z-index: 0;}
+}
+
+@keyframes bookOpen125deg {
+  30% { z-index: 4 }
+  100% {  transform: rotateY(125deg);
+    z-index: 4;}
+}
+
+@keyframes bookOpen55deg {
+  30% { z-index: 3 }
+  100% {  transform: rotateY(55deg);
+    z-index: 3;}
+}
+
+@keyframes bookOpen30deg {
+  50% { z-index: 2; }
+  100% {  transform: rotateY(30deg);
+    z-index: 2;}
+}

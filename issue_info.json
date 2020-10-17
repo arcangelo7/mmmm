@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Issue Number 1",
+        "folder": "issues/no1",
+        "articles": ["open_data_in_cultural_heritage_institutions.xml", "nature_conservation.xml", "crowdsourcing_image_extraction.xml"]
+    },
+    {
+        "name": "Issue Number 2",
+        "folder": "issues/no2",
+        "articles": ["computational_linguistics.xml", "digitizing_latin_incunabula.xml", "citation_in_classical_studies.xml"]
+    }
+]

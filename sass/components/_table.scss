@@ -5,6 +5,7 @@ body {
             font-size: inherit;
             width: 64.6667vw; // 66 - 2rem of margin
             margin: 0 auto;
+            margin-bottom: 2.75vw;
 
             @include respond(phone) {
                 font-size: 83%;
@@ -44,6 +45,10 @@ body {
 
             margin-top: 2.75vw;
             padding: 1rem;
+
+            p:last-child {
+                margin-bottom: 2.75vw;
+            }
 
             @include respond(tab-port) {
                 border-top-style: solid;

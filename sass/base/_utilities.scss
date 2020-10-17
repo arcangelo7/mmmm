@@ -1,3 +1,42 @@
 .u-nowrap {
     white-space: nowrap;
-}           
+}       
+
+.u-responsive {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    &.around_2040 {
+        .filler {
+            column-span: all;
+            height: 0;
+
+            @include respond(phone) {
+                height: 24rem;
+            }
+            @include respond(phone) {
+                height: 37rem;
+            }
+        }
+    }
+
+    &.late_20th {
+        .filler {
+            column-span: all;
+            height: 11rem;
+
+            @include respond(tab-land) {
+                height: 25rem;
+            }
+
+            @include respond(tab-port) {
+                height: 36rem;
+            }
+            @include respond(phone) {
+                height: 76rem;
+            }
+        }
+    }
+}

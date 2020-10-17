@@ -26,6 +26,10 @@ body.before_1500 {
             @include border-slim;
         }
 
+        h2 {
+            margin-top: 0;
+        }
+
         & p {
             column-count: 1;
         }

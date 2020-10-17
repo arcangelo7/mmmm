@@ -3,7 +3,6 @@ body {
         figure {
             display: flex;
             flex-direction: row;
-            justify-content: center;
             align-items: center;
 
             @include respond(tab-land) {
@@ -22,15 +21,18 @@ body {
 
             & img {
                 width: calc(30.35vw - 11rem); // column-width (30.35vw) - margin (10rem) - padding (1rem)
+                min-width: calc(30.35vw - 11rem); // column-width (30.35vw) - margin (10rem) - padding (1rem)
                 filter: sepia(50%);
 
                 @include respond(tab-land) {
                     width: calc(66.6667vw - 22rem); // column-width (66.6667vw) - 2 * margin (20rem) - 2* padding (2rem)
+                    min-width: calc(66.6667vw - 22rem); // column-width (30.35vw) - margin (10rem) - padding (1rem)
                     margin-bottom: 2.75vw;
                 }
 
                 @include respond(tab-port) {
                     width: calc(66.6667vw - 4rem); // column-width (66.6667vw) - 2 * margin (2rem) - 2* padding (2rem)
+                    min-width: calc(66.6667vw - 4rem); // column-width (66.6667vw) - 2 * margin (2rem) - 2* padding (2rem)
                 }
             }
 
@@ -81,6 +83,8 @@ body {
             @include respond(phone) {
                 max-width: 300px;
             }
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
         }
 
         & figcaption {
@@ -104,6 +108,7 @@ body {
             background-color: rgba($bauhaus-red, 0.4);
             align-items: center;
             text-align: center;
+            break-inside: avoid;
 
             $grid-unit: 28px;
             $image-height: 15 * $grid-unit;
