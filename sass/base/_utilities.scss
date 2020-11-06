@@ -14,10 +14,7 @@ body {
             height: 0;
 
             @include respond(phone) {
-                height: 24rem;
-            }
-            @include respond(phone) {
-                height: 37rem;
+                height: 93rem;
             }
         }
     }
@@ -35,7 +32,7 @@ body {
                 height: 36rem;
             }
             @include respond(phone) {
-                height: 76rem;
+                height: 99rem;
             }
         }
     }

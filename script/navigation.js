@@ -6,38 +6,39 @@ $(function(){
 
             </span>
             <span class="page turn">
-                <img src="img/slut.jpg" alt="Placeholder page" class="u-responsive">
+                <img src="./img/slut.jpg" alt="Placeholder page" class="u-responsive">
             </span>
             <span class="page turn">
-                <img src="img/2040_page.png" alt="2040 page" class="u-responsive">
+                <img src="./img/2040_page.png" alt="2040 page" class="u-responsive">
             </span>
             <span class="page turn">
-                <img src="img/late_20th_page.png" alt="Late 20th page" class="u-responsive">
+                <img src="./img/late_20th_page.png" alt="Late 20th page" class="u-responsive">
             </span>
             <span class="page turn">
-                <img src="img/medieval_page.jpg" alt="Medieval page" class="u-responsive">
+                <img src="./img/medieval_page.jpg" alt="Medieval page" class="u-responsive">
             </span>
             <span class="page turn">
-                <img src="img/bauhaus_page.jpg" alt="Bauhaus page" class="u-responsive">
+                <img src="./img/bauhaus_page.jpg" alt="Bauhaus page" class="u-responsive">
             </span>
             <span class="page">
-                <!-- <img src="img/slut.jpg" alt="Placeholder page" class="u-responsive"> -->
+                <!-- <img src="./img/slut.jpg" alt="Placeholder page" class="u-responsive"> -->
             </span>
             <span class="cover"></span>
             <span class="cover turn"></span>
         </div>
-        <p>This is the Metadata Model for Modern Magazines, DH edition. In the multiple issues of this magazine,
-            you will find articles about the field of Digital Humanities enriched with metadata.
-        </p>
-        <p>In order to navigate through the issues, use the button with the logo of a book. In the same sidebar,
-        you can choose between four themes spanning centuries between the 1400s and the 2040s.</p>
-        <p>To view and download the metadata, instead, use the widget with a label icon.</p>
+        <section>
+            <p>This is the Metadata Model for Modern Magazines, DH edition. In the multiple issues of this magazine,
+            you will find articles about the field of Digital Humanities enriched with metadata.</p>
+            <p>In order to <strong>navigate</strong> through the issues, use the <strong>button</strong> with the logo of a <strong>book</strong>. In the same sidebar,
+            you can choose between <strong>four themes</strong> spanning centuries between the 1400s and the 2040s.</p>
+            <p>To view and download the <strong>metadata</strong>, instead, use the <strong>widget</strong> with a <strong>label icon</strong>.</p>
+        </section>
         <div class="filler">
 
         </div>
     `
     var disclaimer = `
-        <div style="column-span:all">
+        <section style="column-span:all">
             <h1>Disclaimer</h1>
             <p>The purpose of this web site is to explore various types of typographic and layout
                 style for text documents, as an end-of-course project for the "Information Modeling
@@ -54,7 +55,7 @@ $(function(){
                 <li>Reconstruir histórias da conservação da natureza na Califórnia: 1850 – 2010: <a href="http://www.digitalhumanities.org/dhq/vol/14/2/000467/000467.html" title="Reconstruir histórias da conservação da natureza na Califórnia: 1850 – 2010 article source" target="_blank">http://www.digitalhumanities.org/dhq/vol/14/2/000467/000467.html</a></li>
                 <li>Open Data in Cultural Heritage Institutions: Can We Be Better Than Data Brokers?: <a href="http://www.digitalhumanities.org/dhq/vol/14/2/000462/000462.html" title="Open Data in Cultural Heritage Institutions: Can We Be Better Than Data Brokers? article source" target="_blank">http://www.digitalhumanities.org/dhq/vol/14/2/000462/000462.html</a></li>
             </ul>
-        </div>
+        </section>
         <div class="filler"></div>
     `;
 
@@ -126,6 +127,33 @@ $(function(){
             $(this).removeClass("nav__item--active");
         });
         $(this).parent().addClass("nav__item--active");
+
+        // Remove active from articles
+        $(".selector__article").each(function(){
+            $(this).removeClass("selector__article--active");
+        })
+
+        // Metadata widget disabled
+        if(metadataActive){
+            $(".metadata__button").trigger("click");
+            metadataActive = false;
+        }   
+        $(".metadata__background").css("display", "none");
+        $(".metadata__button").removeClass("btn--color");
+        $(".metadata__button").css("background-color", "transparent");
+        $(".metadata__button").css("pointer-events", "none");
+
+        // Arrows disabled
+        $(".index__nextprevious a").each(function(){
+            $(this).addClass("selector__article--active");
+        });
+
+        hide1500Scrollbar();
+
+        // Remove download as docbook
+        if ($(".selector__docbook").length > 0){
+            $(".selector__docbook").remove();
+        }
     });
 
     // Prepare email

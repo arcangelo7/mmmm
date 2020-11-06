@@ -108,6 +108,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 @mixin glitch {
+    display: inline-block;
+    
     &::before,
     &::after {
         content: attr(data-text);

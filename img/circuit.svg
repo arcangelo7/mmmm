@@ -1,22 +1,18 @@
 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 504 504">
     <style>
-      <!-- @keyframes line-anim {
+      @keyframes hideCircuit {
         0% {
-          opacity: 0.2;
-        }
-        25% {
-          stroke: #cccccc;
-        }
-        75% {
           stroke: #8af3ff;
+          fill: #8af3ff;
         }
         100% {
-          opacity: 0.8;
+          stroke: #011216;
+          fill: #011216;
         }
-      } -->
+      }
 
       .line {
-        animation: line-anim 1s ease-in-out infinite alternate;
+        animation: hideCircuit 1s linear 10s forwards;
         stroke: #8af3ff;
         stroke-width: .024rem;
       }
@@ -27,11 +23,13 @@
       }
 
       .endpoint {
+        animation: hideCircuit 1s linear 10s forwards;
         opacity: 0;
         fill: #8af3ff;
       }
 
       .dot {
+        animation: hideCircuit 1s linear 10s forwards;
         stroke-width: 2.4;
         stroke: #8af3ff;
       }

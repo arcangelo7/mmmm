@@ -18,7 +18,7 @@ function jsonReader(data){
         if (curItem in data) {
             var url = data[curItem];
             $(item).append(`
-                <a title="${curItem} Wikipedia page" href="${url}" target="_blank"><img src="../../img/wikipedia_icon.svg" alt="Wikipedia icon" class="index__wikipedia"></a>
+                <a title="${curItem} Wikipedia page" href="${url}" target="_blank"><img src="img/wikipedia_icon.svg" alt="Wikipedia icon" class="index__wikipedia"></a>
             `);
         }
 
@@ -33,18 +33,16 @@ function jsonReader(data){
     });
 }
 
-function createList(dictOfDocuments, context){
-    var documentSelected = `${$(".selector__article--active").attr("title")}`;
+function createList(dictOfDocuments, context, articleSelected){
     var instanceNoSpecialCharacters;
     var index__item;
-    var documentName;
     $(".metadata__tab:not(.tableOfContents) .index__list").each(function(){
         $(this).html("");
     });
     if (context == "everyArticle"){
         $.each(dictOfDocuments, function(document, metadata){
             var documentURLSplit = document.split('/');
-            var documentName = (documentURLSplit[documentURLSplit.length - 1]).replace(/\.|xml/g,'');
+            var articleSelected = (documentURLSplit[documentURLSplit.length - 1]).replace(/\.|xml/g,'');
             var articleTitle = $(metadata[0]).closest("h1").text() ? $(metadata[0]).closest("h1").text() : $(metadata[0]).find("h1").text();
             $.each(metadata[1], function(classe, instances){
                 $.each(instances, function(i, instance){
@@ -61,7 +59,7 @@ function createList(dictOfDocuments, context){
                     }
     
                     if (classe == "dates") {
-                        instanceNoSpecialCharacters = `${instance[0].replace(/ |,|\.|\?|:|'/g,'')}_${documentName}`;
+                        instanceNoSpecialCharacters = `${instance[0].replace(/ |,|\.|\?|:|'/g,'')}_${articleSelected}`;
                         index__item = `<li class="index__item" data-text="${instance[1]}">
                                             <a class='index__link' title='${instance[0]}' data-text="${instance[0]}, ${articleTitle}" id='${instanceNoSpecialCharacters}_${i}--index' href='#${instanceNoSpecialCharacters}_${i}'>${instance[0]}, ${articleTitle}</a>
                                             <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
@@ -69,7 +67,7 @@ function createList(dictOfDocuments, context){
                         $(`.${list} .index__list`).append(index__item);
                         // datesTextOrder.push(index__item);
                     } else if (classe != "head") {
-                        instanceNoSpecialCharacters = `${instance.replace(/ |,|\.|\?|:|'/g,'')}_${documentName}`;
+                        instanceNoSpecialCharacters = `${instance.replace(/ |,|\.|\?|:|'/g,'')}_${articleSelected}`;
                         index__item = `<li class="index__item" data-text="${instanceNoSpecialCharacters}">
                                             <a class='index__link' title='${instance}' data-text="${instance}, ${articleTitle}" id='${instanceNoSpecialCharacters}_${i}--index' href='#${instanceNoSpecialCharacters}_${i}'>${instance}, ${articleTitle}</a>
                                             <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
@@ -84,11 +82,14 @@ function createList(dictOfDocuments, context){
                 });
             });
         });
+        // Disable Text order
+        $("#indexOfPeopleTextOrder, #indexOfPlacesTextOrder, #indexOfDatesTextOrder").prop("disabled", true);
+        $("#indexOfPeopleTextOrder, #indexOfPlacesTextOrder, #indexOfDatesTextOrder").css("pointer-events", "none");
+        $("#indexOfPeopleTextOrder, #indexOfPlacesTextOrder, #indexOfDatesTextOrder").removeClass("btn--color");
     } else if (context == "currentArticle"){
-        var documentURLSplit = documentSelected.split('/');
-        var documentName = (documentURLSplit[documentURLSplit.length - 1]).replace(/\.|xml/g,'');
+        articleSelected = $(".index__item .selector__article--active").attr("title");
         $(document).ready(function(){
-            $.each(dictOfDocuments[documentSelected][1], function(classe, instances){
+            $.each(dictOfDocuments[articleSelected][1], function(classe, instances){
                 $.each(instances, function(i, instance){
                     switch (classe) {
                         case "people":
@@ -103,7 +104,7 @@ function createList(dictOfDocuments, context){
                     }
 
                     if (classe == "dates") {
-                        instanceNoSpecialCharacters = `${instance[0].replace(/ |,|\.|\?|:|'/g,'')}_${documentName}`;
+                        instanceNoSpecialCharacters = `${instance[0].replace(/ |,|\.|\?|:|'/g,'')}_${articleSelected}`;
                         list__item = `<li class="index__item" data-text="${instance[1]}">
                                             <a class='index__link' title='${instance[0]}' data-text="${instance[0]}" id='${instanceNoSpecialCharacters}_${i}--index' href='#${instanceNoSpecialCharacters}_${i}'>${instance[0]}</a>
                                             <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
@@ -111,7 +112,7 @@ function createList(dictOfDocuments, context){
                         $(`.${list} .index__list`).append(list__item);
                         // datesTextOrder.push(list__item);
                     } else if (classe != "head") {
-                        instanceNoSpecialCharacters = `${instance.replace(/ |,|\.|\?|:|'/g,'')}_${documentName}`;
+                        instanceNoSpecialCharacters = `${instance.replace(/ |,|\.|\?|:|'/g,'')}_${articleSelected}`;
                         index__item = `<li class="index__item" data-text="${instanceNoSpecialCharacters}">
                                             <a class='index__link' title='${instance}' data-text="${instance}" id='${instanceNoSpecialCharacters}_${i}--index' href='#${instanceNoSpecialCharacters}_${i}'>${instance}</a>
                                             <a class="anchor" id="${instanceNoSpecialCharacters}_${i}--anchor"></a>
@@ -126,14 +127,20 @@ function createList(dictOfDocuments, context){
                 });
             });
         });
+    }
 
-    }   
-
-    // Add Wikipedia links
-    $.getJSON("wikipedia.json")
-        .then(function(data){
-            jsonReader(data);
-        });
+    var generated_data, hard_data;
+    $.when(
+        $.getJSON("wikipedia.json", function(data) {
+            generated_data = data;
+        }),
+        $.getJSON("people_wikipedia.json", function(data) {
+            hard_data = data;
+        })
+    ).then(function() {
+        var final_data = $.extend({}, generated_data, hard_data);
+        jsonReader(final_data);
+    });
 }
 
 function createTableOfContents() {
@@ -201,6 +208,24 @@ function createObj(documentSelected){
     return JSON.stringify(metadata);
 }
 
+function hide1500Scrollbar(){
+    var rules = document.styleSheets[0].cssRules;
+    for (i=0; i<rules.length; i++){
+        if (rules[i].selectorText) {
+            if (rules[i].selectorText.toLowerCase() == "body.before_1500::-webkit-scrollbar"){ 
+                targetRule = i;
+                document.styleSheets[0].deleteRule(i)
+                break;
+            }        
+        } 
+    }
+}
+
+function show1500Scrollbar(){
+    var ss = document.styleSheets[0];
+    ss.insertRule('body.before_1500::-webkit-scrollbar {width: 2.5rem}', 0);
+}
+
 $(function(){
     function documentLoader(listOfArticles, listOfClasses, dictOfDocuments){
         $(listOfArticles).each(function(i, article){
@@ -211,33 +236,46 @@ $(function(){
                 resultDocument = xsltProcessor.transformToFragment(xml_doc[0], document);
                 var parsedDocument = parseDocument(article, resultDocument, listOfClasses);
                 var documentURLSplit = article.split('/');
-                documentName = (documentURLSplit[documentURLSplit.length - 1]).replace(/ |,|\.|xml/g,'');
-                dictOfDocuments[documentName] = [parsedDocument[0], parsedDocument[1]];
+                articleSelected = (documentURLSplit[documentURLSplit.length - 1]).replace(/ |,|\.|xml/g,'');
+                dictOfDocuments[articleSelected] = [parsedDocument[0], parsedDocument[1]];
+
+                // Active link
+                $(".selector__article").each(function(){
+                    if ($(this).text() == $("meta[name='DC.title']").attr("content")){
+                        $(this).addClass("selector__article--active");
+                        
+                        // Arrows enabled
+                        $(".index__nextprevious a").each(function(){
+                            $(this).removeClass("selector__article--active");
+                        });
+                    }
+                }); 
             });
         });
     }
 
+    function addSource(article) {
+        var meta = $(article).find("meta[scheme='DCTERMS.URI']");
+        var source = meta.attr("content");
+        $(".indexOfArticles .index__item").last().append(`<br><a href="${source}" title="Article original source" target="_blank">[Original Source]</a>`);
+    }
+
     function addInlineMetadata(classe, val, id) {
         if (classe == "person") {
-            $(val).wrap(`<span itemscope itemtype="http://schema.org/Person" itemid="#${id}"></span>`);
-            $(val).wrap(`<span itemprop="name" about="#${id}" instanceof="foaf:Person" property="foaf:name"></span>`);
+            $(val).wrap(`<span itemscope itemtype="http://schema.org/Person" itemid="#${id}" about="#${id}" instanceof="foaf:Person" property="foaf:name"></span>`);
         } else if (classe == "place") {
-            $(val).wrap(`<span itemscope itemtype="https://schema.org/Place" itemid="#${id}"></span>`);
-            $(val).wrap(`<span itemprop="name" about="#${id}" instanceof="crm:E53_Place" 
-property="crm:P168_place_is_defined_by"></span>`);
+            $(val).wrap(`<span itemscope itemtype="https://schema.org/Place" itemid="#${id}" about="#${id}" instanceof="crm:E53_Place" property="crm:P168_place_is_defined_by"></span>`);
         } else if (classe="date") {
-            $(val).wrap(`<span itemscope itemtype="https://schema.org/DateTime" itemid="#${id}"></span>`);
-            $(val).find("time").wrap(`<span itemprop="temporal" about="#${id}" instanceof="crm:E2_Temporal_Entity" datatype="xsd:date" 
-property="crm:P4_has_time-span"></span>`);
+            $(val).wrap(`<span itemscope itemtype="https://schema.org/DateTime" itemid="#${id}" about="#${id}" instanceof="crm:E2_Temporal_Entity" datatype="xsd:date" property="crm:P4_has_time-span"></span>`);
         }
     }
 
     // Parse document
-    function parseDocument(documentName, article, listOfClasses) {
+    function parseDocument(articleSelected, article, listOfClasses) {
         // Temporary DOM
-        var documentFolder = documentName;
-        var documentURLSplit = documentName.split('/');
-        documentName = (documentURLSplit[documentURLSplit.length - 1]).replace(/\.|xml/g,'');
+        var documentFolder = articleSelected;
+        var documentURLSplit = articleSelected.split('/');
+        articleSelected = (documentURLSplit[documentURLSplit.length - 1]).replace(/\.|xml/g,'');
         var documentFragment = document.createDocumentFragment();
         var metadata = {};
         var peopleValues = [];
@@ -245,19 +283,20 @@ property="crm:P4_has_time-span"></span>`);
         var datesValues = [];
         $(documentFragment).html(article);
         // Datetime -> class="date"
-        $(documentFragment).find("time").each(function(i){
-            $(this).replaceWith(`<time datetime="${$(this).attr("datetime")}" class="date"'>${this.innerHTML}</time>`);
-        });
+        // $(documentFragment).find("time").each(function(i){
+        //     $(this).replaceWith(`<time datetime="${$(this).attr("datetime")}" class="date"'>${this.innerHTML}</time>`);
+        // });
 
         var articleTitle = $(documentFragment).closest("h1").text() ? $(documentFragment).closest("h1").text() : $(documentFragment).find("h1").text();
-        $(".indexOfArticles .index__list").append(`<li class="index__item"><a class="selector__article" href="#" title="${documentName}" folder="${documentFolder}">${articleTitle}</a></li>`);
+        $(".indexOfArticles .index__list").append(`<li class="index__item"><a class="selector__article" href="#" title="${articleSelected}" folder="${documentFolder}">${articleTitle}</a></li>`);
+        addSource(documentFragment);
        
         var headMetadata = $(documentFragment).find("meta");
         $(documentFragment).find("head, title, meta, script, nav, footer").remove();
 
         $(listOfClasses).each(function(i, classe){
             $(documentFragment).find(`.${classe}`).each(function(i, fragment){
-                var instanceNoSpecialCharacters = `${fragment.innerHTML.replace(/ |,|\.|\?|:|'/g,'')}_${documentName}`;
+                var instanceNoSpecialCharacters = `${fragment.innerHTML.replace(/ |,|\.|\?|:|'/g,'')}_${articleSelected}`;
                 var instance = fragment.innerHTML;
 
                 addInlineMetadata(classe, fragment, `${instanceNoSpecialCharacters}_${i}`);
@@ -271,10 +310,11 @@ property="crm:P4_has_time-span"></span>`);
                     datesValues.push([instance, $(fragment).attr("datetime")]);
                 } else if (classe == "place") {
                     placesValues.push(instance);
+                    $(fragment).replaceWith(`<a title="${instance}" data-text="${instance}" class="${classe}" id="${instanceNoSpecialCharacters}_${i}" href="#${instanceNoSpecialCharacters}_${i}--anchor">${instance}</a>`);
                 } else if (classe == "person") {
                     peopleValues.push(instance);
+                    $(fragment).replaceWith(`<a title="${instance}" data-text="${instance}" class="${classe}" id="${instanceNoSpecialCharacters}_${i}" href="#${instanceNoSpecialCharacters}_${i}--anchor">${instance}</a>`);
                 }
-                $(fragment).replaceWith(`<a title="${instance}" data-text="${instance}" class="${classe}" id="${instanceNoSpecialCharacters}_${i}" href="#${instanceNoSpecialCharacters}_${i}--anchor">${instance}</a>`);
             });
         });
         metadata["head"] = headMetadata;
@@ -343,7 +383,7 @@ property="crm:P4_has_time-span"></span>`);
 
         // Update metadata
         createTableOfContents();
-        createList(dictOfDocuments, "currentArticle");
+        createList(dictOfDocuments, "currentArticle", $(this).attr("title"));
 
         // Close selector widget
         $(".selector__button").trigger("click");
@@ -365,6 +405,28 @@ property="crm:P4_has_time-span"></span>`);
                 <a>Download as Docbook</a>
             </div>
         `);
+
+        // Revoce active from nav
+        $(".nav__item").each(function(){
+            $(this).removeClass("nav__item--active");
+        });
+
+        show1500Scrollbar();
+
+        // Metadata widget enabled
+        $(".metadata__background").css("display", "block");
+        $(".metadata__button").addClass("btn--color");
+        $(".metadata__button").css("pointer-events", "auto");
+
+        // Arrows enabled
+        $(".index__nextprevious a").each(function(){
+            $(this).removeClass("selector__article--active");
+        });
+
+        // Themes not active 
+        $(".fa-info-circle").each(function(){
+            $(this).removeClass("themeSelector--active");
+        });
     });
 
     $(document).on("click", ".selector__issue", function(){
@@ -379,8 +441,8 @@ property="crm:P4_has_time-span"></span>`);
         var currentIssueArticles = loadIssueData(issue);
 
         $(".indexOfArticles .index__list").html(`<div class="index__nextprevious">
-                                                    <a class="index__nextprevious--previous">&larr;</a>
-                                                    <a class="index__nextprevious--next">&rarr;</a>
+                                                    <a class="index__nextprevious--previous selector__article--active">&larr;</a>
+                                                    <a class="index__nextprevious--next selector__article--active">&rarr;</a>
                                                 </div>`);
 
         documentLoader(currentIssueArticles,listOfClasses, dictOfDocuments);

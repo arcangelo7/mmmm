@@ -17,6 +17,7 @@ body {
 
     &.around_2040 {
         .foot {
+            z-index: 3;
             @include black-mirror;
             width: 100%;
             display: flex;

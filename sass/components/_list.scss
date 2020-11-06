@@ -1,0 +1,27 @@
+body {
+    &.before_1500 {
+        section ul, section ol {
+            margin-bottom: 2.75vw;
+            list-style-position: inside;
+        }
+    }
+
+    &.around_2040 {
+        section ul, section ol {
+            list-style-position: inside;
+        }
+    }
+
+    
+    &.early_20th {
+        section ul, section ol {
+            list-style-position: inside;
+        }
+    }
+
+    &.late_20th {
+        section ul, section ol {
+            list-style-position: inside;
+        }
+    }
+}

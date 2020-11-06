@@ -40,8 +40,8 @@ $(function(){
                         <div class="selector__tab--content">
                             <ul class="index__list">
                                 <div class="index__nextprevious">
-                                    <a class="index__nextprevious--previous">&larr;</a>
-                                    <a class="index__nextprevious--next">&rarr;</a>
+                                    <a class="index__nextprevious--previous selector__article--active">&larr;</a>
+                                    <a class="index__nextprevious--next selector__article--active">&rarr;</a>
                                 </div>
                             </ul>
                         </div>
@@ -67,8 +67,8 @@ $(function(){
             $(".selector").css("height", "30vh");
             $(".selector__nav").css("height", "30vh");
         } else if (!x.matches && $(".around_2040").length > 0) {
-            $(".selector").css("height", "91vh");
-            $(".selector__nav").css("height", "79vh");
+            $(".selector").css("height", "94vh");
+            $(".selector__nav").css("height", "94vh");
         } else if (!x.matches && $(".before_1500").length > 0) {
             $(".selector").css("height", "100vh");
             $(".selector__nav").css("height", "100vh");
@@ -108,7 +108,7 @@ $(function(){
     });
 
     // Populate index of themes
-    var listOfThemes = ["before_1500", "around_2040", "early_20th", "late_20th"];
+    var listOfThemes = ["before_1500", "early_20th", "late_20th", "around_2040"];
     $(listOfThemes).each(function(i, theme){
         var prettyTheme;
         switch (theme){
@@ -158,6 +158,18 @@ $(function(){
             $(this).removeClass("themeSelector--active");
         });
         $(this).addClass("themeSelector--active");
+        
+        // Remove download as docbook
+        if ($(".selector__docbook").length > 0){
+            $(".selector__docbook").remove();
+        }
+
+        // Disable or enable around_2040 js
+        if ($(".around_2040").length > 0) {
+            manage2040();
+        } else {
+            remove2040();
+        }
     });
 
     $(document).on("click", ".themeSelector", function(){
@@ -179,11 +191,20 @@ $(function(){
             remove2040();
         }
 
+        // if ($(".early_20th").length > 0) {
+        //     addParagraphDivider();
+        // }
+        // else {
+        //     removeParagraphDivider();
+        // }
+
         // Change widget height only on desktop
         if ($(".around_2040").length > 0) {
-            $(".metadata, .selector").css("height", "91vh");
+            $(".metadata, .selector").css("height", "94vh");
+            $(".metadata__nav, .selector__nav").css("height", "94vh");
         } else if (!x.matches) {
             $(".metadata, .selector").css("height", "100vh");
+            $(".metadata__nav, .selector__nav").css("height", "100vh");
         }
 
         // Update active link
@@ -193,6 +214,11 @@ $(function(){
                 $(this).addClass("themeSelector--active");
             }
         });
+
+        // If on nav, metadata disabled
+        if ($(".nav__item--active").length > 0) {
+            $(".metadata__button").css("background-color", "transparent");
+        }
     });
 
     $(document).on("click", ".index__nextprevious a", function(){
@@ -227,7 +253,6 @@ $(function(){
     $(document).on("click", ".selector__docbook a", function(){
         var xml_url = $(".selector__article--active").attr("folder");
         var curArticleTitle = xml_url.split("/").pop().split(".")[0];
-        console.log(curArticleTitle)
         var xsl_url = "./DocBook.xsl"
         // From TEI to DocBook
         $.when($.get(xml_url), $.get(xsl_url))

@@ -5,7 +5,7 @@ import os
 
 wikipediaDict = {}
 
-for subdir, dirs, files in os.walk("issues/no2"):
+for subdir, dirs, files in os.walk("issues"):
     for file in files:
         filepath = subdir + os.sep + file
         root = ET.parse(filepath).getroot()

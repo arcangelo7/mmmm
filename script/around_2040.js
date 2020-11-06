@@ -38,6 +38,7 @@ var around_2040_doc = `
             <p>On this dark blue stands an <strong>intertwining</strong> of <strong>luminous circuits</strong>, an evident symbol of an increasingly <strong>technological</strong> and <strong>interconnected future</strong>.</p>
             <p>The design is also a reference to the typical iconography of the <strong>Tron Legacy</strong> film, with its <strong>streets</strong> and its <strong>luminous suits</strong>. The color was in fact sampled from the <a class="figureRef" href="#f02">following image</a>.</p>
             <p>To create the background and animation, we opted for an already animated <strong>vector</strong> image, which was not created from scratch but remodeled starting from a CodePen project by Noora Pirttilahti.<a class="biblioRef" href="#b02">2</a> Instead of the original Javascript function, the resulting svg image was taken and the style was integrated and modified directly within the file.</p>
+            <p>Since this vector in the background would tend to <strong>distract</strong> the reader from the content and could in the long run be <strong>annoying</strong>, once the animation is finished its color takes on a slightly darker tint than the background, to be <strong>almost invisible</strong> given the little contrast.</p>
             <figure id="f02">
                 <img src="img/tron_legacy.jpg" alt="Tron Legacy poster">
                 <p class="num">Figure 2.</p>
@@ -619,13 +620,6 @@ var around_2040_doc = `
                     on <a href="https://codepen.io">CodePen</a>.</span>
                 </p>
         </section>
-    <section>
-        <h3>Audio effects</h3>
-            <p>To make the experience even more <strong>immersive</strong> with regards to the sci-fi and cyberpunk atmosphere, we have chosen to apply some sound feedback to some elements of the page.</p>
-            <p>Upon loading, the <strong>navbar</strong> and <strong>footer</strong> appear from top to bottom and bottom to top respectively with a <strong>deploy sound</strong>.</p>
-            <p>Electro sound badges are also produced when the mouse passes <strong>over</strong> the <strong>links</strong> in the navigation bar and <strong>clicks</strong> on any link.</p>
-            <p>All sounds are <strong>free licensed</strong> from the <a href="https://www.soundsnap.com/" title="Soundsnap.com" target="_blank">Soundsnap.com website</a>.<a class="biblioRef" href="#b06">6</a></p>
-    </section>
     <section id="References">
         <h3>References</h3>
             <p class="biblioItem" id="b01"><span class="biblioMarker">1. </span><em>Desktop vs Mobile vs Tablet Market Share Worldwide</em> (July 2019 - July 2020), Statcounter GlobalStats <a href="https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet" title="Desktop vs Mobile vs Tablet Market Share Worldwide chart" target="_blank">https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet</a>.</p>
@@ -633,7 +627,6 @@ var around_2040_doc = `
             <p class="biblioItem" id="b03"><span class="biblioMarker">3. </span>Electrolize font <a href="https://fonts.google.com/specimen/Electrolize" title="Electrolize font" target="_blank">https://fonts.google.com/specimen/Electrolize</a>.</p>
             <p class="biblioItem" id="b04"><span class="biblioMarker">4. </span>Tron Legacy font <a href="https://www.dafont.com/tr2n.font" title="Tron Legacy font" target="_blank">https://www.dafont.com/tr2n.font</a>.</p>
             <p class="biblioItem" id="b05"><span class="biblioMarker">5. </span>Coyler, Chris (21/08/2019). <em>Glitch Effect on Text / Images / SVG</em> <a href="https://css-tricks.com/glitch-effect-text-images-svg/" title="Glitch Effect on Text / Images / SVG article by Chris Coyier" target="_blank">https://css-tricks.com/glitch-effect-text-images-svg/</a>.</p>
-            <p class="biblioItem" id="b06"><span class="biblioMarker">6. </span>Soundsnap.com <a href="https://www.soundsnap.com/" title="Soundsnap.com" target="_blank">https://www.soundsnap.com/</a>.</p>
             <p class="biblioItem" id="b06"><span class="biblioMarker">6. </span>Alligator.io (21/12/2017), <em>Using the Intersection Observer API to Trigger Animations and Transitions</em> <a href="https://alligator.io/js/intersection-observer/" title="Using the Intersection Observer API to Trigger Animations and Transitions article" target="_blank">https://alligator.io/js/intersection-observer/</a>.</p>
     </section>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>

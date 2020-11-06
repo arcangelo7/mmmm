@@ -31,11 +31,13 @@ var before_1500_doc = `
             <h4>Columns</h4>
                 <p>The overall layout is modeled on classical <strong>two-columns layout</strong> of manuscripts, elegantly balanced.</p>
                 <p>The <strong>gap</strong> between one column and the other is equal to <strong>half of the left margin</strong>, that is <strong>5.5vw</strong>. Half of that space, that is 2.75vw, has been left between paragraphs, below and above a figure, above a title, above a table and as padding in the Cover and Summary sections.</p>
+                <p>Dividing the text into columns introduces the problem of possible <strong>orphans</strong> and <strong>widows</strong>, that is, isolated portions of text respectively at the beginning and at the end of a column. Fortunately, CSS provides widows and orphans properties to specify the minimum number of words at the end and beginning of a column. The rest of the text arranges itself automatically to allow for the chosen result.</p>
                 <!-- <pre>
     <code class="prettyprint">
     body.before_1500 p {
     column-count: 2;
     column-gap: 5.5vw; 
+    widows: 3; orphans: 3;
     }
     @media only screen and (max-width: 56.25em) {
     body.before_1500 p {
@@ -235,7 +237,7 @@ var before_1500_doc = `
                 </pre> 
         <h4>Headers</h4>
             <p>As for the color of the headers, the copy of Gutemberg's Bible in the Bavarian State Library was used as a reference. In fact, it is possible to view a high definition digitization at the site <a href="https://www.wdl.org/en/item/4102/view/1/1/" title="Gutemberg Bible viewer" target="_blank">https://www.wdl.org/en/item/4102/view/1/1/</a>.<a class="biblioRef" href="#b08">8</a></p>
-            <p>As in Gutemberg's Bible, <strong>no space</strong> was left between a title and the <strong>lower paragraph</strong>.</p>
+            <p>As in Gutemberg's Bible, <strong>no space</strong> was left between a title and the <strong>lower paragraph</strong>. However, we have chosen not to respect this rule for paragraphs, for greater readability.</p>
     </section>
     <section>
 
@@ -433,7 +435,7 @@ var before_1500_doc = `
                 <p>The metadata viewer has been designed to be simultaneously <strong>recognizable</strong> throughout the site and <strong>theme-specific</strong>. A crucial aspect is in fact its recognisability regardless of the chosen theme.</p>
                 <p>To achieve this, a <strong>popup menu</strong> has been designed that can be activated via a widget. Its colors and margins change depending on the theme, but everything else remains the same.</p>
                 <p>The <strong>menu</strong> consists of <strong>four sections</strong>, which can be activated through <strong>collapsible tabs</strong>: the table of contents, the index of names, the index of places and the index of dates.</p>
-                <p>The widget is positioned differently depending on the device. On the desktop it is placed at the top right, at 2.75vw away from the edges, the same margin that has been encountered for many other elements, such as paragraphs. On a tablet, on the other hand, it is placed at the bottom right, respecting the same margins, to be more accessible by the thumb for one-handed use.</p>
+                <p>The widget is positioned in the same spot on each device: bottom right at 2.75vw away from the edges, the same margin found for many other elements, such as paragraphs. This way the user is not disoriented and the widget remains more accessible for the thumb for one-handed use on mobile devices.</p>
                 <p>The widget integrates seamlessly into the theme using its colors, which change depending on whether it is active or not. Also, to make it more like a virtual button, on hover it raises slightly and the background expands and then vanishes. In this way, the idea is conveyed that by pressing it the background expands further, to become the actual menu.</p>
                 <p>The menu is 5.5vw away from the text, the same margin between one section and another. It is 22vw wide, equal to the right margin of the text in golden proportion, minus the margin between the menu itself and the text. On tablets and smartphones it is instead as wide as the width of the device, respecting a margin of 2.75vw from the side and bottom edges.</p>
                 <p>In the various tabs, the metadata are arranged in a list, respecting the margins of 2.75vw already encountered, as well as the buttons to sort them.</p>
@@ -442,15 +444,11 @@ var before_1500_doc = `
                     Before_1500-metadata-viewer</a> by Arcangelo (<a href="https://codepen.io/arcangelo7">@arcangelo7</a>)
                     on <a href="https://codepen.io">CodePen</a>.</span>
                 </p>
-            <h4>Audio button</h4>
-                <p>To bring the reader even further into the atmosphere of Germany in the 15th century, a button has been added that starts a <strong>melody from that period</strong>.</p>
-                <p>It is the piece <em>Mit ganczem willen</em> (literally "With all my heart I wish you"), by the organist Conrad Paumann, taken from the collection of German pieces Lochamer Liederbuch.<a class="biblioRef" href="#b12">12</a></p>
     </section>
     <section>
         <h3>Sections</h3>
             <h4>Navigation</h4>
                 <p>As a 1450-style navigation bar, something was sought that served the same function at that time. The choice fell on a <strong>bookmark</strong>, the purpose of which is precisely to orient oneself within a work.</p>
-                <p>The navigation bar is arranged horizontally above the top of the page in the case of large screens (max-width: 1200px), while for tablets in portrait mode (max-width: 900px) it is arranged vertically in the right margin of the text in a fixed position, so that it is always within thumb reach. Finally, if the smartphone is in landscape mode (max-height: 460px), the music button disappears so as not to overlap the navbar.</p>
                 <!-- <pre>
                     <code class="prettyprint">
     &.before_1500 {
@@ -635,7 +633,6 @@ var before_1500_doc = `
             <p class="biblioItem" id="b09"><span class="biblioMarker">9. </span><em>Incunabula and medicine: a report</em> (12/09/2016), by guest contributor | early medicine, events and visits <a href="http://blog.wellcomelibrary.org/2016/09/incunabula-and-medicine-a-report/" title="Link to the article about Incunabula and medicine: a report" target="_blank">http://blog.wellcomelibrary.org/2016/09/incunabula-and-medicine-a-report/</a>.</p>
             <p class="biblioItem" id="b10"><span class="biblioMarker">10. </span>Thick medieval frame with floral motifs <a href="https://pixabay.com/vectors/picture-frame-mirror-celtic-empty-29676/" title="Link to the big screen border image" target="_blank">https://pixabay.com/vectors/picture-frame-mirror-celtic-empty-29676/</a>.</p>
             <p class="biblioItem" id="b11"><span class="biblioMarker">11. </span>Medieval thin frame with stylized floral motifs <a href="https://www.pinclipart.com/maxpin/biTow/" title="Link to the medium screen border image" target="_blank">https://www.pinclipart.com/maxpin/biTow/</a>.</p>
-            <p class="biblioItem" id="b12"><span class="biblioMarker">12. </span><em>Secular music in late Medieval Germany (1450-1480)</em> from YouTube <a href="https://www.youtube.com/watch?v=7vm7ihQSKns" title="Link to the Secular music in late Medieval Germany (1450-1480) YouTube video" target="_blank">https://www.youtube.com/watch?v=7vm7ihQSKns</a>.</p>
     </section>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script async src="https://static.codepen.io/assets/embed/ei.js"></script>

@@ -64,7 +64,7 @@ function collision($div1, $div2) {
 
 $(function(){
     $("body").prepend(`
-        <label for="meta-toggle" class="metadata__button btn btn--color btn--animated-up">
+        <label for="meta-toggle" class="metadata__button btn btn--animated-up">
             <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
                 xmlns:cc="http://creativecommons.org/ns#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -143,8 +143,11 @@ $(function(){
             $(`.${list} li`).each(function(i){
                 this.outerHTML = items[i];
             });
-            $(`#${list}TextOrder`).prop('disabled', true);
-            $(`#${list}TextOrder`).removeClass("btn--color");
+            if (!$('#everyArticle').is(":checked")) {
+                $(`#${list}TextOrder`).prop('disabled', true);
+                $(`#${list}TextOrder`).removeClass("btn--color");
+                $(`#${list}TextOrder`).css("pointer-events", "none");
+            }
             $(`#${list}Sort`).html("Sort <span class='u-nowrap'>A-Z</span>");
             return
         }
@@ -168,8 +171,11 @@ $(function(){
         }).each(function(){
             $(`.${list} ul`).prepend(this);
         });
-        $(`#${list}TextOrder`).prop('disabled', false);
-        $(`#${list}TextOrder`).addClass("btn--color");
+        if (!$('#everyArticle').is(":checked")) {
+            $(`#${list}TextOrder`).prop('disabled', false);
+            $(`#${list}TextOrder`).addClass("btn--color"); 
+            $(`#${list}TextOrder`).css("pointer-events", "auto");   
+        }
     }
 
     function expandMetadataViewer(x) {
@@ -180,8 +186,8 @@ $(function(){
             $(".metadata").css("height", "30vh");
             $(".metadata__nav").css("height", "30vh");
         } else if (!x.matches && $(".around_2040").length > 0) {
-            $(".metadata").css("height", "91vh");
-            $(".metadata__nav").css("height", "91vh");
+            $(".metadata").css("height", "94vh");
+            $(".metadata__nav").css("height", "94vh");
         } else if (!x.matches && $(".before_1500").length > 0) {
             $(".metadata").css("height", "100vh");
             $(".metadata__nav").css("height", "100vh");
@@ -276,8 +282,11 @@ $(function(){
             });
             $("#indexOfDatesSort").html("<img alt='clockwise icon' src='img/clockwise.svg'></img>")
         }
-        $("#indexOfDatesTextOrder").prop("disabled", false);
-        $("#indexOfDatesTextOrder").addClass("btn--color");
+        if (!$('#everyArticle').is(":checked")) {
+            $("#indexOfDatesTextOrder").prop("disabled", false);
+            $("#indexOfDatesTextOrder").addClass("btn--color");
+            $("#indexOfDatesTextOrder").css("pointer-events", "auto");
+        }
         clockwise = !clockwise;
     });
 
@@ -285,8 +294,11 @@ $(function(){
         $(".indexOfDates li").each(function(i){
             this.outerHTML = datesTextOrder[i];
         });
-        $("#indexOfDatesTextOrder").prop("disabled", true);
-        $("#indexOfDatesTextOrder").removeClass("btn--color");
+        if (!$('#everyArticle').is(":checked")) {
+            $("#indexOfDatesTextOrder").prop("disabled", true);
+            $("#indexOfDatesTextOrder").removeClass("btn--color");
+            $("#indexOfDatesTextOrder").css("pointer-events", "none");
+        }
         $("#indexOfDatesSort").html("<img alt='clockwise icon' src='img/clockwise.svg'></img>");
         clockwise = true;
     });
@@ -306,23 +318,28 @@ $(function(){
                     $(this).addClass("selector__article--active");
                 }
             });
+            createTableOfContents();
         }
         var target =  $(`${$(this).attr("href")}`);
         if ($(".before_1500").length > 0) {
-            target.css("animation", "none");
             setTimeout(function(){
                 target.css("animation", "highlight_before_1500 3s");
             }, 10);
+            setTimeout(function(){
+                target.css("animation", "none");
+            }, 4010);
         } else if ($(".around_2040").length > 0) {
             target.addClass('glitch');
             setTimeout(function() {
                 target.removeClass('glitch');
             }, 4000);
         } else if ($(".early_20th").length > 0) {
-            target.css("animation", "none");
             setTimeout(function(){
                 target.css("animation", "highlight_early_20th 3s");
             }, 10);
+            setTimeout(function(){
+                target.css("animation", "none");
+            }, 4010);
         } else if ($(".late_20th").length > 0) {
             target.effect("highlight", {color: "#ccc"}, 3000);
         }
@@ -366,20 +383,24 @@ $(function(){
         }
 
         if ($(".before_1500").length > 0) {
-            target.css("animation", "none");
             setTimeout(function(){
                 target.css("animation", "highlight_before_1500 4s");
             }, 10);
+            setTimeout(function(){
+                target.css("animation", "none");
+            }, 4010);
         } else if ($(".around_2040").length > 0) {
             target.addClass('glitch');
             setTimeout(function() {
                 target.removeClass('glitch');
             }, 4000);
         } else if ($(".early_20th").length > 0) {
-            target.css("animation", "none");
             setTimeout(function(){
                 target.css("animation", "highlight_early_20th 4s");
             }, 10);
+            setTimeout(function(){
+                target.css("animation", "none");
+            }, 4010);
         } else if ($(".late_20th").length > 0) {
             target.effect("highlight", {color: "#ccc"}, 3000);
         }

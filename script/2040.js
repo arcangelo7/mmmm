@@ -1,12 +1,14 @@
-var toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
+var toFade = document.querySelectorAll('table, li, p, h1, h2, h3, h4, h5, h6, a');
 var phone = window.matchMedia("(max-width: 37.5em)")
 
 // Tablet-like device
 function wrapInMain(phone) {
-    if (phone.matches) { // If media query matches
-        $(".foot").detach().appendTo(".container");
-    } else {
-        $(".foot").detach().appendTo(".around_2040");
+    if ($(".around_2040").length > 0) {
+        if (phone.matches) { // If media query matches
+            $(".foot").detach().appendTo(".container");
+        } else {
+            $(".foot").detach().appendTo(".around_2040");
+        }
     }
 }
 
@@ -36,6 +38,11 @@ function mouseTracking(e){
     }
 }
 
+const config = {
+    rootMargin: "0px",
+    threshold: 0
+};
+
 // Scroll into view
 var observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -46,24 +53,26 @@ var observer = new IntersectionObserver(entries => {
             entry.target.classList.remove('fade-in');
         } 
     });
-});
+}, config);
 
 function manage2040(){
     if ($(".around_2040").length > 0) {
         // Add eye to nav
-        $(".nav__item--logo").after(`
-            <div class="eye">
-                <div class="blade"><div></div></div>  
-                <div class="blade"><div></div></div>
-                <div class="blade"><div></div></div>  
-                <div class="blade"><div></div></div>
-                <div class="blade"><div></div></div>  
-                <div class="blade"><div></div></div>
-                <div class="blade"><div></div></div>  
-                <div class="blade"><div></div></div>
-                <div class="iris"></div>
-            </div>
-        `);
+        if ($(".eye").length == 0) {
+            $(".nav__item--logo").after(`
+                <div class="eye">
+                    <div class="blade"><div></div></div>  
+                    <div class="blade"><div></div></div>
+                    <div class="blade"><div></div></div>  
+                    <div class="blade"><div></div></div>
+                    <div class="blade"><div></div></div>  
+                    <div class="blade"><div></div></div>
+                    <div class="blade"><div></div></div>  
+                    <div class="blade"><div></div></div>
+                    <div class="iris"></div>
+                </div>
+            `);
+        }
 
         // Glitches
         $(".around_2040").find(".nav__item a").each(function() {
@@ -78,13 +87,14 @@ function manage2040(){
             phone.addListener(wrapInMain) // Attach listener function on state changes
         });
 
+        toFade = document.querySelectorAll('table, li, p, h1, h2, h3, h4, h5, h6, a');
         toFade.forEach(element => {
             observer.observe(element);
         });
 
         $(document).on("click", ".selector__article", function(){
             if ($(".around_2040").length > 0) {
-                toFade = document.querySelectorAll('table, p, h1, h2, h3, h4, h5, h6, a');
+                toFade = document.querySelectorAll('table, li, p, h1, h2, h3, h4, h5, h6, a');
                 toFade.forEach(element => {
                     observer.observe(element);
                 });

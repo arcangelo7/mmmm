@@ -13,14 +13,6 @@ body {
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
-
-                // @include respond(tab-port) {
-                //     position: fixed;
-                //     top: 11.1111vh;
-                //     right: 2.75vw;
-                //     flex-direction: column;
-                //     align-items: flex-end;
-                // }
             }
 
             &__item {
@@ -31,13 +23,6 @@ body {
                 position: relative;
                 border-top: .33rem solid $color-red;
                 font-size: 70%;
-
-                // @include respond(tab-port) {
-                //     font-size: 50%;
-                //     padding: 1.65rem 0.825rem;
-                //     border-top: none;
-                //     border-right: .33rem solid $color-red;
-                // }
 
                 a:link,
                 a:visited {
@@ -53,11 +38,6 @@ body {
 
                 &:not(:last-child) {
                     margin-right: 3.3rem;
-
-                    // @include respond(tab-port) {
-                    //     margin-right: 0;
-                    //     margin-bottom: 3.3rem;
-                    // }
                 }
 
                 &--active {
@@ -69,37 +49,16 @@ body {
                         position: absolute;
                         border-top: 9.9rem solid $color-red;
                         bottom: -9.9rem;
-
-                        // @include respond(tab-port) {
-                        //     border-top: none;
-                        //     border-right: 3.3rem solid $color-red;
-                        //     bottom: initial;
-                        //     left: -3rem;
-                        // }
                     }
 
                     &::before {
                         left: 0;
                         border-right: 9.9rem solid transparent;
-
-                        // @include respond(tab-port) {
-                        //     left: -3rem;
-                        //     top: 0;
-                        //     border-right: 3.3rem solid $color-red;
-                        //     border-bottom: 3.3rem solid transparent;
-                        // }
                     }
 
                     &::after {
                         right: 0;
                         border-left: 9.9rem solid transparent;
-
-                        // @include respond(tab-port) {
-                        //     right: initial;
-                        //     bottom: 0;
-                        //     border-left: none;
-                        //     border-top: 3.3rem solid transparent;
-                        // }
                     }
                 }
             }
@@ -180,6 +139,10 @@ body {
                 a:active {
                     position: relative;
                     @include glitch;
+                }
+
+                &--active {
+                    border-bottom: 1px solid $color-led-yellow;
                 }
             }
         }

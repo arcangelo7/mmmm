@@ -159,7 +159,7 @@ body {
                         to right bottom, 
                         $color-red, 
                         $color-white),
-                        url(../../img/arcangelo.JPG);
+                        url(../img/arcangelo.JPG);
                 }
         
                 &--2 {
@@ -167,7 +167,7 @@ body {
                         to right bottom, 
                         $color-blue, 
                         $color-white),
-                        url(../../img/nooshin.jpg);
+                        url(../img/nooshin.jpg);
                 }              
             }
 
@@ -241,7 +241,7 @@ body {
                         to right bottom, 
                         black, 
                         $color-led-azure),
-                        url(../../img/arcangelo.JPG);
+                        url(../img/arcangelo.JPG);
                 }
         
                 &--2 {
@@ -249,7 +249,7 @@ body {
                         to right bottom, 
                         black, 
                         $color-led-yellow),
-                        url(../../img/nooshin.jpg);
+                        url(../img/nooshin.jpg);
                 }              
             }
 
@@ -319,7 +319,7 @@ body {
                         to right bottom, 
                         $bauhaus-dark, 
                         $bauhaus-back),
-                        url(../../img/arcangelo.JPG);
+                        url(../img/arcangelo.JPG);
                 }
         
                 &--2 {
@@ -327,7 +327,7 @@ body {
                         to right bottom, 
                         $bauhaus-red, 
                         $bauhaus-back),
-                        url(../../img/nooshin.jpg);
+                        url(../img/nooshin.jpg);
                 }              
             }
 
@@ -389,11 +389,11 @@ body {
             height: 60rem;       
             &__picture {        
                 &--1 {
-                    background-image: url(../../img/arcangelo.JPG);
+                    background-image: url(../img/arcangelo.JPG);
                 }
         
                 &--2 {
-                    background-image: url(../../img/nooshin.jpg);
+                    background-image: url(../img/nooshin.jpg);
                 }              
             }
 

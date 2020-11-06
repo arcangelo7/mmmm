@@ -368,8 +368,9 @@ body{
 
     &.around_2040 {
         .selector {
+            bottom: 0;
             width: calc((100vw - 72rem) / 2 - 2.4rem);
-            height: 91vh;
+            height: 94vh;
 
             @include respond(tab-port) {
                 border-radius: 1rem;
@@ -405,7 +406,7 @@ body{
             }
             
             &__background {
-                bottom: 10.7rem;
+                bottom: 19.3rem;
                 right: 2.9rem;
                 background-image: radial-gradient(
                     $color-blade-runner-fog,
@@ -429,10 +430,12 @@ body{
 
             &__nav {
                 height: 79vh;
-                margin-top: 12.3rem;
+                padding-top: 6.3rem;
+                padding-bottom: 13rem;
 
                 @include respond(tab-port) {
-                    margin-top: 0;
+                    padding-top: 0;
+                    padding-bottom: 0;
                 }
             }
 
@@ -514,7 +517,7 @@ body{
         &.early_20th {
             .selector {
                 top: 0;
-                width: calc((100vw - 900px)/2);
+                width: calc((100vw - 800px)/2);
                 height: 100vh;
 
             @include respond(tab-port) {
@@ -702,13 +705,6 @@ body{
                     right: .75vw;
                 }
             }
-
-            // &__context {
-
-            //     @include respond(tab-port){
-            //         margin-top: 2.75vw;
-            //     }
-            // }
 
             &__nav {
                 height: 100vh;

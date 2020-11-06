@@ -2,3 +2,9 @@ pre {
     background-color: $color-grey-smoke;
     white-space: pre-wrap;
 }
+
+.before_1500 {
+    .cp_embed_iframe, pre {
+        margin-bottom: 2.75vw;
+    }
+}

@@ -21,6 +21,8 @@
             width: 8rem;
             height: 8rem;
         }
+
+        pointer-events: none;
     }
 
     &__background {
@@ -37,6 +39,8 @@
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         user-select: none;
+
+        display: none;
     }
 
     &__nav {
@@ -306,9 +310,9 @@ body{
 
     &.around_2040 {
         .metadata {
-            top: 0;
+            bottom: 0;
             width: calc((100vw - 72rem) / 2 - 2.4rem);
-            height: 91vh;
+            height: 94vh;
 
             @include respond(tab-port) {
                 border-radius: 1rem;
@@ -350,7 +354,7 @@ body{
             }
 
             &__background {
-                bottom: 2.6rem;
+                bottom: 11.6rem;
                 right: 2.9rem;
                 background-image: radial-gradient(
                     $color-blade-runner-fog,
@@ -365,7 +369,7 @@ body{
             }
 
             &__context {
-                margin-top: 12.3rem; // 4.8rem below navbar, same as h1
+                margin-top: 6.3rem; // 4.8rem below navbar, same as h1
 
                 @include respond(tab-port){
                     margin-top: 0;
@@ -373,10 +377,12 @@ body{
             }
 
             &__nav {
-                height: 91vh;
+                height: 94vh;
+                padding-bottom: 13rem;
 
                 @include respond(tab-port) {
                     padding-top: 2.4rem;
+                    padding-bottom: 0;
                 }
             }
 
@@ -439,7 +445,7 @@ body{
     &.early_20th {
         .metadata {
             top: 0;
-            width: calc((100vw - 900px)/2);
+            width: calc((100vw - 800px)/2);
             height: 100vh;
 
             @include respond(tab-port) {
@@ -620,11 +626,17 @@ body{
             }
 
             &__nav {
-                top: calc(2em + 5px);
                 height: 100vh;
+                top: calc(2em + 5px);
 
                 @include respond(tab-port) {
-                    top: 0;
+                    border-radius: 1rem;
+                    transition: height .8s;
+                    height: 0;
+                    width: calc(94.5vw - (100vw - 100%));
+                    top: initial;
+                    left: 2.75vw;
+                    bottom: 2.75vw;
                 }
             }
 

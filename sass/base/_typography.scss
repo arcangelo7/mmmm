@@ -46,7 +46,7 @@
 
 body {
     a {
-        display: initial !important;
+        display: initial;
         word-wrap: break-word;
         -moz-hyphens: auto;
         -ms-hyphens: auto;
@@ -62,6 +62,10 @@ body {
         p {
             column-count: 1;
         }
+    }
+
+    p {
+        widows: 3; orphans: 3;
     }
 
 //////////////////////////////////////
@@ -152,7 +156,7 @@ body {
         a {
             color: $color-led-azure;
             text-decoration: none;
-            display: inline-block;
+            // display: inline-block;
             cursor: pointer;
         }
 
@@ -164,6 +168,9 @@ body {
 
       &.late_20th {
         font: 1.5rem 'cheltenham', sans-serif;
+        @include respond(phone) {
+          font-size: 3rem;
+        }
         text-align: justify;
         color: #333;
         a {

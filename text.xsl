@@ -217,7 +217,7 @@
     </xsl:template>
     
     <xsl:template match="tei:time">
-        <time>
+        <time class="date">
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates/>
         </time>
